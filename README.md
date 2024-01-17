@@ -1,66 +1,55 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Webcolegios Backend
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Descripción
+El backend de "Webcolegios" es un sistema integral diseñado para gestionar los procesos académicos y administrativos de instituciones educativas. Esta nueva versión incluye varios módulos como Gestión Académica, Administrativa, Convivencia Escolar, y Gestión de Calidad.
 
-## About Laravel
+## Módulos
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Gestión Académica
+- Creación de cursos, áreas, y planes de estudio por grado.
+- Intensidad Horaria y Plan de Áreas por grado.
+- Plan de Aula de Campo.
+- Digitación de desempeños, recomendaciones y dificultades.
+- Registro de calificaciones (Decreto 1290) y generación de planillas.
+- Control de asistencia y actas académicas.
+- Herramientas de reconocimiento estudiantil y estadísticas.
+- Álbum fotográfico, agenda de compromisos, y recursos educativos digitales.
+- Horarios y procesos electorales estudiantiles.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Gestión Administrativa
+- Procesos de inscripción y matrícula en línea.
+- Documentación y certificaciones académicas y laborales.
+- Gestión de permisos y directorios institucionales.
+- Comunicaciones oficiales y herramientas estadísticas.
+- Plataforma de sugerencias y pruebas académicas.
+- Instructivos y tutoriales para el uso de la plataforma.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Convivencia Escolar
+- Registro y seguimiento de acciones disciplinarias.
+- Gestión de ausencias, retardos y comportamiento estudiantil.
+- Herramientas para la orientación escolar y citación de acudientes.
 
-## Learning Laravel
+### Módulo de Gestión de Calidad
+- Estructuración y registro en línea del Sistema de Gestión de Calidad.
+- Caracterización de gestiones y control documental.
+- Registro de acciones correctivas y auditorías.
+- Gestión de compras y análisis de riesgo.
+- Plan de mantenimiento de equipos.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Instalación y Configuración
+[Instrucciones para la instalación y configuración del backend.]
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Uso
+[Descripción de cómo usar el sistema, posiblemente con ejemplos.]
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Contribuciones
+[Instrucciones sobre cómo contribuir al proyecto.]
 
-## Laravel Sponsors
+## Licencia
+[Información sobre la licencia del software.]
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Contacto
+[Detalles de contacto para soporte o consultas adicionales.]
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Versión
+[v0.0.1]
