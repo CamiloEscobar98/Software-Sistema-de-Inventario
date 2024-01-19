@@ -36,9 +36,20 @@ class CountrySeeder extends Seeder
     public function run(): void
     {
         if (!isProductionEnv()) {
-            $countryNum = (int) $this->command->ask("");
-        }
+            $countryNum = (int) $this->command->ask(__("setting::seeders.countries.ask"), 5);
+            $countryNum = !is_numeric($countryNum) || $countryNum <= 0 ? 5 : $countryNum;
+            $countries = Country::factory($countryNum)->make();
 
-        Country::factory(rand(5, 20))->create();
+            $this->command->getOutput()->progressStart($countryNum);
+            foreach ($countries as $index => $item) {
+                sleep(1);
+                $this->info(__("setting::seeders.countries.item", ['index' => $index + 1, 'name' => $item->name]));
+                $item->save();
+
+                $this->command->getOutput()->progressAdvance();
+            }
+            $this->command->getOutput()->progressFinish();
+            $this->command->info(__("setting::seeders.countries.finish", ['total' => $countryNum]));
+        }
     }
 }

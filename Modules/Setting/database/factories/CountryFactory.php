@@ -19,8 +19,8 @@ class CountryFactory extends Factory
     public function definition(): array
     {
         return [
-            CountryEnum::Name => $this->faker->country,
-            CountryEnum::Slug => $this->faker->word
+            CountryEnum::Name->value => $this->faker->unique()->country,
+            CountryEnum::Slug->value => $this->faker->unique()->word
         ];
     }
 }

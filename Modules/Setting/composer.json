@@ -20,9 +20,7 @@
             "Modules\\Setting\\Database\\Factories\\": "database/factories/",
             "Modules\\Setting\\Database\\Seeders\\": "database/seeders/"
         },
-        "files": [
-            "app/Supports/Helpers/Helpers.php"
-        ]
+        "files": []
     },
     "autoload-dev": {
         "psr-4": {
