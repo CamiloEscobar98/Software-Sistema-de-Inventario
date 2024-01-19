@@ -9,7 +9,7 @@ return [
         'finish' => "\nSe han registrado :total paises"
     ],
     'departments' => [
-        'ask' => "¿Cuántos Departamentos desea crear? \nPor defecto se crearán cinco Departamentos.",
+        'ask' => "¿Cuántos Géneros desea crear? \nPor defecto se crearán cinco Géneros.",
         'item' => "\n-Creando el Departamento [:index]: :name",
         'finish' => "\nSe han registrado :total Departamentos"
     ],
@@ -17,5 +17,10 @@ return [
         'ask' => "¿Cuántas Ciudades desea crear? \nPor defecto se crearán cinco Ciudades.",
         'item' => "\n-Creando la Ciudad [:index]: :name",
         'finish' => "\nSe han registrado :total Ciudades"
-    ]
+    ],
+    'genders' => [
+        'ask' => "¿Cuántos Géneros desea crear? \nPor defecto se crearán cinco Géneros.",
+        'item' => "\n-Creando el Género [:index]: :name",
+        'finish' => "\nSe han registrado :total Géneros"
+    ],
 ];
