@@ -13,4 +13,9 @@ return [
         'item' => "\n-Creating Department [:index]: :name",
         'finish' => ":total Departments have been registered"
     ],
+    'cities' => [
+        'ask' => "How many Cities would you like to create? \nBy default, five Cities will be created.",
+        'item' => "\n-Creating City [:index]: :name",
+        'finish' => ":total Cities have been registered"
+    ],
 ];

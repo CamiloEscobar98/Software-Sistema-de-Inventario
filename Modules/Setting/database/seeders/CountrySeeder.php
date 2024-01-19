@@ -8,8 +8,9 @@ use Illuminate\Support\Facades\Log;
 
 use Symfony\Component\Console\Output\ConsoleOutput;
 
-use Modules\Setting\app\Models\Country;
 use Modules\Setting\app\Repositories\CountryRepository;
+
+use Modules\Setting\app\Models\Country;
 
 
 /**
