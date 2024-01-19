@@ -4,14 +4,14 @@ namespace Modules\Setting\database\factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-use Modules\Setting\app\Enums\CountryEnum;
+use Modules\Setting\app\Enums\DepartmentEnum;
 
-class CountryFactory extends Factory
+class DepartmentFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Setting\app\Models\Country::class;
+    protected $model = \Modules\Setting\app\Models\Department::class;
 
     /**
      * Define the model's default state.
@@ -19,8 +19,8 @@ class CountryFactory extends Factory
     public function definition(): array
     {
         return [
-            CountryEnum::Name => $this->faker->unique()->country,
-            CountryEnum::Slug => $this->faker->unique()->word
+            DepartmentEnum::Name => $this->faker->unique()->word,
+            DepartmentEnum::Slug => $this->faker->unique()->word,
         ];
     }
 }

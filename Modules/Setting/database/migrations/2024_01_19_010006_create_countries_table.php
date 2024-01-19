@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('setting_countries', function (Blueprint $table) {
-            $table->unsignedTinyInteger('id', true);
+            $table->tinyIncrements('id');
             $table->string('name', '100')->unique('unique_name_countries');
-            $table->string('slug')->unique('unique_slug_countries');
+            $table->string('slug', '20')->unique('unique_slug_countries');
 
             $table->timestamps();
         });

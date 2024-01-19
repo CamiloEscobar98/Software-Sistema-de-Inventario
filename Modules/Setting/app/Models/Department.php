@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Carbon;
 
-use Modules\Setting\Database\factories\CountryFactory;
+use Modules\Setting\Database\factories\DepartmentFactory;
 
-use Modules\Setting\app\Enums\CountryEnum;
+use Modules\Setting\app\Enums\DepartmentEnum;
 
 /**
- * Class Cpuntry
+ * Class Department
  * 
  * @package Modules\Setting\app\Models
  * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
@@ -20,12 +20,13 @@ use Modules\Setting\app\Enums\CountryEnum;
  * @property array $fillable
  * 
  * @property int $id
+ * @property int $country_id
  * @property string $name
  * @property string $slug
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */
-class Country extends Model
+class Department extends Model
 {
     use HasFactory;
 
@@ -34,18 +35,19 @@ class Country extends Model
      *
      * @var string
      */
-    protected $table = CountryEnum::Table;
+    protected $table = DepartmentEnum::Table;
 
     /**
      * The attributes that are mass assignable.
      */
     protected $fillable = [
-        CountryEnum::Name,
-        CountryEnum::Slug
+        DepartmentEnum::CountryId,
+        DepartmentEnum::Name,
+        DepartmentEnum::Slug
     ];
 
-    protected static function newFactory(): CountryFactory
+    protected static function newFactory(): DepartmentFactory
     {
-        return CountryFactory::new();
+        return DepartmentFactory::new();
     }
 }

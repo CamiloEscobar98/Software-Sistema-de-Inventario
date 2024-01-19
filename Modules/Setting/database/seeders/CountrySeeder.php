@@ -4,6 +4,7 @@ namespace Modules\Setting\database\seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Console\Concerns\InteractsWithIO;
+use Illuminate\Support\Facades\Log;
 
 use Symfony\Component\Console\Output\ConsoleOutput;
 
@@ -13,6 +14,8 @@ use Modules\Setting\app\Repositories\CountryRepository;
 
 /**
  * Class CountrySeeder
+ * @package Modules\Setting\database\seeders
+ * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
  * 
  * @property CountryRepository $countryRepository
  * 
@@ -26,8 +29,9 @@ class CountrySeeder extends Seeder
 
     public function __construct(CountryRepository $countryRepository)
     {
-        $this->countryRepository = $countryRepository;
         $this->output = new ConsoleOutput();
+        
+        $this->countryRepository = $countryRepository;
     }
 
     /**
@@ -36,9 +40,11 @@ class CountrySeeder extends Seeder
     public function run(): void
     {
         if (!isProductionEnv()) {
+            Log::info('Hi');
             $countryNum = (int) $this->command->ask(__("setting::seeders.countries.ask"), 5);
             $countryNum = !is_numeric($countryNum) || $countryNum <= 0 ? 5 : $countryNum;
             $countries = Country::factory($countryNum)->make();
+            Log::info($countries);
 
             $this->command->getOutput()->progressStart($countryNum);
             foreach ($countries as $index => $item) {

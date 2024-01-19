@@ -12,7 +12,8 @@ class SettingDatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            CountrySeeder::class
+            CountrySeeder::class,
+            DepartmentSeeder::class,
         ]);
     }
 }
