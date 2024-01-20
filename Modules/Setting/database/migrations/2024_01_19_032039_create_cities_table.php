@@ -15,7 +15,7 @@ return new class extends Migration
             $table->mediumIncrements('id');
             $table->unsignedSmallInteger('department_id');
             $table->string('name', '100');
-            $table->string('slug', '20');
+            $table->string('slug', '50');
 
             $table->unique(['department_id', 'name'], 'unique_name_cities');
             $table->unique(['department_id', 'slug'], 'unique_slug_cities');

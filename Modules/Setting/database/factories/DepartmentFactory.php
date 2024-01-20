@@ -31,8 +31,8 @@ class DepartmentFactory extends Factory
     public function definition(): array
     {
         return [
-            DepartmentEnum::Name => $this->faker->unique()->word,
-            DepartmentEnum::Slug => $this->faker->unique()->word,
+            DepartmentEnum::Name => $this->faker->sentence(3),
+            DepartmentEnum::Slug => $this->faker->word() . "-" . $this->faker->word()
         ];
     }
 }

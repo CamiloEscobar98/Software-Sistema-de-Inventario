@@ -15,7 +15,7 @@ return new class extends Migration
             $table->smallIncrements('id');
             $table->unsignedTinyInteger('country_id');
             $table->string('name', '100');
-            $table->string('slug', '20');
+            $table->string('slug', '50');
 
             $table->unique(['country_id', 'name'], 'unique_name_departments');
             $table->unique(['country_id', 'slug'], 'unique_slug_departments');
