@@ -28,4 +28,9 @@ return [
         'item' => "\n-Creating Document Type [:index]: :name",
         'finish' => ":total Document Types have been registered"
     ],
+    'civil_statuses' => [
+        'ask' => "How many Civil Statuses would you like to create? \nBy default, five Civil Statuses will be created.",
+        'item' => "\n-Creating Document Type [:index]: :name",
+        'finish' => ":total Civil Statuses have been registered"
+    ],
 ];

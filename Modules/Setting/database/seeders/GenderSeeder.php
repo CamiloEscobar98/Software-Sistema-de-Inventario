@@ -7,14 +7,14 @@ use Illuminate\Console\Concerns\InteractsWithIO;
 
 use Symfony\Component\Console\Output\ConsoleOutput;
 
-use Modules\Setting\app\Models\Gender;
+use Modules\Setting\app\Repositories\GenderRepository;
 
 /**
  * Class GenderSeeder
  * @package Modules\Setting\database\seeders
  * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
  * 
- * @property CountryRepository $countryRepository
+ * @property GenderRepository $genderRepository
  * 
  * @method void run
  */
@@ -22,9 +22,13 @@ class GenderSeeder extends Seeder
 {
     use InteractsWithIO;
 
-    public function __construct()
+    protected $genderRepository;
+
+    public function __construct(GenderRepository $genderRepository)
     {
         $this->output = new ConsoleOutput();
+
+        $this->genderRepository = $genderRepository;
     }
 
     /**
@@ -35,7 +39,7 @@ class GenderSeeder extends Seeder
         if (!isProductionEnv()) {
             $genderEnum = (int) $this->command->ask(__("setting::seeders.genders.ask"), 5);
             $genderEnum = !is_numeric($genderEnum) || $genderEnum <= 0 ? 5 : $genderEnum;
-            $genders = Gender::factory($genderEnum)->make();
+            $genders = $this->genderRepository->makeModels($genderEnum);
 
             $this->command->getOutput()->progressStart($genderEnum);
             foreach ($genders as $index => $item) {

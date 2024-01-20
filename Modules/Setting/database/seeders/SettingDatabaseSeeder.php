@@ -17,6 +17,7 @@ class SettingDatabaseSeeder extends Seeder
             CitySeeder::class,
             GenderSeeder::class,
             DocumentTypeSeeder::class,
+            CivilStatusSeeder::class,
         ]);
     }
 }

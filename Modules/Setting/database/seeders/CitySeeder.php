@@ -9,8 +9,16 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 use Modules\Setting\app\Repositories\CityRepository;
 use Modules\Setting\app\Repositories\DepartmentRepository;
 
-use Modules\Setting\app\Models\City;
-
+/**
+ * Class CitySeeder
+ * @package Modules\Setting\database\seeders
+ * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
+ * 
+ * @property CityRepository $cityRepository
+ * @property DepartmentRepository $departmentRepository
+ * 
+ * @method void run
+ */
 class CitySeeder extends Seeder
 {
     use InteractsWithIO;
@@ -35,7 +43,7 @@ class CitySeeder extends Seeder
 
             $cityEnum = (int) $this->command->ask(__("setting::seeders.cities.ask"), 5);
             $cityEnum = !is_numeric($cityEnum) || $cityEnum <= 0 ? 5 : $cityEnum;
-            $cities = City::factory($cityEnum)->make();
+            $cities = $this->cityRepository->makeModels($cityEnum);
 
             $this->command->getOutput()->progressStart($cityEnum);
             foreach ($cities as $index => $item) {

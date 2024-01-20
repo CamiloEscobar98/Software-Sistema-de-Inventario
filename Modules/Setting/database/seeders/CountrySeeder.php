@@ -9,9 +9,6 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 
 use Modules\Setting\app\Repositories\CountryRepository;
 
-use Modules\Setting\app\Models\Country;
-
-
 /**
  * Class CountrySeeder
  * @package Modules\Setting\database\seeders
@@ -42,7 +39,7 @@ class CountrySeeder extends Seeder
         if (!isProductionEnv()) {
             $countryNum = (int) $this->command->ask(__("setting::seeders.countries.ask"), 5);
             $countryNum = !is_numeric($countryNum) || $countryNum <= 0 ? 5 : $countryNum;
-            $countries = Country::factory($countryNum)->make();
+            $countries = $this->countryRepository->makeModels($countryNum);
 
             $this->command->getOutput()->progressStart($countryNum);
             foreach ($countries as $index => $item) {
