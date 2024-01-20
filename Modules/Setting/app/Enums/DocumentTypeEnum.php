@@ -2,6 +2,17 @@
 
 namespace Modules\Setting\app\Enums;
 
+/**
+ * Class DocumentTypeEnum
+ * @package Modules\Setting\app\Enums
+ * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
+ * 
+ * @property const Table
+ * @property const Name
+ * @property const Slug
+ * @property const CreatedAt
+ * @property const UpdatedAt
+ */
 class DocumentTypeEnum
 {
     const Table = "setting_document_types";
