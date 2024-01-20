@@ -11,7 +11,7 @@ use Modules\Setting\Database\factories\CountryFactory;
 use Modules\Setting\app\Enums\CountryEnum;
 
 /**
- * Class Cpuntry
+ * Class Country
  * 
  * @package Modules\Setting\app\Models
  * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
