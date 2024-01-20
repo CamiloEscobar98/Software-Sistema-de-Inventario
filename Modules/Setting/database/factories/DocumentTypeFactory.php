@@ -6,12 +6,24 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 use Modules\Setting\app\Enums\DocumentTypeEnum;
 
+use Modules\Setting\app\Models\DocumentType;
+
+/**
+ * class DocumentTypeFactory
+ * 
+ * @package Modules\Setting\database\factories
+ * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
+ * 
+ * @property DocumentType $model
+ * 
+ * @method array definition
+ */
 class DocumentTypeFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Setting\app\Models\DocumentType::class;
+    protected $model = DocumentType::class;
 
     /**
      * Define the model's default state.
@@ -24,4 +36,3 @@ class DocumentTypeFactory extends Factory
         ];
     }
 }
-

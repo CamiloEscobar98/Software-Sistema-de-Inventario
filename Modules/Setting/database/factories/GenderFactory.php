@@ -6,12 +6,24 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 use Modules\Setting\app\Enums\GenderEnum;
 
+use Modules\Setting\app\Models\Gender;
+
+/**
+ * class GenderFactory
+ * 
+ * @package Modules\Setting\database\factories
+ * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
+ * 
+ * @property Gender $model
+ * 
+ * @method array definition
+ */
 class GenderFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Setting\app\Models\Gender::class;
+    protected $model = Gender::class;
 
     /**
      * Define the model's default state.

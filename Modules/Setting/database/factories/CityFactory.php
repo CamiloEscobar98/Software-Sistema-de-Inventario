@@ -3,14 +3,27 @@
 namespace Modules\Setting\database\factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+
 use Modules\Setting\app\Enums\CityEnum;
 
+use Modules\Setting\app\Models\City;
+
+/**
+ * class CityFactory
+ * 
+ * @package Modules\Setting\database\factories
+ * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
+ * 
+ * @property City $model
+ * 
+ * @method array definition
+ */
 class CityFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Setting\app\Models\City::class;
+    protected $model = City::class;
 
     /**
      * Define the model's default state.
