@@ -4,11 +4,13 @@ namespace Modules\Setting\database\seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Console\Concerns\InteractsWithIO;
-use Modules\Setting\app\Models\Gender;
+
 use Symfony\Component\Console\Output\ConsoleOutput;
 
+use Modules\Setting\app\Models\Gender;
+
 /**
- * Class CountrySeeder
+ * Class GenderSeeder
  * @package Modules\Setting\database\seeders
  * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
  * 

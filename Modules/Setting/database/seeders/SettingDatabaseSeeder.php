@@ -16,6 +16,7 @@ class SettingDatabaseSeeder extends Seeder
             DepartmentSeeder::class,
             CitySeeder::class,
             GenderSeeder::class,
+            DocumentTypeSeeder::class,
         ]);
     }
 }

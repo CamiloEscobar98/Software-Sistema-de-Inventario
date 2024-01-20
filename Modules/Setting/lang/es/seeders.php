@@ -23,4 +23,9 @@ return [
         'item' => "\n-Creando el Género [:index]: :name",
         'finish' => "\nSe han registrado :total Géneros"
     ],
+    'document_types' => [
+        'ask' => "¿Cuántos Tipos de Documentos desea crear? \nPor defecto se crearán cinco Tipos de Documentos.",
+        'item' => "\n-Creando el Tipo de Documento [:index]: :name",
+        'finish' => "\nSe han registrado :total Tipos de Documentos"
+    ],
 ];

@@ -23,4 +23,9 @@ return [
         'item' => "\n-Creating Gender [:index]: :name",
         'finish' => ":total Genders have been registered"
     ],
+    'document_types' => [
+        'ask' => "How many Document Types would you like to create? \nBy default, five Document Types will be created.",
+        'item' => "\n-Creating Document Type [:index]: :name",
+        'finish' => ":total Document Types have been registered"
+    ],
 ];

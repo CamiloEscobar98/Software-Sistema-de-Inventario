@@ -4,14 +4,14 @@ namespace Modules\Setting\database\factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-use Modules\Setting\app\Enums\GenderEnum;
+use Modules\Setting\app\Enums\DocumentTypeEnum;
 
-class GenderFactory extends Factory
+class DocumentTypeFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Setting\app\Models\Gender::class;
+    protected $model = \Modules\Setting\app\Models\DocumentType::class;
 
     /**
      * Define the model's default state.
@@ -19,8 +19,9 @@ class GenderFactory extends Factory
     public function definition(): array
     {
         return [
-            GenderEnum::Name => $this->faker->unique()->word,
-            GenderEnum::Slug => $this->faker->unique()->word
+            DocumentTypeEnum::Name => $this->faker->unique()->word,
+            DocumentTypeEnum::Slug => $this->faker->unique()->word
         ];
     }
 }
+
