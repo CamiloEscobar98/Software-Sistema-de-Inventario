@@ -5,9 +5,12 @@ namespace Modules\Setting\database\seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Console\Concerns\InteractsWithIO;
 
+use Symfony\Component\Console\Output\ConsoleOutput;
+
 use Modules\Setting\app\Repositories\CivilStatusRepository;
 
-use Symfony\Component\Console\Output\ConsoleOutput;
+use Modules\Setting\app\Enums\CivilStatusEnum;
+
 
 /**
  * Class CivilStatusSeeder
@@ -44,7 +47,7 @@ class CivilStatusSeeder extends Seeder
             $this->command->getOutput()->progressStart($civilStatusNum);
             foreach ($civil_statuses as $index => $item) {
                 sleep(1);
-                $this->info(__("setting::seeders.civil_statuses.item", ['index' => $index + 1, 'name' => $item->name]));
+                $this->info(__("setting::seeders.civil_statuses.item", ['index' => $index + 1, 'name' => $item->{CivilStatusEnum::Name}]));
                 $item->save();
 
                 $this->command->getOutput()->progressAdvance();

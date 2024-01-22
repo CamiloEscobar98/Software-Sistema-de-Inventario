@@ -11,6 +11,8 @@ use Modules\Setting\app\Repositories\DocumentTypeRepository;
 
 use Modules\Setting\app\Models\DocumentType;
 
+use Modules\Setting\app\Enums\DocumentTypeEnum;
+
 /**
  * Class DocumentTypeSeeder
  * @package Modules\Setting\database\seeders
@@ -39,20 +41,20 @@ class DocumentTypeSeeder extends Seeder
     public function run(): void
     {
         if (!isProductionEnv()) {
-            $documentTypeEnum = (int) $this->command->ask(__("setting::seeders.document_types.ask"), 5);
-            $documentTypeEnum = !is_numeric($documentTypeEnum) || $documentTypeEnum <= 0 ? 5 : $documentTypeEnum;
-            $document_types = DocumentType::factory($documentTypeEnum)->make();
+            $documentTypeTotal = (int) $this->command->ask(__("setting::seeders.document_types.ask"), 5);
+            $documentTypeTotal = !is_numeric($documentTypeTotal) || $documentTypeTotal <= 0 ? 5 : $documentTypeTotal;
+            $document_types = DocumentType::factory($documentTypeTotal)->make();
 
-            $this->command->getOutput()->progressStart($documentTypeEnum);
+            $this->command->getOutput()->progressStart($documentTypeTotal);
             foreach ($document_types as $index => $item) {
                 sleep(1);
-                $this->info(__("setting::seeders.document_types.item", ['index' => $index + 1, 'name' => $item->name]));
+                $this->info(__("setting::seeders.document_types.item", ['index' => $index + 1, 'name' => $item->{DocumentTypeEnum::Name}]));
                 $item->save();
 
                 $this->command->getOutput()->progressAdvance();
             }
             $this->command->getOutput()->progressFinish();
-            $this->command->info(__("setting::seeders.document_types.finish", ['total' => $documentTypeEnum]));
+            $this->command->info(__("setting::seeders.document_types.finish", ['total' => $documentTypeTotal]));
         }
     }
 }

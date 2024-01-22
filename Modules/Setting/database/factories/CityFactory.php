@@ -31,8 +31,8 @@ class CityFactory extends Factory
     public function definition(): array
     {
         return [
-            CityEnum::Name => $this->faker->unique()->word,
-            CityEnum::Slug => $this->faker->unique()->word,
+            CityEnum::Name => $this->faker->sentence(3),
+            CityEnum::Slug => $this->faker->word() . "-" . $this->faker->word()
         ];
     }
 }

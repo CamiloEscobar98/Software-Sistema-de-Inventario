@@ -9,6 +9,8 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 
 use Modules\Setting\app\Repositories\GenderRepository;
 
+use Modules\Setting\app\Enums\GenderEnum;
+
 /**
  * Class GenderSeeder
  * @package Modules\Setting\database\seeders
@@ -37,20 +39,20 @@ class GenderSeeder extends Seeder
     public function run(): void
     {
         if (!isProductionEnv()) {
-            $genderEnum = (int) $this->command->ask(__("setting::seeders.genders.ask"), 5);
-            $genderEnum = !is_numeric($genderEnum) || $genderEnum <= 0 ? 5 : $genderEnum;
-            $genders = $this->genderRepository->makeModels($genderEnum);
+            $genderTotal = (int) $this->command->ask(__("setting::seeders.genders.ask"), 5);
+            $genderTotal = !is_numeric($genderTotal) || $genderTotal <= 0 ? 5 : $genderTotal;
+            $genders = $this->genderRepository->makeModels($genderTotal);
 
-            $this->command->getOutput()->progressStart($genderEnum);
+            $this->command->getOutput()->progressStart($genderTotal);
             foreach ($genders as $index => $item) {
                 sleep(1);
-                $this->info(__("setting::seeders.genders.item", ['index' => $index + 1, 'name' => $item->name]));
+                $this->info(__("setting::seeders.genders.item", ['index' => $index + 1, 'name' => $item->{GenderEnum::Name}]));
                 $item->save();
 
                 $this->command->getOutput()->progressAdvance();
             }
             $this->command->getOutput()->progressFinish();
-            $this->command->info(__("setting::seeders.genders.finish", ['total' => $genderEnum]));
+            $this->command->info(__("setting::seeders.genders.finish", ['total' => $genderTotal]));
         }
     }
 }

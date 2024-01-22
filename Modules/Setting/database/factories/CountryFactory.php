@@ -32,7 +32,7 @@ class CountryFactory extends Factory
     {
         return [
             CountryEnum::Name => $this->faker->unique()->country,
-            CountryEnum::Slug => $this->faker->unique()->word
+            CountryEnum::Slug => $this->faker->word() . "-" . $this->faker->word()
         ];
     }
 }
