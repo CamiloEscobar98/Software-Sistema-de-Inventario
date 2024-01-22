@@ -13,14 +13,15 @@ return new class extends Migration
     {
         Schema::create('tenant_informations', function (Blueprint $table) {
             $table->string('id')->primary();
+            $table->unsignedMediumInteger('city_id')->nullable();
             $table->string('name', 150);
             $table->string('slogan');
             $table->string('address', 200);
             $table->string('telephone', 25)->nullable();
             $table->string('phone', 30)->nullable();
-            $table->unsignedMediumInteger('city_id')->nullable();
             
             $table->foreign('id', 'fk_tenant_information')->references('id')->on('tenants')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('city_id', 'fk_cities_tenant_information')->references('id')->on('setting_cities')->cascadeOnUpdate()->restrictOnDelete();
             $table->timestamps();
         });
     }
