@@ -21,7 +21,7 @@ class TenantInformationFactory extends Factory
     public function definition(): array
     {
         return [
-            TenantInformationEnum::Name => "Institución Educativa {$this->faker->words(2, true)}",
+            TenantInformationEnum::Name => "Cliente {$this->faker->words(2, true)}",
             TenantInformationEnum::Slogan => $this->faker->sentence(6, true),
             TenantInformationEnum::Address => $this->faker->address(),
             TenantInformationEnum::Telephone => $this->faker->e164PhoneNumber(),
