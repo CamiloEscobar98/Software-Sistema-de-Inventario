@@ -12,6 +12,8 @@ use Modules\Tenant\app\Repositories\TenantInformationRepository;
 use Modules\Setting\app\Repositories\CityRepository;
 
 use Modules\Tenant\app\Enums\TenantInformationEnum;
+use Modules\Tenant\app\Enums\TenantEnum;
+use Modules\Setting\app\Enums\CityEnum;
 
 /**
  * Class TenantSeeder
@@ -54,12 +56,12 @@ class TenantSeeder extends Seeder
             $tenantEnum = !is_numeric($tenantEnum) || $tenantEnum <= 0 ? 5 : $tenantEnum;
             $tenants = $this->tenantRepository->makeModels($tenantEnum);
 
-            $cities = $this->cityRepository->all(['id']);
+            $cities = $this->cityRepository->all([CityEnum::Id]);
 
             $this->command->getOutput()->progressStart($tenantEnum);
             foreach ($tenants as $index => $item) {
-                $tenantInfo = $this->tenantInformationRepository->makeOneModel(['id' => $item->id]);
-                $tenantInfo->{TenantInformationEnum::CityId} = $cities->random(1)->first()->id;
+                $tenantInfo = $this->tenantInformationRepository->makeOneModel([TenantInformationEnum::Id=> $item->{TenantEnum::Id}]);
+                $tenantInfo->{TenantInformationEnum::CityId} = $cities->random(1)->first()->{CityEnum::Id};
 
                 $item->save();
                 $tenantInfo->save();

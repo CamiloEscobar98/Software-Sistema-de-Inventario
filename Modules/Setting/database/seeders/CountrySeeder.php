@@ -9,6 +9,8 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 
 use Modules\Setting\app\Repositories\CountryRepository;
 
+use Modules\Setting\app\Enums\CountryEnum;
+
 /**
  * Class CountrySeeder
  * @package Modules\Setting\database\seeders
@@ -27,7 +29,7 @@ class CountrySeeder extends Seeder
     public function __construct(CountryRepository $countryRepository)
     {
         $this->output = new ConsoleOutput();
-        
+
         $this->countryRepository = $countryRepository;
     }
 
@@ -44,7 +46,7 @@ class CountrySeeder extends Seeder
             $this->command->getOutput()->progressStart($countryNum);
             foreach ($countries as $index => $item) {
                 sleep(1);
-                $this->info(__("setting::seeders.countries.item", ['index' => $index + 1, 'name' => $item->name]));
+                $this->info(__("setting::seeders.countries.item", ['index' => $index + 1, 'name' => $item->{CountryEnum::Name}]));
                 $item->save();
 
                 $this->command->getOutput()->progressAdvance();

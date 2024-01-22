@@ -20,6 +20,7 @@ namespace Modules\Tenant\app\Enums;
 class TenantInformationEnum
 {
     const Table = "tenant_informations";
+    const Id = "id";
     const CityId = "city_id";
     const Name = "name";
     const Slogan = "slogan";

@@ -16,6 +16,7 @@ namespace Modules\Setting\app\Enums;
 class CivilStatusEnum
 {
     const Table = "setting_civil_statuses";
+    const Id = "id";
     const Name = "name";
     const Slug = "slug";
     const CreatedAt = "created_at";

@@ -17,6 +17,7 @@ namespace Modules\Setting\app\Enums;
 class DepartmentEnum
 {
     const Table = "setting_departments";
+    const Id = "id";
     const CountryId = "country_id";
     const Name = "name";
     const Slug = "slug";

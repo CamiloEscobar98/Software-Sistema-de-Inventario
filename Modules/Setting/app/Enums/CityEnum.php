@@ -17,6 +17,7 @@ namespace Modules\Setting\app\Enums;
 class CityEnum
 {
     const Table = "setting_cities";
+    const Id = "id";
     const DepartmentId = "department_id";
     const Name = "name";
     const Slug = "slug";

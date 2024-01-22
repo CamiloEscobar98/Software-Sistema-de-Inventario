@@ -17,6 +17,7 @@ namespace Modules\Tenant\app\Enums;
 class TenantEnum
 {
     const Table = "tenants";
+    const Id = "id";
     const Url = "Url";
     const Host = "Host";
     const Port = "Port";
