@@ -3,6 +3,7 @@
 namespace Modules\Setting\database\factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 use Modules\Setting\app\Enums\GenderEnum;
 
@@ -31,8 +32,11 @@ class GenderFactory extends Factory
     public function definition(): array
     {
         return [
-            GenderEnum::Name => $this->faker->unique()->word,
-            GenderEnum::Slug => $this->faker->unique()->word
+            GenderEnum::Name => [
+                'en' => $this->faker->sentence(3),
+                'es' => $this->faker->sentence(3),
+            ],
+            GenderEnum::Slug => Str::upper(Str::random(15)),
         ];
     }
 }

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Carbon;
 
+use Spatie\Translatable\HasTranslations;
+
 use Modules\Setting\Database\factories\DepartmentFactory;
 
 use Modules\Setting\app\Enums\DepartmentEnum;
@@ -28,7 +30,7 @@ use Modules\Setting\app\Enums\DepartmentEnum;
  */
 class Department extends Model
 {
-    use HasFactory;
+    use HasFactory, HasTranslations;
 
     /**
      * The table associated with the model.
@@ -36,6 +38,13 @@ class Department extends Model
      * @var string
      */
     protected $table = DepartmentEnum::Table;
+
+    /**
+     * The columns can be translated.
+     * 
+     * @var array
+     */
+    public $translatable = [DepartmentEnum::Name];
 
     /**
      * The attributes that are mass assignable.

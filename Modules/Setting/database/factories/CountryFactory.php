@@ -3,6 +3,7 @@
 namespace Modules\Setting\database\factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 use Modules\Setting\app\Enums\CountryEnum;
 
@@ -31,8 +32,11 @@ class CountryFactory extends Factory
     public function definition(): array
     {
         return [
-            CountryEnum::Name => $this->faker->unique()->country,
-            CountryEnum::Slug => $this->faker->word() . "-" . $this->faker->word()
+            CountryEnum::Name => [
+                'en' => $this->faker->sentence(3),
+                'es' => $this->faker->sentence(3)
+            ],
+            CountryEnum::Slug => Str::upper(Str::random(15)),
         ];
     }
 }

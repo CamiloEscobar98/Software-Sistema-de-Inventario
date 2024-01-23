@@ -5,6 +5,8 @@ namespace Modules\Setting\app\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+use Spatie\Translatable\HasTranslations;
+
 use Modules\Setting\Database\factories\DocumentTypeFactory;
 
 use Modules\Setting\app\Enums\DocumentTypeEnum;
@@ -26,7 +28,7 @@ use Modules\Setting\app\Enums\DocumentTypeEnum;
  */
 class DocumentType extends Model
 {
-    use HasFactory;
+    use HasFactory, HasTranslations;
 
     /**
      * The table associated with the model.
@@ -34,6 +36,13 @@ class DocumentType extends Model
      * @var string
      */
     protected $table = DocumentTypeEnum::Table;
+
+    /**
+     * The columns can be translated.
+     * 
+     * @var array
+     */
+    public $translatable = [DocumentTypeEnum::Name];
 
     /**
      * The attributes that are mass assignable.

@@ -3,6 +3,7 @@
 namespace Modules\Setting\database\factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 use Modules\Setting\app\Enums\DocumentTypeEnum;
 
@@ -31,8 +32,11 @@ class DocumentTypeFactory extends Factory
     public function definition(): array
     {
         return [
-            DocumentTypeEnum::Name => $this->faker->unique()->word,
-            DocumentTypeEnum::Slug => $this->faker->unique()->word
+            DocumentTypeEnum::Name => [
+                'en' => $this->faker->sentence(3),
+                'es' => $this->faker->sentence(3),
+            ],
+            DocumentTypeEnum::Slug => Str::upper(Str::random(15)),
         ];
     }
 }
