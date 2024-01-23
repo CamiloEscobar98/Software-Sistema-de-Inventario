@@ -20,7 +20,10 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            ProductEnum::Name => $this->faker->sentence(3),
+            ProductEnum::Name => [
+                'es' => $this->faker->sentence(3),
+                'en' => $this->faker->sentence(3),
+            ],
             ProductEnum::Info => $this->faker->paragraph(3),
             ProductEnum::Price => $this->faker->randomFloat(3, 1, 5000),
             ProductEnum::SkuCode => Str::upper(Str::random(10)),
