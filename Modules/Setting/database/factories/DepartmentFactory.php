@@ -3,6 +3,7 @@
 namespace Modules\Setting\database\factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 use Modules\Setting\app\Enums\DepartmentEnum;
 
@@ -31,8 +32,11 @@ class DepartmentFactory extends Factory
     public function definition(): array
     {
         return [
-            DepartmentEnum::Name => $this->faker->sentence(3),
-            DepartmentEnum::Slug => $this->faker->word() . "-" . $this->faker->word()
+            DepartmentEnum::Name => [
+                'en' => $this->faker->sentence(3),
+                'es' => $this->faker->sentence(3),
+            ],
+            DepartmentEnum::Slug => Str::upper(Str::random(15)),
         ];
     }
 }

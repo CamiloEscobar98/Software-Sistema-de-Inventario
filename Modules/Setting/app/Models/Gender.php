@@ -4,6 +4,9 @@ namespace Modules\Setting\app\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+use Spatie\Translatable\HasTranslations;
+
 use Modules\Setting\Database\factories\GenderFactory;
 
 use Modules\Setting\app\Enums\GenderEnum;
@@ -25,7 +28,7 @@ use Modules\Setting\app\Enums\GenderEnum;
  */
 class Gender extends Model
 {
-    use HasFactory;
+    use HasFactory, HasTranslations;
 
     /**
      * The table associated with the model.
@@ -33,6 +36,13 @@ class Gender extends Model
      * @var string
      */
     protected $table = GenderEnum::Table;
+
+    /**
+     * The columns can be translated.
+     * 
+     * @var array
+     */
+    public $translatable = [GenderEnum::Name];
 
     /**
      * The attributes that are mass assignable.

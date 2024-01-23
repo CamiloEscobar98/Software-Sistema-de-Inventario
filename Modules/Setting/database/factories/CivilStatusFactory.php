@@ -3,6 +3,7 @@
 namespace Modules\Setting\database\factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 use Modules\Setting\app\Enums\CivilStatusEnum;
 
@@ -31,8 +32,11 @@ class CivilStatusFactory extends Factory
     public function definition(): array
     {
         return [
-            CivilStatusEnum::Name => $this->faker->unique()->word,
-            CivilStatusEnum::Slug => $this->faker->unique()->word
+            CivilStatusEnum::Name => [
+                'en' => $this->faker->sentence(3),
+                'es' => $this->faker->sentence(3),
+            ],
+            CivilStatusEnum::Slug =>  Str::upper(Str::random(15)),
         ];
     }
 }
