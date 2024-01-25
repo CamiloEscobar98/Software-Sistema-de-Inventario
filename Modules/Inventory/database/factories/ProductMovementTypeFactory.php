@@ -3,6 +3,7 @@
 namespace Modules\Inventory\database\factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Inventory\app\Enums\ProductMovementTypeEnum;
 
 class ProductMovementTypeFactory extends Factory
 {
@@ -17,7 +18,11 @@ class ProductMovementTypeFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => ''
+            ProductMovementTypeEnum::Name => [
+                'es' => $this->faker->sentence(3),
+                'en' => $this->faker->sentence(3),
+            ],
+            ProductMovementTypeEnum::IsEntry => $this->faker->boolean()
         ];
     }
 }

@@ -48,6 +48,7 @@ class ProductCategory extends Model
      * The attributes that are mass assignable.
      */
     protected $fillable = [
+        ProductCategoryEnum::ProductCategoryId,
         ProductCategoryEnum::Name,
         ProductCategoryEnum::Info,
     ];

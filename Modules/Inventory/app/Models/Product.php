@@ -11,6 +11,22 @@ use Modules\Inventory\Database\factories\ProductFactory;
 
 use Modules\Inventory\app\Enums\ProductEnum;
 
+/**
+ * Class Product
+ * 
+ * @package Modules\Inventory\app\Models
+ * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
+ * 
+ * @property string $table
+ * @property array $fillable
+ * 
+ * @property int $id
+ * @property int $product_category_id
+ * @property string $name
+ * @property string $info
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ */
 class Product extends Model
 {
     use HasFactory, HasTranslations;
