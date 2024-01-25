@@ -6,11 +6,21 @@ namespace Modules\Auth\App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+
 use Laravel\Sanctum\HasApiTokens;
+
+use Modules\Auth\app\Enums\UserEnum;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = UserEnum::Table;
 
     /**
      * The attributes that are mass assignable.
@@ -18,9 +28,10 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        UserEnum::Email,
+        UserEnum::Password,
+        UserEnum::RememberToken,
+        UserEnum::EmailVerifiedAt,
     ];
 
     /**
@@ -29,8 +40,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        UserEnum::Password,
+        UserEnum::RememberToken,
     ];
 
     /**
@@ -39,7 +50,7 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
+        UserEnum::EmailVerifiedAt => 'datetime',
+        UserEnum::Password => 'hashed',
     ];
 }

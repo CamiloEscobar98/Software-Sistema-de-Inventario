@@ -1,6 +1,7 @@
 <?php
 
 use Modules\Auth\app\Models\User;
+use Modules\Auth\app\Enums\UserEnum;
 
 return [
 
@@ -95,7 +96,7 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
-            'table' => 'password_reset_tokens',
+            'table' => UserEnum::PasswordResetTokenTable,
             'expire' => 60,
             'throttle' => 60,
         ],
