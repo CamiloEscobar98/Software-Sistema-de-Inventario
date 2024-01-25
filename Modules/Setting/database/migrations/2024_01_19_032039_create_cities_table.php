@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('setting_cities', function (Blueprint $table) {
             $table->mediumIncrements('id');
             $table->unsignedSmallInteger('department_id');
-            $table->string('name', 100);
+            $table->json('name');
             $table->string('slug', 50);
 
             $table->unique(['department_id', 'name'], 'unique_name_cities');

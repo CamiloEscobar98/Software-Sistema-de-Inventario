@@ -13,10 +13,8 @@ return new class extends Migration
     {
         Schema::create('inventory_product_movement_types', function (Blueprint $table) {
             $table->tinyIncrements('id');
-            $table->string('name', 100);
+            $table->json('name');
             $table->boolean('is_entry');
-
-            $table->unique(['name', 'is_entry'], 'unique_name_product_movement_types');
 
             $table->timestamps();
         });

@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('setting_departments', function (Blueprint $table) {
             $table->smallIncrements('id');
             $table->unsignedTinyInteger('country_id');
-            $table->string('name', 100);
+            $table->json('name');
             $table->string('slug', 50);
 
-            $table->unique(['country_id', 'name'], 'unique_name_departments');
             $table->unique(['country_id', 'slug'], 'unique_slug_departments');
 
             $table->foreign('country_id', 'fk_country_departments')->references('id')->on('setting_countries')
