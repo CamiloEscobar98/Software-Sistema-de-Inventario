@@ -24,10 +24,13 @@ class ProductFactory extends Factory
 
         return [
             ProductEnum::Name => [
-                'es' => $this->faker->sentence(3),
                 'en' => $this->faker->sentence(3),
+                'es' => $this->faker->sentence(3),
             ],
-            ProductEnum::Info => $this->faker->paragraph(3),
+            ProductEnum::Info => [
+                'en' => $this->faker->paragraph(3),
+                'es' => $this->faker->paragraph(3),
+            ],
             ProductEnum::Price => $this->faker->randomFloat(1, 1, 1000) * 500,
             ProductEnum::SkuCode => Str::upper(Str::random(10)),
             ProductEnum::CurrentStock => $currentStock,

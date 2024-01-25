@@ -42,7 +42,7 @@ class ProductCategory extends Model
      * 
      * @var array
      */
-    public $translatable = [ProductCategoryEnum::Name];
+    public $translatable = [ProductCategoryEnum::Name, ProductCategoryEnum::Info];
 
     /**
      * The attributes that are mass assignable.

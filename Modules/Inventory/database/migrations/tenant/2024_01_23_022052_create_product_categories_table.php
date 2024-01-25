@@ -15,7 +15,7 @@ return new class extends Migration
             $table->smallIncrements('id');
             $table->unsignedSmallInteger('product_category_id')->nullable();
             $table->json('name');
-            $table->text('info');
+            $table->json('info');
 
             $table->foreign('product_category_id', 'fk_product_categories_nested')->references('id')->on('inventory_product_categories')->cascadeOnUpdate()->nullOnDelete();
 
