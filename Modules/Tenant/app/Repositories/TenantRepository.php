@@ -4,7 +4,7 @@ namespace Modules\Tenant\app\Repositories;
 
 use App\Repositories\AbstractRepository;
 
-use App\Models\Tenant;
+use Modules\Tenant\app\Models\Tenant;
 
 /**
  * Class TenantRepository

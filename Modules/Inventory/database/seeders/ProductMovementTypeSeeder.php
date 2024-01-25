@@ -36,7 +36,7 @@ class ProductMovementTypeSeeder extends Seeder
 
             $this->command->getOutput()->progressStart($productMovementTypeTotal);
             foreach ($product_movement_types as $index => $item) {
-                sleep(1);
+                if (seedersHasTimer()) sleep(1);
 
                 $this->info(__("inventory::seeders.product_movement_types.item", ['index' => $index + 1, 'name' => $item->{ProductMovementTypeEnum::Name}]));
                 $item->save();

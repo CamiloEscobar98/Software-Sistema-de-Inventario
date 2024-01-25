@@ -45,7 +45,7 @@ class CountrySeeder extends Seeder
 
             $this->command->getOutput()->progressStart($countryNum);
             foreach ($countries as $index => $item) {
-                sleep(1);
+                if (seedersHasTimer())  if (seedersHasTimer()) sleep(1);
                 $this->info(__("setting::seeders.countries.item", ['index' => $index + 1, 'name' => $item->{CountryEnum::Name}]));
                 $item->save();
 

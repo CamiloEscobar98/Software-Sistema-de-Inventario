@@ -47,7 +47,7 @@ class DocumentTypeSeeder extends Seeder
 
             $this->command->getOutput()->progressStart($documentTypeTotal);
             foreach ($document_types as $index => $item) {
-                sleep(1);
+                if (seedersHasTimer()) sleep(1);
                 $this->info(__("setting::seeders.document_types.item", ['index' => $index + 1, 'name' => $item->{DocumentTypeEnum::Name}]));
                 $item->save();
 

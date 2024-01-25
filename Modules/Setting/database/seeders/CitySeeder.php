@@ -50,7 +50,7 @@ class CitySeeder extends Seeder
 
             $this->command->getOutput()->progressStart($cityEnum);
             foreach ($cities as $index => $item) {
-                sleep(1);
+                if (seedersHasTimer())  if (seedersHasTimer()) sleep(1);
                 $this->info(__("setting::seeders.cities.item", ['index' => $index + 1, 'name' => $item->{CityEnum::Name}]));
                 $item->{CityEnum::DepartmentId} = $departments->random(1)->first()->{DepartmentEnum::Id};
                 $item->save();

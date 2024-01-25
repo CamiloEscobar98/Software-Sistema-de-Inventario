@@ -52,7 +52,7 @@ class DepartmentSeeder extends Seeder
 
             $this->command->getOutput()->progressStart($departmentTotal);
             foreach ($departments as $index => $item) {
-                sleep(1);
+                if (seedersHasTimer()) sleep(1);
                 $this->info(__("setting::seeders.departments.item", ['index' => $index + 1, 'name' => $item->{DepartmentEnum::Name}]));
                 $item->{DepartmentEnum::CountryId} = $countries->random(1)->first()->{CountryEnum::Id};
                 $item->save();

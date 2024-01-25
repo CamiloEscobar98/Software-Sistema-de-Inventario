@@ -45,7 +45,7 @@ class GenderSeeder extends Seeder
 
             $this->command->getOutput()->progressStart($genderTotal);
             foreach ($genders as $index => $item) {
-                sleep(1);
+                if (seedersHasTimer()) sleep(1);
                 $this->info(__("setting::seeders.genders.item", ['index' => $index + 1, 'name' => $item->{GenderEnum::Name}]));
                 $item->save();
 

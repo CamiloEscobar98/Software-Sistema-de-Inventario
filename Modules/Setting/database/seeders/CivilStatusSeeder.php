@@ -46,7 +46,7 @@ class CivilStatusSeeder extends Seeder
 
             $this->command->getOutput()->progressStart($civilStatusNum);
             foreach ($civil_statuses as $index => $item) {
-                sleep(1);
+                if (seedersHasTimer())  if (seedersHasTimer()) sleep(1);
                 $this->info(__("setting::seeders.civil_statuses.item", ['index' => $index + 1, 'name' => $item->{CivilStatusEnum::Name}]));
                 $item->save();
 

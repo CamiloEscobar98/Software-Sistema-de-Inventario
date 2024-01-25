@@ -54,7 +54,7 @@ class ProductSeeder extends Seeder
 
             $this->command->getOutput()->progressStart($productTotal);
             foreach ($products as $index => $item) {
-                sleep(1);
+                if (seedersHasTimer()) sleep(1);
                 $item->{ProductEnum::ProductCategoryId} = $productCategories->random(1)->first()->{ProductCategoryEnum::Id};
                 $this->info(__("inventory::seeders.products.item", ['index' => $index + 1, 'name' => $item->{ProductCategoryEnum::Name}]));
                 $item->save();

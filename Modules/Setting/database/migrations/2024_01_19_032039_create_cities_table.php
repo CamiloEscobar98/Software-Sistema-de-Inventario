@@ -17,7 +17,6 @@ return new class extends Migration
             $table->json('name');
             $table->string('slug', 50);
 
-            $table->unique(['department_id', 'name'], 'unique_name_cities');
             $table->unique(['department_id', 'slug'], 'unique_slug_cities');
 
             $table->foreign('department_id', 'fk_department_cities')->references('id')->on('setting_departments')

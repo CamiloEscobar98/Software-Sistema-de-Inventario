@@ -47,7 +47,7 @@ class ProductCategorySeeder extends Seeder
             foreach ($product_categories as $index => $item) {
                 $productCategories = $this->productCategoryRepository->all([ProductCategoryEnum::Id]);
                 $productCategoryRandom = null;
-                sleep(1);
+                if (seedersHasTimer()) sleep(1);
 
                 if ($productCategories->count() > 0) {
                     $productCategoryRandom = $productCategories->random(1)->first();
