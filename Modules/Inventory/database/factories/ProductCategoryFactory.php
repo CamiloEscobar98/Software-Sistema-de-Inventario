@@ -19,7 +19,10 @@ class ProductCategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            ProductCategoryEnum::Name => $this->faker->sentence(3),
+            ProductCategoryEnum::Name => [
+                'en' => $this->faker->sentence(3),
+                'es' => $this->faker->sentence(3),
+            ],
             ProductCategoryEnum::Info => $this->faker->paragraph(2)
         ];
     }

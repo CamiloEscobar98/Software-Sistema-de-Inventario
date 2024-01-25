@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Carbon;
 
+use Spatie\Translatable\HasTranslations;
+
 use Modules\Setting\Database\factories\CountryFactory;
 
 use Modules\Setting\app\Enums\CountryEnum;
@@ -27,7 +29,7 @@ use Modules\Setting\app\Enums\CountryEnum;
  */
 class Country extends Model
 {
-    use HasFactory;
+    use HasFactory, HasTranslations;
 
     /**
      * The table associated with the model.
@@ -35,6 +37,13 @@ class Country extends Model
      * @var string
      */
     protected $table = CountryEnum::Table;
+    
+    /**
+     * The columns can be translated.
+     * 
+     * @var array
+     */
+    public $translatable = [CountryEnum::Name];
 
     /**
      * The attributes that are mass assignable.

@@ -3,6 +3,7 @@
 namespace Modules\Setting\database\factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 use Modules\Setting\app\Enums\CityEnum;
 
@@ -31,9 +32,11 @@ class CityFactory extends Factory
     public function definition(): array
     {
         return [
-            CityEnum::Name => $this->faker->sentence(3),
-            CityEnum::Slug => $this->faker->word() . "-" . $this->faker->word()
+            CityEnum::Name => [
+                'en' => $this->faker->sentence(3),
+                'es' => $this->faker->sentence(3),
+            ],
+            CityEnum::Slug => Str::upper(Str::random(15)),
         ];
     }
 }
-

@@ -5,13 +5,15 @@ namespace Modules\Inventory\app\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+use Spatie\Translatable\HasTranslations;
+
 use Modules\Inventory\Database\factories\ProductFactory;
 
 use Modules\Inventory\app\Enums\ProductEnum;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, HasTranslations;
 
     /**
      * The table associated with the model.
@@ -19,6 +21,13 @@ class Product extends Model
      * @var string
      */
     protected $table = ProductEnum::Table;
+
+    /**
+     * The columns can be translated.
+     * 
+     * @var array
+     */
+    public $translatable = [ProductEnum::Name];
 
     /**
      * The attributes that are mass assignable.
