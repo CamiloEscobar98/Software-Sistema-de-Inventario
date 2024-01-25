@@ -23,7 +23,10 @@ class ProductCategoryFactory extends Factory
                 'en' => $this->faker->sentence(3),
                 'es' => $this->faker->sentence(3),
             ],
-            ProductCategoryEnum::Info => $this->faker->paragraph(2)
+            ProductCategoryEnum::Info => [
+                'en' => $this->faker->paragraph(3),
+                'es' => $this->faker->paragraph(3),
+            ],
         ];
     }
 }

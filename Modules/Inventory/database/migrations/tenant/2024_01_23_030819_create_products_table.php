@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments('id');
             $table->unsignedSmallInteger('product_category_id')->nullable();
             $table->json('name');
-            $table->text('info');
+            $table->json('info');
             $table->double('price');
             $table->string('sku_code', 50)->unique('unique_sku_code');
             $table->double('current_stock')->default(0);
