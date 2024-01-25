@@ -14,14 +14,13 @@ return new class extends Migration
         Schema::create('inventory_products', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedSmallInteger('product_category_id')->nullable();
-            $table->string('name', 150);
+            $table->json('name');
             $table->text('info');
             $table->double('price');
             $table->string('sku_code', 50)->unique('unique_sku_code');
             $table->double('current_stock')->default(0);
             $table->double('minimum_stock')->default(0);   
 
-            $table->unique(['product_category_id', 'name'], 'unique_name_products');
             $table->foreign('product_category_id', 'fk_product_categories_products')->references('id')->on('inventory_product_categories')->cascadeOnUpdate()->restrictOnDelete();
 
             $table->timestamps();

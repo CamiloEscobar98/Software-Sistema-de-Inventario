@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('setting_countries', function (Blueprint $table) {
             $table->tinyIncrements('id');
-            $table->string('name', 100)->unique('unique_name_countries');
+            $table->json('name');
             $table->string('slug', 50)->unique('unique_slug_countries');
 
             $table->timestamps();

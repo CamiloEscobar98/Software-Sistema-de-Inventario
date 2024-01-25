@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('setting_civil_statuses', function (Blueprint $table) {
+        Schema::create('inventory_product_movement_types', function (Blueprint $table) {
             $table->tinyIncrements('id');
             $table->json('name');
-            $table->string('slug', 50)->unique('unique_slug_civil_statuses');
+            $table->boolean('is_entry');
 
             $table->timestamps();
         });
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('setting_civil_statuses');
+        Schema::dropIfExists('inventory_product_movement_types');
     }
 };

@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('inventory_product_categories', function (Blueprint $table) {
             $table->smallIncrements('id');
             $table->unsignedSmallInteger('product_category_id')->nullable();
-            $table->string('name', 150);
+            $table->json('name');
             $table->text('info');
 
-            $table->unique(['product_category_id', 'name'], 'unique_name_product_categories');
             $table->foreign('product_category_id', 'fk_product_categories_nested')->references('id')->on('inventory_product_categories')->cascadeOnUpdate()->nullOnDelete();
 
             $table->timestamps();
