@@ -9,11 +9,11 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 
 use Modules\Tenant\app\Repositories\TenantRepository;
 use Modules\Tenant\app\Repositories\TenantInformationRepository;
-use Modules\Setting\app\Repositories\CityRepository;
+use App\Repositories\CityRepository;
 
 use Modules\Tenant\app\Enums\TenantInformationEnum;
 use Modules\Tenant\app\Enums\TenantEnum;
-use Modules\Setting\app\Enums\CityEnum;
+use App\Enums\CityEnum;
 
 /**
  * Class TenantSeeder
