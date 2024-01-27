@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Inventory\database\seeders;
+namespace Modules\Inventory\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Console\Concerns\InteractsWithIO;
@@ -36,7 +36,7 @@ class ProductMovementTypeSeeder extends Seeder
 
             $this->command->getOutput()->progressStart($productMovementTypeTotal);
             foreach ($product_movement_types as $index => $item) {
-                sleep(1);
+                if (seedersHasTimer()) if (config('app.seeders_has_timer')) sleep(1);
 
                 $this->info(__("inventory::seeders.product_movement_types.item", ['index' => $index + 1, 'name' => $item->{ProductMovementTypeEnum::Name}]));
                 $item->save();

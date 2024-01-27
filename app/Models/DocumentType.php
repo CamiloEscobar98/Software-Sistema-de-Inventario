@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 use Spatie\Translatable\HasTranslations;
 
-use Database\factories\DocumentTypeFactory;
+use Database\Factories\DocumentTypeFactory;
 
 use App\Enums\DocumentTypeEnum;
 

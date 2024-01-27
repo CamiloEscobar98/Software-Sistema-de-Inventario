@@ -33,4 +33,9 @@ return [
         'item' => "\n-Creando el Estado Civil [:index]: :name",
         'finish' => "\nSe han registrado :total Estados Civiles"
     ],
+    'tenants' => [
+        'ask' => "¿Cuántos Clientes desea crear? \nPor defecto se crearán cinco Clientes.",
+        'item' => "\n-Creando el Cliente [:index]: :name",
+        'finish' => "\nSe han registrado :total Clientes"
+    ],
 ];

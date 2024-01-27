@@ -9,7 +9,7 @@ use Stancl\Tenancy\Database\Concerns\HasDomains;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-use Modules\Tenant\database\factories\TenantFactory;
+use Database\Factories\TenantFactory;
 
 class Tenant extends BaseTenant implements TenantWithDatabase
 {

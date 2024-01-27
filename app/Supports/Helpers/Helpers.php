@@ -13,6 +13,16 @@ if (!function_exists('isProductionEnv')) {
     }
 }
 
+if (!function_exists('seedersHasTimer')) {
+    /**
+     * Verify if seeders has timers
+     */
+    function seedersHasTimer(): bool
+    {
+        return config('app.seeders_has_timer');
+    }
+}
+
 if (!function_exists('transformDatetoString')) {
 
     /**

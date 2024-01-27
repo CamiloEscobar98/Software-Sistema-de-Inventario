@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\seeders;
+namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Console\Concerns\InteractsWithIO;
@@ -14,7 +14,7 @@ use App\Enums\CivilStatusEnum;
 
 /**
  * Class CivilStatusSeeder
- * @package Database\seeders
+ * @package Database\Seeders
  * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
  * 
  * @property CivilStatusRepository $civilStatusRepository
@@ -46,7 +46,7 @@ class CivilStatusSeeder extends Seeder
 
             $this->command->getOutput()->progressStart($civilStatusNum);
             foreach ($civil_statuses as $index => $item) {
-                sleep(1);
+                if (config('app.seeders_has_timer')) sleep(1);
                 $this->info(__("seeders.civil_statuses.item", ['index' => $index + 1, 'name' => $item->{CivilStatusEnum::Name}]));
                 $item->save();
 

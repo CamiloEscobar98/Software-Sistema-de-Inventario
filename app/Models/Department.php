@@ -8,7 +8,7 @@ use Illuminate\Support\Carbon;
 
 use Spatie\Translatable\HasTranslations;
 
-use Database\factories\DepartmentFactory;
+use Database\Factories\DepartmentFactory;
 
 use App\Enums\DepartmentEnum;
 
