@@ -1,6 +1,6 @@
 {
     "name": "nwidart/inventory",
-    "description": "",
+    "description": "Tenant Module for managment the inventory, features about the products, the info, prices, offers, etc",
     "authors": [
         {
             "name": "Nicolas Widart",

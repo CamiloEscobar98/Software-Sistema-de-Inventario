@@ -1,6 +1,6 @@
 {
     "name": "nwidart/auth",
-    "description": "",
+    "description": "Tenant Module for Authentication, User Features",
     "authors": [
         {
             "name": "Nicolas Widart",
