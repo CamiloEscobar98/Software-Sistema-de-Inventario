@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\seeders;
+namespace Database\Seeders;
 
 use Illuminate\Console\Concerns\InteractsWithIO;
 use Illuminate\Database\Seeder;
@@ -15,7 +15,7 @@ use App\Enums\DocumentTypeEnum;
 
 /**
  * Class DocumentTypeSeeder
- * @package Database\seeders
+ * @package Database\Seeders
  * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
  * 
  * @property DocumentTypeRepository $documentTypeRepository
@@ -47,7 +47,7 @@ class DocumentTypeSeeder extends Seeder
 
             $this->command->getOutput()->progressStart($documentTypeTotal);
             foreach ($document_types as $index => $item) {
-                sleep(1);
+                if (config('app.seeders_has_timer')) sleep(1);
                 $this->info(__("seeders.document_types.item", ['index' => $index + 1, 'name' => $item->{DocumentTypeEnum::Name}]));
                 $item->save();
 

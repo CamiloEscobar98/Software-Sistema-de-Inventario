@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\seeders;
+namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Console\Concerns\InteractsWithIO;
@@ -14,7 +14,7 @@ use App\Enums\CountryEnum;
 
 /**
  * Class DepartmentSeeder
- * @package Database\seeders
+ * @package Database\Seeders
  * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
  * 
  * @property DepartmentRepository $departmentRepository
@@ -52,7 +52,7 @@ class DepartmentSeeder extends Seeder
 
             $this->command->getOutput()->progressStart($departmentTotal);
             foreach ($departments as $index => $item) {
-                sleep(1);
+                if (config('app.seeders_has_timer')) sleep(1);
                 $this->info(__("seeders.departments.item", ['index' => $index + 1, 'name' => $item->{DepartmentEnum::Name}]));
                 $item->{DepartmentEnum::CountryId} = $countries->random(1)->first()->{CountryEnum::Id};
                 $item->save();

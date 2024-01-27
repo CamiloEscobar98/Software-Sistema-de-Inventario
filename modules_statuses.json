@@ -1,5 +1,4 @@
 {
-    "Tenant": true,
     "Inventory": true,
     "Auth": true
 }

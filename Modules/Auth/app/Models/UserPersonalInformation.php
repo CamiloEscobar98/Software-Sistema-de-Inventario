@@ -5,7 +5,7 @@ namespace Modules\Auth\app\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-use Modules\Auth\Database\factories\UserPersonalInformationFactory;
+use Modules\Auth\Database\Factories\UserPersonalInformationFactory;
 
 use Modules\Auth\app\Enums\UserPersonalInformationEnum;
 

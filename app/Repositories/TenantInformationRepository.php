@@ -1,15 +1,15 @@
 <?php
 
-namespace Modules\Tenant\app\Repositories;
+namespace App\Repositories;
 
 use App\Repositories\AbstractRepository;
 
-use Modules\Tenant\app\Models\TenantInformation;
+use App\Models\TenantInformation;
 
 /**
  * Class TenantInformationRepository
  * 
- * @package Modules\Tenant\app\Repositories
+ * @package App\Repositories
  * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
  * 
  * @property TenantInformation $model

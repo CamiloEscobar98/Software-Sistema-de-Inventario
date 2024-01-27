@@ -8,7 +8,7 @@ use Illuminate\Support\Carbon;
 
 use Spatie\Translatable\HasTranslations;
 
-use Database\factories\CivilStatusFactory;
+use Database\Factories\CivilStatusFactory;
 
 use App\Enums\CivilStatusEnum;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\factories;
+namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -12,7 +12,7 @@ use App\Models\CivilStatus;
 /**
  * class CivilStatusFactory
  * 
- * @package Database\factories
+ * @package Database\Factories
  * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
  * 
  * @property CivilStatus $model

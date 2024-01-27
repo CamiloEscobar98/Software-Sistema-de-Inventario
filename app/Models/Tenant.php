@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Tenant\app\Models;
+namespace App\Models;
 
 use Stancl\Tenancy\Database\Models\Tenant as BaseTenant;
 use Stancl\Tenancy\Contracts\TenantWithDatabase;
@@ -9,7 +9,7 @@ use Stancl\Tenancy\Database\Concerns\HasDomains;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-use Modules\Tenant\database\factories\TenantFactory;
+use Database\Factories\TenantFactory;
 
 class Tenant extends BaseTenant implements TenantWithDatabase
 {

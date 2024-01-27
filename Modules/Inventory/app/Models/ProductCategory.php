@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\Translatable\HasTranslations;
 
-use Modules\Inventory\Database\factories\ProductCategoryFactory;
+use Modules\Inventory\Database\Factories\ProductCategoryFactory;
 
 use Modules\Inventory\app\Enums\ProductCategoryEnum;
 

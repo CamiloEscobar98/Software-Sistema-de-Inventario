@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\seeders;
+namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Console\Concerns\InteractsWithIO;
@@ -13,7 +13,7 @@ use App\Enums\CountryEnum;
 
 /**
  * Class CountrySeeder
- * @package Database\seeders
+ * @package Database\Seeders
  * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
  * 
  * @property CountryRepository $countryRepository
@@ -45,7 +45,7 @@ class CountrySeeder extends Seeder
 
             $this->command->getOutput()->progressStart($countryNum);
             foreach ($countries as $index => $item) {
-                sleep(1);
+                if (config('app.seeders_has_timer')) sleep(1);
                 $this->info(__("seeders.countries.item", ['index' => $index + 1, 'name' => $item->{CountryEnum::Name}]));
                 $item->save();
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\seeders;
+namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Console\Concerns\InteractsWithIO;
@@ -15,7 +15,7 @@ use App\Enums\DepartmentEnum;
 
 /**
  * Class CitySeeder
- * @package Database\seeders
+ * @package Database\Seeders
  * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
  * 
  * @property CityRepository $cityRepository
@@ -50,7 +50,7 @@ class CitySeeder extends Seeder
 
             $this->command->getOutput()->progressStart($cityEnum);
             foreach ($cities as $index => $item) {
-                sleep(1);
+                if (config('app.seeders_has_timer')) if (config('app.seeders_has_timer')) sleep(1);
                 $this->info(__("seeders.cities.item", ['index' => $index + 1, 'name' => $item->{CityEnum::Name}]));
                 $item->{CityEnum::DepartmentId} = $departments->random(1)->first()->{DepartmentEnum::Id};
                 $item->save();

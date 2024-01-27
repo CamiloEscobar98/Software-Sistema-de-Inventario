@@ -1,23 +1,23 @@
 <?php
 
-namespace Modules\Tenant\database\seeders;
+namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Console\Concerns\InteractsWithIO;
 
 use Symfony\Component\Console\Output\ConsoleOutput;
 
-use Modules\Tenant\app\Repositories\TenantRepository;
-use Modules\Tenant\app\Repositories\TenantInformationRepository;
+use App\Repositories\TenantRepository;
+use App\Repositories\TenantInformationRepository;
 use App\Repositories\CityRepository;
 
-use Modules\Tenant\app\Enums\TenantInformationEnum;
-use Modules\Tenant\app\Enums\TenantEnum;
+use App\Enums\TenantInformationEnum;
+use App\Enums\TenantEnum;
 use App\Enums\CityEnum;
 
 /**
  * Class TenantSeeder
- * @package Modules\Tenant\database\seeders
+ * @package Database\Seeders
  * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
  * 
  * @property TenantRepository $tenantRepository
@@ -52,7 +52,7 @@ class TenantSeeder extends Seeder
     public function run(): void
     {
         if (!isProductionEnv()) {
-            $tenantEnum = (int) $this->command->ask(__("tenant::seeders.tenants.ask"), 5);
+            $tenantEnum = (int) $this->command->ask(__("seeders.tenants.ask"), 5);
             $tenantEnum = !is_numeric($tenantEnum) || $tenantEnum <= 0 ? 5 : $tenantEnum;
             $tenants = $this->tenantRepository->makeModels($tenantEnum);
 
@@ -65,13 +65,13 @@ class TenantSeeder extends Seeder
 
                 $item->save();
                 $tenantInfo->save();
-                if (seedersHasTimer()) sleep(1);
-                $this->info(__("tenant::seeders.tenants.item", ['index' => $index + 1, 'name' => $tenantInfo->{TenantInformationEnum::Name}]));
+                if (seedersHasTimer()) if (config('app.seeders_has_timer')) sleep(1);
+                $this->info(__("seeders.tenants.item", ['index' => $index + 1, 'name' => $tenantInfo->{TenantInformationEnum::Name}]));
 
                 $this->command->getOutput()->progressAdvance();
             }
             $this->command->getOutput()->progressFinish();
-            $this->command->info(__("tenant::seeders.tenants.finish", ['total' => $tenantEnum]));
+            $this->command->info(__("seeders.tenants.finish", ['total' => $tenantEnum]));
         }
     }
 }

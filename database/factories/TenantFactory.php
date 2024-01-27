@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Tenant\database\factories;
+namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-use Modules\Tenant\app\Models\Tenant;
+use App\Models\Tenant;
 
 class TenantFactory extends Factory
 {

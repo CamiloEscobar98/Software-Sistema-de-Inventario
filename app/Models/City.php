@@ -8,7 +8,7 @@ use Illuminate\Support\Carbon;
 
 use Spatie\Translatable\HasTranslations;
 
-use Database\factories\CityFactory;
+use Database\Factories\CityFactory;
 
 use App\Enums\CityEnum;
 

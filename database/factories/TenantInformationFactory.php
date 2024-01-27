@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Tenant\database\factories;
+namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-use Modules\Tenant\app\Enums\TenantInformationEnum;
+use App\Enums\TenantInformationEnum;
 
-use Modules\Tenant\app\Models\TenantInformation;
+use App\Models\TenantInformation;
 
 class TenantInformationFactory extends Factory
 {

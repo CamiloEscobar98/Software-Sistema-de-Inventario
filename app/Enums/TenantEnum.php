@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Tenant\app\Enums;
+namespace App\Enums;
 
 /**
  * Class TenantEnum
- * @package Modules\Tenant\app\Enums
+ * @package App\Enums
  * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
  * 
  * @property const Table

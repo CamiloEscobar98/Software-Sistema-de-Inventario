@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Inventory\database\seeders;
+namespace Modules\Inventory\Database\Seeders;
 
 use Illuminate\Console\Concerns\InteractsWithIO;
 use Illuminate\Database\Seeder;
@@ -15,7 +15,7 @@ use Modules\Inventory\app\Enums\ProductEnum;
 
 /**
  * Class ProductSeeder
- * @package Modules\Inventory\database\seeders
+ * @package Modules\Inventory\Database\Seeders
  * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
  * 
  * @property ProductCategoryRepository $productCategoryRepository
@@ -54,7 +54,7 @@ class ProductSeeder extends Seeder
 
             $this->command->getOutput()->progressStart($productTotal);
             foreach ($products as $index => $item) {
-                if (seedersHasTimer()) sleep(1);
+                if (seedersHasTimer()) if (config('app.seeders_has_timer')) sleep(1);
                 $item->{ProductEnum::ProductCategoryId} = $productCategories->random(1)->first()->{ProductCategoryEnum::Id};
                 $this->info(__("inventory::seeders.products.item", ['index' => $index + 1, 'name' => $item->{ProductCategoryEnum::Name}]));
                 $item->save();

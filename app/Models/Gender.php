@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 use Spatie\Translatable\HasTranslations;
 
-use Database\factories\GenderFactory;
+use Database\Factories\GenderFactory;
 
 use App\Enums\GenderEnum;
 

@@ -1,19 +1,19 @@
 <?php
 
-namespace Modules\Tenant\app\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Carbon;
 
-use Modules\Tenant\Database\factories\TenantInformationFactory;
+use Database\Factories\TenantInformationFactory;
 
-use Modules\Tenant\app\Enums\TenantInformationEnum;
+use App\Enums\TenantInformationEnum;
 
 /**
  * Class TenantInformation
  * 
- * @package Modules\Tenant\app\Models
+ * @package App\Models
  * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
  * 
  * @property string $table

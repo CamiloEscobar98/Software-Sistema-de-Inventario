@@ -4,7 +4,7 @@ namespace Modules\Auth\app\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Modules\Auth\Database\factories\UserDocumentFactory;
+use Modules\Auth\Database\Factories\UserDocumentFactory;
 
 class UserDocument extends Model
 {

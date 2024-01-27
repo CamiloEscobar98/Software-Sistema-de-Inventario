@@ -33,4 +33,9 @@ return [
         'item' => "\n-Creating Document Type [:index]: :name",
         'finish' => ":total Civil Statuses have been registered"
     ],
+    'tenants' => [
+        'ask' => "How many Tenants would you like to create? \nBy default, five Tenants will be created.",
+        'item' => "\n-Creating Tenant [:index]: :name",
+        'finish' => ":total Tenants have been registered"
+    ],
 ];
