@@ -25,6 +25,7 @@ class UserEnum
 {
     const Table = 'auth_users';
     const Id = 'id';
+    const PersonalInformationId = 'personal_information_id';
     const Username = 'username';
     const Email = 'email';
     const Password = 'password';

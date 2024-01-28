@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             DocumentTypeSeeder::class,
             CivilStatusSeeder::class,
 
+            UserSeeder::class,
+
             TenantSeeder::class
         ]);
     }

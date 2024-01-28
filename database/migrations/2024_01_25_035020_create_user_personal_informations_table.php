@@ -12,19 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('auth_user_personal_information', function (Blueprint $table) {
-            $table->unsignedBigInteger('id')->primary();
+            $table->id();
             $table->string('name', 150);
             $table->string('email', 250)->unique('unique_email_personal_information');
             $table->date('birthdate');
             $table->unsignedTinyInteger('gender_id');
             $table->unsignedTinyInteger('civil_status_id');
             $table->unsignedMediumInteger('city_id');
-
-            $table->foreign('id', 'fk_users')
-                ->references('id')
-                ->on('auth_users')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
 
             $table->timestamps();
         });

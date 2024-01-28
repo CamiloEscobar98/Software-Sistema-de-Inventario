@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Auth\Database\Seeders;
+namespace Database\Seeders;
 
 use Illuminate\Console\Concerns\InteractsWithIO;
 use Illuminate\Database\Seeder;
@@ -11,11 +11,17 @@ use App\Repositories\UserRepository;
 use App\Repositories\CivilStatusRepository;
 use App\Repositories\DocumentTypeRepository;
 use App\Repositories\GenderRepository;
+use App\Repositories\CityRepository;
 use App\Repositories\UserDocumentRepository;
 use App\Repositories\UserPersonalInformationRepository;
 
 use App\Enums\UserEnum;
 use App\Enums\UserPersonalInformationEnum;
+use App\Enums\CityEnum;
+use App\Enums\CivilStatusEnum;
+use App\Enums\DocumentTypeEnum;
+use App\Enums\GenderEnum;
+use App\Enums\UserDocumentEnum;
 
 /**
  * Class UserSeeder
@@ -26,6 +32,7 @@ use App\Enums\UserPersonalInformationEnum;
  * @property UserDocumentRepository $userDocumentRepository
  * @property UserPersonalInformationRepository $userPersonalInformationRepository
  * @property GenderRepository $genderRepository
+ * @property CityRepository $cityRepository
  * @property DocumentTypeRepository $documentTypeRepository
  * @property CivilStatusRepository $civilStatusRepository
  * 
@@ -39,6 +46,7 @@ class UserSeeder extends Seeder
     protected $userDocumentRepository;
     protected $userPersonalInformationRepository;
     protected $genderRepository;
+    protected $cityRepository;
     protected $documentTypeRepository;
     protected $civilStatusRepository;
 
@@ -47,6 +55,7 @@ class UserSeeder extends Seeder
         UserDocumentRepository $userDocumentRepository,
         UserPersonalInformationRepository $userPersonalInformationRepository,
         GenderRepository $genderRepository,
+        CityRepository $cityRepository,
         DocumentTypeRepository $documentTypeRepository,
         CivilStatusRepository $civilStatusRepository,
     ) {
@@ -56,6 +65,7 @@ class UserSeeder extends Seeder
         $this->userDocumentRepository = $userDocumentRepository;
         $this->userPersonalInformationRepository = $userPersonalInformationRepository;
         $this->genderRepository = $genderRepository;
+        $this->cityRepository = $cityRepository;
         $this->documentTypeRepository = $documentTypeRepository;
         $this->civilStatusRepository = $civilStatusRepository;
     }
@@ -70,19 +80,33 @@ class UserSeeder extends Seeder
             $users = $this->userRepository->makeModels($total);
 
             $genders = $this->genderRepository->all(['id']);
-            $documentTypes = $this->documentTypeRepository->all(['id']);
             $civilStatuses = $this->civilStatusRepository->all(['id']);
+            $cities = $this->cityRepository->all(['id']);
+            $documentTypes = $this->documentTypeRepository->all(['id']);
 
             $this->command->getOutput()->progressStart($total);
-            foreach ($users as $index => $item) {
+
+            foreach ($users as $index => $user) {
                 if (config('app.seeders_has_timer')) sleep(1);
-                $this->info(__("seeders.users.item", ['index' => $index + 1, 'name' => $item->{UserEnum::Username}]));
-                $item->save();
+                $this->info(__("seeders.users.item", ['index' => $index + 1, 'name' => $user->{UserEnum::Username}]));
+                $user->save();
 
                 $userPersonalInfo = $this->userPersonalInformationRepository->makeOneModel([
-                    UserPersonalInformationEnum::Id => $item->id,
-
+                    UserPersonalInformationEnum::GenderId => $genders->random(1)->first()->{GenderEnum::Id},
+                    UserPersonalInformationEnum::CivilStatusId => $civilStatuses->random(1)->first()->{CivilStatusEnum::Id},
+                    UserPersonalInformationEnum::CityId => $cities->random(1)->first()->{CityEnum::Id}
                 ]);
+                $userPersonalInfo->save();
+
+                $user->{UserEnum::PersonalInformationId} = $userPersonalInfo->{UserPersonalInformationEnum::Id};
+                $user->save();
+
+                $userDocuments = $this->userDocumentRepository->makeOneModel([
+                    UserDocumentEnum::UserId => $user->{UserEnum::Id},
+                    UserDocumentEnum::DocumentTypeId => $documentTypes->random(1)->first()->{DocumentTypeEnum::Id},
+                    UserDocumentEnum::IsCurrent => true
+                ]);
+                $userDocuments->save();
 
                 $this->command->getOutput()->progressAdvance();
             }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 use Spatie\Translatable\HasTranslations;
 
-use Modules\Inventory\Database\Factories\ProductMovementTypeFactory;
+use Modules\Inventory\database\factories\ProductMovementTypeFactory;
 
 use Modules\Inventory\app\Enums\ProductMovementTypeEnum;
 
