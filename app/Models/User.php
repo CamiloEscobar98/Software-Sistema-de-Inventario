@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace Modules\Auth\App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 
 use Laravel\Sanctum\HasApiTokens;
 
-use Modules\Auth\app\Enums\UserEnum;
+use App\Enums\UserEnum;
 
 class User extends Authenticatable
 {
@@ -28,6 +28,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        UserEnum::Username,
         UserEnum::Email,
         UserEnum::Password,
         UserEnum::RememberToken,
