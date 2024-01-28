@@ -9,7 +9,7 @@ return [
         'finish' => "\nSe han registrado :total paises"
     ],
     'departments' => [
-        'ask' => "¿Cuántos Géneros desea crear? \nPor defecto se crearán cinco Géneros.",
+        'ask' => "¿Cuántos Departamentos desea crear? \nPor defecto se crearán cinco Departamentos.",
         'item' => "\n-Creando el Departamento [:index]: :name.",
         'finish' => "\nSe han registrado :total Departamentos"
     ],
@@ -43,10 +43,10 @@ return [
         'item' => "\n-Creando el Usuario [:index]: con Nickname :username.",
         'finish' => "\nSe han registrado :total Usuarios"
     ],
-    'user_documents' => [
-        'item' => "\n-Creando el Documento para el Usuario [:name]: :document, con tipo de documento :document_type",
+    'user_document' => [
+        'item' => "\n-Creando el Documento para el Usuario [:name]: :document, con tipo de documento: :document_type",
     ],
-    'user_personal_informations' => [
-        'item' => "\n-Creando la Información del Usuario [:username]: Nombre completo :name, correo electrónico :email",
+    'user_personal_information' => [
+        'item' => "\n-Creando la Información del Usuario [:username]: Nombre completo: :name, correo electrónico: :email",
     ],
 ];

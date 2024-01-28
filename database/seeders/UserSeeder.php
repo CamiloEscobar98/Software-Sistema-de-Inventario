@@ -22,7 +22,6 @@ use App\Enums\CivilStatusEnum;
 use App\Enums\DocumentTypeEnum;
 use App\Enums\GenderEnum;
 use App\Enums\UserDocumentEnum;
-use Illuminate\Support\Facades\Log;
 
 /**
  * Class UserSeeder
@@ -80,35 +79,53 @@ class UserSeeder extends Seeder
             $total = !is_numeric($total) || $total <= 0 ? 5 : $total;
             $users = $this->userRepository->makeModels($total);
 
-            $genders = $this->genderRepository->all(['id']);
-            $civilStatuses = $this->civilStatusRepository->all(['id']);
-            $cities = $this->cityRepository->all(['id']);
-            $documentTypes = $this->documentTypeRepository->all(['id']);
+            $genders = $this->genderRepository->all([GenderEnum::Id]);
+            $civilStatuses = $this->civilStatusRepository->all([CivilStatusEnum::Id]);
+            $cities = $this->cityRepository->all([CityEnum::Id]);
+            $documentTypes = $this->documentTypeRepository->all([DocumentTypeEnum::Id, DocumentTypeEnum::Name]);
 
             $this->command->getOutput()->progressStart($total);
 
             foreach ($users as $index => $user) {
                 if (config('app.seeders_has_timer')) sleep(1);
-                $this->info(__("seeders.users.item", ['index' => $index + 1, 'username' => $user->{UserEnum::Username}]));
+                $this->info(__("seeders.users.item", [
+                    'index' => $index + 1,
+                    'username' => $user->{UserEnum::Username}
+                ]));
                 $user->save();
 
+                /** Create Personal Information for User */
+                $randomGender = $genders->random(1)->first();
+                $randomCivilStatus = $civilStatuses->random(1)->first();
+                $randomCity = $cities->random(1)->first();
+
                 $userPersonalInfo = $this->userPersonalInformationRepository->makeOneModel([
-                    UserPersonalInformationEnum::GenderId => $genders->random(1)->first()->{GenderEnum::Id},
-                    UserPersonalInformationEnum::CivilStatusId => $civilStatuses->random(1)->first()->{CivilStatusEnum::Id},
-                    UserPersonalInformationEnum::CityId => $cities->random(1)->first()->{CityEnum::Id}
+                    UserPersonalInformationEnum::GenderId => $randomGender->{GenderEnum::Id},
+                    UserPersonalInformationEnum::CivilStatusId => $randomCivilStatus->{CivilStatusEnum::Id},
+                    UserPersonalInformationEnum::CityId => $randomCity->{CityEnum::Id}
                 ]);
-                Log::info($userPersonalInfo);
+                $this->info(__("seeders.user_personal_information.item", [
+                    'username' => $user->{UserEnum::Username},
+                    'name' => $userPersonalInfo->{UserPersonalInformationEnum::Name},
+                    'email' => $userPersonalInfo->{UserPersonalInformationEnum::Email}
+                ]));
                 $userPersonalInfo->save();
 
                 $user->{UserEnum::PersonalInformationId} = $userPersonalInfo->{UserPersonalInformationEnum::Id};
                 $user->save();
 
+                /** Creando Document for User */
+                $randomDocumentType = $documentTypes->random(1)->first();
                 $userDocument = $this->userDocumentRepository->makeOneModel([
                     UserDocumentEnum::UserId => $user->{UserEnum::Id},
-                    UserDocumentEnum::DocumentTypeId => $documentTypes->random(1)->first()->{DocumentTypeEnum::Id},
+                    UserDocumentEnum::DocumentTypeId => $randomDocumentType->{DocumentTypeEnum::Id},
                     UserDocumentEnum::IsCurrent => true
                 ]);
-                Log::info($userDocument);
+                $this->info(__("seeders.user_document.item", [
+                    'name' => $userPersonalInfo->{UserPersonalInformationEnum::Name},
+                    'document' => $userDocument->{UserDocumentEnum::Document},
+                    'document_type' => $randomDocumentType->{DocumentTypeEnum::Name}
+                ]));
                 $userDocument->save();
 
                 $this->command->getOutput()->progressAdvance();

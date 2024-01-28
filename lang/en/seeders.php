@@ -43,10 +43,10 @@ return [
         'item' => "\n-Creating User [:index]: :username",
         'finish' => ":total Users have been registered"
     ],
-    'user_documents' => [
-        'item' => "\n-Creating User Document [:name]: :document, with document type :document_type",
+    'user_document' => [
+        'item' => "\n-Creating User Document [:name]: :document, with document type: :document_type",
     ],
-    'user_personal_informations' => [
-        'item' => "\n-Creating User Information [:username]: Full name :name, email :email",
+    'user_personal_information' => [
+        'item' => "\n-Creating User Information [:username]: Full name: :name, email: :email",
     ],
 ];
