@@ -38,4 +38,15 @@ return [
         'item' => "\n-Creating Tenant [:index]: :name",
         'finish' => ":total Tenants have been registered"
     ],
+    'users' => [
+        'ask' => "How many Users would you like to create? \nBy default, five Users will be created.",
+        'item' => "\n-Creating User [:index]: :username",
+        'finish' => ":total Users have been registered"
+    ],
+    'user_documents' => [
+        'item' => "\n-Creating User Document [:name]: :document, with document type :document_type",
+    ],
+    'user_personal_informations' => [
+        'item' => "\n-Creating User Information [:username]: Full name :name, email :email",
+    ],
 ];

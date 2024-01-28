@@ -1,13 +1,13 @@
 <?php
 
-namespace Modules\Auth\app\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-use Modules\Auth\Database\Factories\UserDocumentFactory;
+use Database\Factories\UserDocumentFactory;
 
-use Modules\Auth\app\Enums\UserDocumentEnum;
+use App\Enums\UserDocumentEnum;
 
 class UserDocument extends Model
 {
