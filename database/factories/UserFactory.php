@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 use App\Enums\UserEnum;
-use Illuminate\Support\Facades\Log;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -26,7 +25,6 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        Log::info('Hi');
         return [
             UserEnum::Username => $this->faker->userName(),
             UserEnum::Email => $this->faker->unique(true)->safeEmail(),
@@ -42,7 +40,7 @@ class UserFactory extends Factory
     public function unverified(): static
     {
         return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
+            UserEnum::EmailVerifiedAt => null,
         ]);
     }
 }

@@ -18,7 +18,7 @@ namespace App\Enums;
  */
 class UserDocumentEnum
 {
-    const Table = 'auth_users';
+    const Table = 'auth_user_documents';
     const Id = 'id';
     const UserId = 'user_id';
     const DocumentTypeId = 'document_type_id';

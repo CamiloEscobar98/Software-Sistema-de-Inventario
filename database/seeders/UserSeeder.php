@@ -22,6 +22,7 @@ use App\Enums\CivilStatusEnum;
 use App\Enums\DocumentTypeEnum;
 use App\Enums\GenderEnum;
 use App\Enums\UserDocumentEnum;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Class UserSeeder
@@ -88,7 +89,7 @@ class UserSeeder extends Seeder
 
             foreach ($users as $index => $user) {
                 if (config('app.seeders_has_timer')) sleep(1);
-                $this->info(__("seeders.users.item", ['index' => $index + 1, 'name' => $user->{UserEnum::Username}]));
+                $this->info(__("seeders.users.item", ['index' => $index + 1, 'username' => $user->{UserEnum::Username}]));
                 $user->save();
 
                 $userPersonalInfo = $this->userPersonalInformationRepository->makeOneModel([
@@ -96,17 +97,19 @@ class UserSeeder extends Seeder
                     UserPersonalInformationEnum::CivilStatusId => $civilStatuses->random(1)->first()->{CivilStatusEnum::Id},
                     UserPersonalInformationEnum::CityId => $cities->random(1)->first()->{CityEnum::Id}
                 ]);
+                Log::info($userPersonalInfo);
                 $userPersonalInfo->save();
 
                 $user->{UserEnum::PersonalInformationId} = $userPersonalInfo->{UserPersonalInformationEnum::Id};
                 $user->save();
 
-                $userDocuments = $this->userDocumentRepository->makeOneModel([
+                $userDocument = $this->userDocumentRepository->makeOneModel([
                     UserDocumentEnum::UserId => $user->{UserEnum::Id},
                     UserDocumentEnum::DocumentTypeId => $documentTypes->random(1)->first()->{DocumentTypeEnum::Id},
                     UserDocumentEnum::IsCurrent => true
                 ]);
-                $userDocuments->save();
+                Log::info($userDocument);
+                $userDocument->save();
 
                 $this->command->getOutput()->progressAdvance();
             }

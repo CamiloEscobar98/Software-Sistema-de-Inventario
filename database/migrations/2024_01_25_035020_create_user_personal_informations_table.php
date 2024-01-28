@@ -20,6 +20,24 @@ return new class extends Migration
             $table->unsignedTinyInteger('civil_status_id');
             $table->unsignedMediumInteger('city_id');
 
+            $table->foreign('gender_id', 'fk_gender_users')
+                ->references('id')
+                ->on('setting_genders')
+                ->cascadeOnUpdate()
+                ->restrictOnDelete();
+
+            $table->foreign('civil_status_id', 'fk_civil_status_users')
+                ->references('id')
+                ->on('setting_civil_statuses')
+                ->cascadeOnUpdate()
+                ->restrictOnDelete();
+
+            $table->foreign('city_id', 'fk_city_users')
+                ->references('id')
+                ->on('setting_cities')
+                ->cascadeOnUpdate()
+                ->restrictOnDelete();
+
             $table->timestamps();
         });
     }

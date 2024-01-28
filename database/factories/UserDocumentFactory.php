@@ -4,6 +4,8 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+use App\Models\UserDocument;
+
 use App\Enums\UserDocumentEnum;
 
 class UserDocumentFactory extends Factory
@@ -11,7 +13,7 @@ class UserDocumentFactory extends Factory
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Auth\app\Models\UserDocument::class;
+    protected $model = UserDocument::class;
 
     /**
      * Define the model's default state.
