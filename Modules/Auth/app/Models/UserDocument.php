@@ -5,7 +5,7 @@ namespace Modules\Auth\app\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-use Modules\Auth\Database\Factories\UserDocumentFactory;
+use Modules\Auth\database\factories\UserDocumentFactory;
 
 use Modules\Auth\app\Enums\UserDocumentEnum;
 

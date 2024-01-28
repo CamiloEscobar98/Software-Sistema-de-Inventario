@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Auth\App\Models;
+namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 use Laravel\Sanctum\HasApiTokens;
+
+use Database\Factories\UserFactory;
 
 use App\Enums\UserEnum;
 
@@ -54,4 +56,9 @@ class User extends Authenticatable
         UserEnum::EmailVerifiedAt => 'datetime',
         UserEnum::Password => 'hashed',
     ];
+
+    protected static function newFactory(): UserFactory
+    {
+        return UserFactory::new();
+    }
 }

@@ -21,13 +21,13 @@ namespace App\Enums;
  */
 class UserPersonalInformationEnum
 {
-    const Table = 'auth_users';
+    const Table = 'auth_user_personal_information';
     const Id = 'id';
     const Name = 'name';
     const Email = 'email';
     const Birthdate = 'birthdate';
     const GenderId = 'gender_id';
-    const CivilStatusId = 'gender_id';
+    const CivilStatusId = 'civil_status_id';
     const CityId = 'city_id';
     const CreatedAt = 'created_at';
     const UpdatedAt = 'updated_at';

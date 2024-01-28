@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Inventory\Database\Factories;
+namespace Modules\Inventory\database\factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Inventory\app\Enums\ProductMovementTypeEnum;

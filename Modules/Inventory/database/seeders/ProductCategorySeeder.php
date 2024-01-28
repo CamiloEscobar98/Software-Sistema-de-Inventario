@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Inventory\Database\Seeders;
+namespace Modules\Inventory\database\seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Console\Concerns\InteractsWithIO;
@@ -13,7 +13,7 @@ use Modules\Inventory\app\Enums\ProductCategoryEnum;
 
 /**
  * Class ProductCategorySeeder
- * @package Modules\Inventory\Database\Seeders
+ * @package Modules\Inventory\database\seeders
  * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
  * 
  * @property ProductCategoryRepository $productCategoryRepository
