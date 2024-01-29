@@ -1,6 +1,8 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
+
+use App\GraphQL\Schemas\CountrySchema;
 
 return [
     'route' => [
@@ -73,6 +75,7 @@ return [
     //  ]
     //
     'schemas' => [
+        'countries' => CountrySchema::class,
         'default' => [
             'query' => [
                 // ExampleQuery::class,

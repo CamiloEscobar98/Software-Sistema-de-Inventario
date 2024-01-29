@@ -54,3 +54,21 @@ if (!function_exists('transformTimestampToString')) {
         return "{$day} {$month} del {$format->year}, {$format->format('g:i A')}";
     }
 }
+
+if (!function_exists('getSelectColumnsByTable')) {
+    /**
+     * @param array $fields
+     * @param string $table
+     * 
+     * @return array
+     */
+    function getSelectColumnsByTable($fields, $table): array
+    {
+        $aux = [];
+
+        foreach ($fields as $field) {
+            $aux[] = sprintf('%s.%s', $table, $field);
+        }
+        return $aux;
+    }
+}

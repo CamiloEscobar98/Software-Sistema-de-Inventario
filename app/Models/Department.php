@@ -59,4 +59,9 @@ class Department extends Model
     {
         return DepartmentFactory::new();
     }
+
+    public function cities()
+    {
+        return $this->hasMany(City::class);
+    }
 }
