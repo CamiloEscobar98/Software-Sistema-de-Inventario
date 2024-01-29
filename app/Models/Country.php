@@ -15,6 +15,8 @@ use Database\Factories\CountryFactory;
 
 use App\Enums\CountryEnum;
 use App\Enums\DepartmentEnum;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Class Country
@@ -69,23 +71,56 @@ class Country extends Model
      */
     public function departments()
     {
-        return $this->hasMany(Department::class);
+        $array = getSelectColumnsByTable(DepartmentEnum::Fields, DepartmentEnum::Table);
+        return $this->hasMany(Department::class)->select($array);
     }
 
     /**
-     * Get the Cities of the Country.
+     * Scope a query to only include Id.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @param array|int $value
      * 
-     * @return HasManyThrough
+     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function cities()
+    public function scopeById($query, $value)
     {
-        return $this->hasManyThrough(
-            City::class,
-            Department::class,
-            DepartmentEnum::CountryId,
-            CityEnum::DepartmentId,
-            CountryEnum::Id,
-            DepartmentEnum::Id
-        );
+        $column = sprintf("%s.%s", CountryEnum::Table, CountryEnum::Id);
+        if (is_array($value)) {
+            return $query->whereIn($column, $value);
+        } else {
+            return $query->where($column, $value);
+        }
+    }
+
+    /**
+     * Scope a query to only include Name.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @param string $value
+     * 
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeByName($query, $value)
+    {
+        $locale = App::getLocale();
+        $column = sprintf("%s.%s", CountryEnum::Table, CountryEnum::Name);
+        // $column = CountryEnum::Name;
+        $value = "%$value%";
+        return $query->where("{$column}->{$locale}", 'like', $value);
+    }
+
+    /**
+     * Scope a query to only include Slug.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @param string $value
+     * 
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeBySlug($query, $value)
+    {
+        $column = sprintf("%s.%s", CountryEnum::Table, CountryEnum::Slug);
+        return $query->where($column, 'like', "%$value%");
     }
 }

@@ -8,6 +8,7 @@ namespace App\Enums;
  * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
  * 
  * @property const Table
+ * @property const Id
  * @property const DepartmentId
  * @property const Name
  * @property const Slug
@@ -30,5 +31,7 @@ class CityEnum
 
     /** GraphQL */
     const TypeName = 'City';
-    const TypeDescription= 'The GraphQL Type of the City model';
+    const TypeDescription = 'The GraphQL Type of the City model';
+
+    const Fields = [self::Id, self::DepartmentId, self::Name, self::Slug, self::CreatedAt, self::UpdatedAt];
 }

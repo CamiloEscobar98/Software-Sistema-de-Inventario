@@ -33,7 +33,15 @@ class CityType extends GraphQLType
             CityEnum::Slug => [
                 'type' => Type::string(),
                 'description' => 'The Slug of the City',
-            ]
+            ],
+            CityEnum::CreatedAt => [
+                'type' => Type::string(),
+                'description' => 'The Create Date of the City',
+            ],
+            CityEnum::UpdatedAt => [
+                'type' => Type::string(),
+                'description' => 'The Update Date of the City',
+            ],
         ];
     }
 }

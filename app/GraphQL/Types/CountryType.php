@@ -48,11 +48,7 @@ class CountryType extends GraphQLType
             ],
             CountryEnum::Departments => [
                 'type' => Type::listOf(GraphQL::type(DepartmentEnum::TypeName)),
-                'always' => [DepartmentEnum::Name, DepartmentEnum::Slug]
             ],
-            CountryEnum::Cities => [
-                'type' => Type::listOf(GraphQL::type(CityEnum::TypeName))
-            ]
         ];
     }
 }

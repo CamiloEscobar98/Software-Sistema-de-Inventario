@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace App\GraphQL\Types;
 
+use App\Enums\CityEnum;
 use Rebing\GraphQL\Support\Type as GraphQLType;
 
 use GraphQL\Type\Definition\Type;
 
 use App\Enums\DepartmentEnum;
+use Rebing\GraphQL\Support\Facades\GraphQL;
 
 class DepartmentType extends GraphQLType
 {
@@ -43,6 +45,9 @@ class DepartmentType extends GraphQLType
             DepartmentEnum::UpdatedAt => [
                 'type' => Type::string(),
                 'description' => 'The Update Date of the Department',
+            ],
+            DepartmentEnum::Cities => [
+                'type' => Type::listOf(GraphQL::type(CityEnum::TypeName)),
             ]
         ];
     }

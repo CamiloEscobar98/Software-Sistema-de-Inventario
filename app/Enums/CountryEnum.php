@@ -37,4 +37,6 @@ class CountryEnum
     /** GraphQL */
     const TypeName = 'Country';
     const TypeDescription = 'The GraphQL Type of the Country model';
+
+    const Fields = [self::Id, self::Name, self::Slug, self::CreatedAt, self::UpdatedAt];
 }

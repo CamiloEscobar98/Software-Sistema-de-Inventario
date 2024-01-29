@@ -26,8 +26,11 @@ class DepartmentEnum
     const UpdatedAt = "updated_at";
 
     /** Relations */
+    const Cities = 'cities';
 
     /** GraphQL */
     const TypeName = 'Department';
     const TypeDescription = 'The GraphQL Type of the Department model';
+
+    const Fields = [self::Id, self::CountryId, self::Name, self::Slug, self::CreatedAt, self::UpdatedAt];
 }
