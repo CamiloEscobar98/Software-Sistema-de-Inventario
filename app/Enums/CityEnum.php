@@ -32,6 +32,9 @@ class CityEnum
     /** GraphQL */
     const TypeName = 'City';
     const TypeDescription = 'The GraphQL Type of the City model';
+    
+    /** Factories */
+    const SlugCount = 5;
 
     const Fields = [self::Id, self::DepartmentId, self::Name, self::Slug, self::CreatedAt, self::UpdatedAt];
 }

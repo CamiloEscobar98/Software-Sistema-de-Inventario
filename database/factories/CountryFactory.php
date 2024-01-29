@@ -36,7 +36,7 @@ class CountryFactory extends Factory
                 'en' => $this->faker->sentence(3),
                 'es' => $this->faker->sentence(3)
             ],
-            CountryEnum::Slug => Str::upper(Str::random(15)),
+            CountryEnum::Slug => Str::upper(Str::random(CountryEnum::SlugCount)),
         ];
     }
 }

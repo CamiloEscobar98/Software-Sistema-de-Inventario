@@ -36,7 +36,7 @@ class DepartmentFactory extends Factory
                 'en' => $this->faker->sentence(3),
                 'es' => $this->faker->sentence(3),
             ],
-            DepartmentEnum::Slug => Str::upper(Str::random(15)),
+            DepartmentEnum::Slug => Str::upper(Str::random(DepartmentEnum::SlugCount)),
         ];
     }
 }

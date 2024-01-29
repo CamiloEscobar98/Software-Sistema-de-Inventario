@@ -15,10 +15,18 @@ namespace App\Enums;
  */
 class CivilStatusEnum
 {
+    /** Model */
     const Table = "setting_civil_statuses";
     const Id = "id";
     const Name = "name";
     const Slug = "slug";
     const CreatedAt = "created_at";
     const UpdatedAt = "updated_at";
+
+    /** Relations */
+
+    /** Factories */
+    const SlugCount = 5;
+
+    /** GraphQL */
 }

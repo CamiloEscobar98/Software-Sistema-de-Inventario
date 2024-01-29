@@ -105,9 +105,7 @@ class Country extends Model
     {
         $locale = App::getLocale();
         $column = sprintf("%s.%s", CountryEnum::Table, CountryEnum::Name);
-        // $column = CountryEnum::Name;
-        $value = "%$value%";
-        return $query->where("{$column}->{$locale}", 'like', $value);
+        return $query->where("{$column}->{$locale}", 'like', "%$value%");
     }
 
     /**

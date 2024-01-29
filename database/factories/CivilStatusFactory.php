@@ -36,7 +36,7 @@ class CivilStatusFactory extends Factory
                 'en' => $this->faker->sentence(3),
                 'es' => $this->faker->sentence(3),
             ],
-            CivilStatusEnum::Slug =>  Str::upper(Str::random(15)),
+            CivilStatusEnum::Slug =>  Str::upper(Str::random(CivilStatusEnum::SlugCount)),
         ];
     }
 }

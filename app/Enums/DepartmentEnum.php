@@ -32,5 +32,8 @@ class DepartmentEnum
     const TypeName = 'Department';
     const TypeDescription = 'The GraphQL Type of the Department model';
 
+    /** Factories */
+    const SlugCount = 5;
+
     const Fields = [self::Id, self::CountryId, self::Name, self::Slug, self::CreatedAt, self::UpdatedAt];
 }

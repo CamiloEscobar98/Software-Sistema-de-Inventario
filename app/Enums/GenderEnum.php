@@ -16,10 +16,18 @@ namespace App\Enums;
  */
 class GenderEnum
 {
+    /** Model */
     const Table = 'setting_genders';
     const Id = 'id';
     const Name = 'name';
     const Slug = 'slug';
     const CreatedAt = 'created_at';
     const UpdatedAt = 'updated_at';
+
+    /** Relations */
+
+    /** Factories */
+    const SlugCount = 5;
+
+    /** GraphQL */
 }

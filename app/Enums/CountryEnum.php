@@ -38,5 +38,8 @@ class CountryEnum
     const TypeName = 'Country';
     const TypeDescription = 'The GraphQL Type of the Country model';
 
+    /** Factories */
+    const SlugCount = 5;
+
     const Fields = [self::Id, self::Name, self::Slug, self::CreatedAt, self::UpdatedAt];
 }
