@@ -30,4 +30,5 @@ class CityEnum
 
     /** GraphQL */
     const TypeName = 'City';
+    const TypeDescription= 'The GraphQL Type of the City model';
 }

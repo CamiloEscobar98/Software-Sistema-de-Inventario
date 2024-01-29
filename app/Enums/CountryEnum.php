@@ -13,6 +13,12 @@ namespace App\Enums;
  * @property const Slug
  * @property const CreatedAt
  * @property const UpdatedAt
+ * 
+ * @property const Departments
+ * @property const Cities
+ * 
+ * @property const TypeName
+ * @property const TypeDescription
  */
 class CountryEnum
 {
@@ -30,4 +36,5 @@ class CountryEnum
 
     /** GraphQL */
     const TypeName = 'Country';
+    const TypeDescription = 'The GraphQL Type of the Country model';
 }

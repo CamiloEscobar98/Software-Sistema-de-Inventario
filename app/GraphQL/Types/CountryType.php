@@ -13,11 +13,14 @@ use App\Enums\CountryEnum;
 use App\Enums\DepartmentEnum;
 use App\Enums\CityEnum;
 
+use App\Models\Country;
+
 class CountryType extends GraphQLType
 {
     protected $attributes = [
         'name' => CountryEnum::TypeName,
-        'description' => 'The GraphQL Type of Department model'
+        'description' => CountryEnum::TypeDescription,
+        'model' => Country::class
     ];
 
     public function fields(): array
@@ -45,6 +48,7 @@ class CountryType extends GraphQLType
             ],
             CountryEnum::Departments => [
                 'type' => Type::listOf(GraphQL::type(DepartmentEnum::TypeName)),
+                'always' => [DepartmentEnum::Name, DepartmentEnum::Slug]
             ],
             CountryEnum::Cities => [
                 'type' => Type::listOf(GraphQL::type(CityEnum::TypeName))

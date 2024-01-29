@@ -29,4 +29,5 @@ class DepartmentEnum
 
     /** GraphQL */
     const TypeName = 'Department';
+    const TypeDescription = 'The GraphQL Type of the Department model';
 }

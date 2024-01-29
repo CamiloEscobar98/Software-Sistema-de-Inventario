@@ -14,7 +14,7 @@ class DepartmentType extends GraphQLType
 {
     protected $attributes = [
         'name' => DepartmentEnum::TypeName,
-        'description' => 'The GraphQL Type of Department model.'
+        'description' => DepartmentEnum::TypeDescription,
     ];
 
     public function fields(): array

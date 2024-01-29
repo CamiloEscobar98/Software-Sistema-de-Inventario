@@ -8,7 +8,7 @@ use App\GraphQL\Queries\CountryListQuery;
 
 use App\GraphQL\Types\CountryType;
 use App\GraphQL\Types\DepartmentType;
-use App\GraphQL\Types\CitType;
+use App\GraphQL\Types\CityType;
 
 class CountrySchema implements ConfigConvertible
 {
@@ -26,7 +26,7 @@ class CountrySchema implements ConfigConvertible
             'types' => [
                 CountryType::class,
                 DepartmentType::class,
-                CitType::class,
+                CityType::class,
             ],
         ];
     }

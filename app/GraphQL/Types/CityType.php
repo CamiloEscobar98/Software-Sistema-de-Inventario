@@ -8,11 +8,11 @@ use App\Enums\CityEnum;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Type as GraphQLType;
 
-class CitType extends GraphQLType
+class CityType extends GraphQLType
 {
     protected $attributes = [
         'name' => CityEnum::TypeName,
-        'description' => 'A type'
+        'description' => CityEnum::TypeDescription,
     ];
 
     public function fields(): array
