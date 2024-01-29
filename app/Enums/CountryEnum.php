@@ -16,10 +16,18 @@ namespace App\Enums;
  */
 class CountryEnum
 {
+    /** Model */
     const Table = "setting_countries";
     const Id = 'id';
     const Name = "name";
     const Slug = "slug";
     const CreatedAt = "created_at";
     const UpdatedAt = "updated_at";
+
+    /** Relations */
+    const Departments = 'departments';
+    const Cities = 'cities';
+
+    /** GraphQL */
+    const TypeName = 'Country';
 }

@@ -16,6 +16,7 @@ namespace App\Enums;
  */
 class DepartmentEnum
 {
+    /** Model */
     const Table = "setting_departments";
     const Id = "id";
     const CountryId = "country_id";
@@ -23,4 +24,9 @@ class DepartmentEnum
     const Slug = "slug";
     const CreatedAt = "created_at";
     const UpdatedAt = "updated_at";
+
+    /** Relations */
+
+    /** GraphQL */
+    const TypeName = 'Department';
 }

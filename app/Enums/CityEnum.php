@@ -16,6 +16,7 @@ namespace App\Enums;
  */
 class CityEnum
 {
+    /** Model */
     const Table = "setting_cities";
     const Id = "id";
     const DepartmentId = "department_id";
@@ -23,4 +24,10 @@ class CityEnum
     const Slug = "slug";
     const CreatedAt = "created_at";
     const UpdatedAt = "updated_at";
+
+    /** Relations */
+
+
+    /** GraphQL */
+    const TypeName = 'City';
 }

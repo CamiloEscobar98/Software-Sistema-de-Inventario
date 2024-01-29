@@ -2,15 +2,19 @@
 
 namespace App\Models;
 
+use App\Enums\CityEnum;
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Support\Carbon;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 use Spatie\Translatable\HasTranslations;
 
 use Database\Factories\CountryFactory;
 
 use App\Enums\CountryEnum;
+use App\Enums\DepartmentEnum;
 
 /**
  * Class Country
@@ -37,7 +41,7 @@ class Country extends Model
      * @var string
      */
     protected $table = CountryEnum::Table;
-    
+
     /**
      * The columns can be translated.
      * 
@@ -56,5 +60,32 @@ class Country extends Model
     protected static function newFactory(): CountryFactory
     {
         return CountryFactory::new();
+    }
+
+    /**
+     * Get the Departments of the Country.
+     * 
+     * @return HasMany
+     */
+    public function departments()
+    {
+        return $this->hasMany(Department::class);
+    }
+
+    /**
+     * Get the Cities of the Country.
+     * 
+     * @return HasManyThrough
+     */
+    public function cities()
+    {
+        return $this->hasManyThrough(
+            City::class,
+            Department::class,
+            DepartmentEnum::CountryId,
+            CityEnum::DepartmentId,
+            CountryEnum::Id,
+            DepartmentEnum::Id
+        );
     }
 }
