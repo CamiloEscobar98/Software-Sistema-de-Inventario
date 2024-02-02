@@ -29,7 +29,7 @@ class CountryListQuery extends Query
 
     public function type(): Type
     {
-        return Type::listOf(GraphQL::type('Country'));
+        return Type::listOf(GraphQL::type(CountryEnum::TypeName));
     }
 
     public function args(): array
