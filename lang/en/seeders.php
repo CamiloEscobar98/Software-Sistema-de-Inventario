@@ -49,4 +49,8 @@ return [
     'user_personal_information' => [
         'item' => "\n-Creating User Information [:username]: Full name: :name, email: :email",
     ],
+    'languages' => [
+        'item' => "\n-Creating Language for the system [:index]: Name: :name, Slug: :slug",
+        'finish' => ":total languages have been registered"
+    ],
 ];

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
+use App\Enums\LanguageEnum;
+
 use App\Enums\UserEnum;
 
 /**
@@ -31,6 +33,9 @@ class UserFactory extends Factory
             UserEnum::Password => Hash::make('password'),
             UserEnum::RememberToken => Str::random(10),
             UserEnum::EmailVerifiedAt => now(),
+            UserEnum::Attrs => [
+                'language' => LanguageEnum::LANG_ES
+            ]
         ];
     }
 

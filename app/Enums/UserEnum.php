@@ -16,6 +16,7 @@ namespace App\Enums;
  * @property const Password
  * @property const RememberToken
  * @property const EmailVerifiedAt
+ * @property const Attrs
  * @property const CreatedAt
  * @property const UpdatedAt
  * 
@@ -31,6 +32,7 @@ class UserEnum
     const Password = 'password';
     const RememberToken = 'remember_token';
     const EmailVerifiedAt = 'email_verified_at';
+    const Attrs = 'attrs';
     const CreatedAt = 'created_at';
     const UpdatedAt = 'updated_at';
 

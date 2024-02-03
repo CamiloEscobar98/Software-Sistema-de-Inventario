@@ -35,6 +35,7 @@ class User extends Authenticatable
         UserEnum::Password,
         UserEnum::RememberToken,
         UserEnum::EmailVerifiedAt,
+        UserEnum::Attrs,
     ];
 
     /**
@@ -55,6 +56,7 @@ class User extends Authenticatable
     protected $casts = [
         UserEnum::EmailVerifiedAt => 'datetime',
         UserEnum::Password => 'hashed',
+        UserEnum::Attrs => 'array'
     ];
 
     protected static function newFactory(): UserFactory
