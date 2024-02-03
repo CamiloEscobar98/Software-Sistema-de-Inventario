@@ -4,12 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 use Spatie\Translatable\HasTranslations;
 
 use Database\Factories\GenderFactory;
 
 use App\Enums\GenderEnum;
+use App\Enums\UserEnum;
+use App\Enums\UserPersonalInformationEnum;
 
 /**
  * Class Gender
@@ -55,5 +58,22 @@ class Gender extends Model
     protected static function newFactory(): GenderFactory
     {
         return GenderFactory::new();
+    }
+
+    /**
+     * Get Users.
+     * 
+     * @return HasManyThrough
+     */
+    public function users()
+    {
+        return $this->hasManyThrough(
+            User::class,
+            UserPersonalInformation::class,
+            UserPersonalInformationEnum::GenderId,
+            UserEnum::PersonalInformationId,
+            GenderEnum::Id,
+            UserPersonalInformationEnum::Id,
+        );
     }
 }

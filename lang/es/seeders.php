@@ -19,7 +19,6 @@ return [
         'finish' => "\nSe han registrado :total Ciudades"
     ],
     'genders' => [
-        'ask' => "¿Cuántos Géneros desea crear? \nPor defecto se crearán cinco Géneros.",
         'item' => "\n-Creando el Género [:index]: :name.",
         'finish' => "\nSe han registrado :total Géneros"
     ],

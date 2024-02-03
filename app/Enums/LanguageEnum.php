@@ -26,6 +26,9 @@ class LanguageEnum
     const CreatedAt = 'created_at';
     const UpdatedAt = 'updated_at';
 
+    const ES_ID = 1;
+    const EN_ID = 2;
+
     /** Relations */
 
     /** GraphQL */
@@ -52,8 +55,8 @@ class LanguageEnum
     /**
      * Languages
      */
-    const LANG_ES = 'ES';
-    const LANG_EN = 'EN';
+    const LANG_ES = 'es';
+    const LANG_EN = 'en';
 
     const LANG_AVAILABLES = [self::LANG_ES, self::LANG_EN];
 }

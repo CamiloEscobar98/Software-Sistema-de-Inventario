@@ -19,7 +19,6 @@ return [
         'finish' => ":total Cities have been registered"
     ],
     'genders' => [
-        'ask' => "How many Genders would you like to create? \nBy default, five Genders will be created.",
         'item' => "\n-Creating Gender [:index]: :name",
         'finish' => ":total Genders have been registered"
     ],

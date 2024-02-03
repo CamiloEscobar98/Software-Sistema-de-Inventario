@@ -41,7 +41,7 @@ class GenderSeeder extends Seeder
     public function run(): void
     {
         if (!isProductionEnv()) {
-            $genders = GenderEnum::DEFAULT_GENDERS;
+            $genders = GenderEnum::DefaultData;
             $total = count($genders);
 
             $this->command->getOutput()->progressStart($total);

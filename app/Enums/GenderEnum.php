@@ -25,16 +25,32 @@ class GenderEnum
     const UpdatedAt = 'updated_at';
 
     /** Relations */
+    const Users = 'users';
+
+    /** Data */
+    const MALE_ID = 1;
+    const FEMALE_ID = 2;
+
 
     /** GraphQL */
 
     /** Seeders */
 
     /** DefaultData */
-    const MALE = [LanguageEnum::LANG_ES => 'Masculino', LanguageEnum::LANG_EN => 'Male'];
-    const FEMALE = [LanguageEnum::LANG_ES => 'Femenino', LanguageEnum::LANG_EN => 'Female'];
-    const NON_BINARY = [LanguageEnum::LANG_ES => 'No Binario', LanguageEnum::LANG_EN => 'Non-binary'];
-    const TRANSGENDER = [LanguageEnum::LANG_ES => 'Tránsgenero', LanguageEnum::LANG_EN => 'Transgender'];
-
-    const DEFAULT_GENDERS = [self::MALE, self::FEMALE, self::NON_BINARY, self::TRANSGENDER];
+    const DefaultData = [
+        [
+            self::Name => [
+                LanguageEnum::LANG_ES => 'Masculino',
+                LanguageEnum::LANG_EN => 'Male',
+            ],
+            self::Slug => 'M',
+        ],
+        [
+            self::Name => [
+                LanguageEnum::LANG_ES => 'Femenino',
+                LanguageEnum::LANG_EN => 'Female',
+            ],
+            self::Slug => 'F',
+        ],
+    ];
 }

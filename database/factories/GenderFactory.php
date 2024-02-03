@@ -36,7 +36,7 @@ class GenderFactory extends Factory
                 'en' => $this->faker->sentence(3),
                 'es' => $this->faker->sentence(3),
             ],
-            GenderEnum::Slug => Str::upper(Str::random(15)),
+            GenderEnum::Slug => Str::upper(Str::random(5)),
         ];
     }
 }
