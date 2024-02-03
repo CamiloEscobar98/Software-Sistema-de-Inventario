@@ -23,7 +23,6 @@ use App\Enums\CivilStatusEnum;
  * 
  * @property int $id
  * @property string $name
- * @property string $slug
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */
@@ -50,7 +49,6 @@ class CivilStatus extends Model
      */
     protected $fillable = [
         CivilStatusEnum::Name,
-        CivilStatusEnum::Slug,
     ];
 
     protected static function newFactory(): CivilStatusFactory

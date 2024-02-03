@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('setting_civil_statuses', function (Blueprint $table) {
             $table->tinyIncrements('id');
             $table->json('name');
-            $table->string('slug', 50)->unique('unique_slug_civil_statuses');
 
             $table->timestamps();
         });

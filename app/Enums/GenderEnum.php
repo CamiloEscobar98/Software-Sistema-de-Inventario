@@ -23,18 +23,23 @@ class GenderEnum
     const Slug = 'slug';
     const CreatedAt = 'created_at';
     const UpdatedAt = 'updated_at';
+    /** ./Model */
 
     /** Relations */
     const Users = 'users';
+    /** ./Relations */
 
     /** Data */
     const MALE_ID = 1;
     const FEMALE_ID = 2;
+    /** ./Data */
 
 
     /** GraphQL */
+    /** ./GraphQL */
 
     /** Seeders */
+    /** ./Seeders */
 
     /** DefaultData */
     const DefaultData = [
@@ -53,4 +58,5 @@ class GenderEnum
             self::Slug => 'F',
         ],
     ];
+    /** ./DefaultData */
 }

@@ -10,7 +10,7 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 use App\Repositories\CivilStatusRepository;
 
 use App\Enums\CivilStatusEnum;
-
+use App\Factories\CivilStatusFactory;
 
 /**
  * Class CivilStatusSeeder
@@ -40,20 +40,19 @@ class CivilStatusSeeder extends Seeder
     public function run(): void
     {
         if (!isProductionEnv()) {
-            $civilStatusNum = (int) $this->command->ask(__("seeders.civil_statuses.ask"), 5);
-            $civilStatusNum = !is_numeric($civilStatusNum) || $civilStatusNum <= 0 ? 5 : $civilStatusNum;
-            $civil_statuses = $this->civilStatusRepository->makeModels($civilStatusNum);
+            $civil_statuses = CivilStatusEnum::DefaultData;
+            $total = count($civil_statuses);
 
-            $this->command->getOutput()->progressStart($civilStatusNum);
-            foreach ($civil_statuses as $index => $item) {
+            $this->command->getOutput()->progressStart($total);
+            foreach ($civil_statuses as $index => $data) {
                 if (config('app.seeders_has_timer')) sleep(1);
+                $item = $this->civilStatusRepository->create(CivilStatusFactory::create($data[CivilStatusEnum::Name]));
                 $this->info(__("seeders.civil_statuses.item", ['index' => $index + 1, 'name' => $item->{CivilStatusEnum::Name}]));
-                $item->save();
 
                 $this->command->getOutput()->progressAdvance();
             }
             $this->command->getOutput()->progressFinish();
-            $this->command->info(__("seeders.civil_statuses.finish", ['total' => $civilStatusNum]));
+            $this->command->info(__("seeders.civil_statuses.finish", ['total' => $total]));
         }
     }
 }

@@ -28,7 +28,6 @@ return [
         'finish' => "\nSe han registrado :total Tipos de Documentos"
     ],
     'civil_statuses' => [
-        'ask' => "¿Cuántos Estados Civiles desea crear? \nPor defecto se crearán cinco Estados Civiles.",
         'item' => "\n-Creando el Estado Civil [:index]: :name.",
         'finish' => "\nSe han registrado :total Estados Civiles"
     ],
