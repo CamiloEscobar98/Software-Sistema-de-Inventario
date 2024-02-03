@@ -52,8 +52,8 @@ class LanguageEnum
     /**
      * Languages
      */
-    const LANG_ES = 'ES';
-    const LANG_EN = 'EN';
+    const LANG_ES = 'es';
+    const LANG_EN = 'en';
 
     const LANG_AVAILABLES = [self::LANG_ES, self::LANG_EN];
 }
