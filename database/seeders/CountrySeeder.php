@@ -10,6 +10,9 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 use App\Repositories\CountryRepository;
 
 use App\Enums\CountryEnum;
+use App\Factories\CountryFactory;
+use App\Services\JsonFileReader;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Class CountrySeeder
@@ -39,20 +42,20 @@ class CountrySeeder extends Seeder
     public function run(): void
     {
         if (!isProductionEnv()) {
-            $countryNum = (int) $this->command->ask(__("seeders.countries.ask"), 5);
-            $countryNum = !is_numeric($countryNum) || $countryNum <= 0 ? 5 : $countryNum;
-            $countries = $this->countryRepository->makeModels($countryNum);
+            $countries = JsonFileReader::readfile('/jsondata/countries.json');
+            Log::info($countries);
+            $total = count($countries);
 
-            $this->command->getOutput()->progressStart($countryNum);
-            foreach ($countries as $index => $item) {
+            $this->command->getOutput()->progressStart($total);
+            foreach ($countries as $index => $data) {
                 if (config('app.seeders_has_timer')) sleep(1);
+                $item = $this->countryRepository->create(CountryFactory::create($$data[CountryEnum::Id], $data[CountryEnum::Name]));
                 $this->info(__("seeders.countries.item", ['index' => $index + 1, 'name' => $item->{CountryEnum::Name}]));
-                $item->save();
 
                 $this->command->getOutput()->progressAdvance();
             }
             $this->command->getOutput()->progressFinish();
-            $this->command->info(__("seeders.countries.finish", ['total' => $countryNum]));
+            $this->command->info(__("seeders.countries.finish", ['total' => $total]));
         }
     }
 }

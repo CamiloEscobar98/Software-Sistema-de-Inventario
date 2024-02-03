@@ -50,6 +50,7 @@ class Department extends Model
      * The attributes that are mass assignable.
      */
     protected $fillable = [
+        DepartmentEnum::Id,
         DepartmentEnum::CountryId,
         DepartmentEnum::Name,
         DepartmentEnum::Slug

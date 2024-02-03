@@ -2,21 +2,19 @@
 
 namespace App\Models;
 
-use App\Enums\CityEnum;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Str;
 
 use Spatie\Translatable\HasTranslations;
 
-use Database\Factories\CountryFactory;
-
 use App\Enums\CountryEnum;
 use App\Enums\DepartmentEnum;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Log;
+use App\Enums\CityEnum;
 
 /**
  * Class Country
@@ -55,13 +53,20 @@ class Country extends Model
      * The attributes that are mass assignable.
      */
     protected $fillable = [
+        CountryEnum::Id,
         CountryEnum::Name,
         CountryEnum::Slug
     ];
 
-    protected static function newFactory(): CountryFactory
+    /**
+     * Set the Slug.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setSlugAttribute($value)
     {
-        return CountryFactory::new();
+        return $this->attributes[CountryEnum::Slug] = Str::slug($value, '-', App::getLocale());
     }
 
     /**
