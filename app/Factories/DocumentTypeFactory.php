@@ -12,14 +12,15 @@ class DocumentTypeFactory
     {
         [
             $names,
-            $slug
+            $slugs
         ] = $args;
 
         $names = !is_array($names) ? json_decode($names, true) : $names;
+        $slugs = !is_array($slugs) ? json_decode($slugs, true) : $slugs;
 
         return [
             DocumentTypeEnum::Name => LanguageUtil::transformTranslatedData($names),
-            DocumentTypeEnum::Slug => $slug,
+            DocumentTypeEnum::Slug => LanguageUtil::transformTranslatedData($slugs),
         ];
     }
 }

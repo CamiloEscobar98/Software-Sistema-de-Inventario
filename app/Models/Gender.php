@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 use Spatie\Translatable\HasTranslations;
 
-use Database\Factories\GenderFactory;
-
 use App\Enums\GenderEnum;
 use App\Enums\UserEnum;
 use App\Enums\UserPersonalInformationEnum;
@@ -45,7 +43,7 @@ class Gender extends Model
      * 
      * @var array
      */
-    public $translatable = [GenderEnum::Name];
+    public $translatable = [GenderEnum::Name, GenderEnum::Slug];
 
     /**
      * The attributes that are mass assignable.
@@ -54,11 +52,6 @@ class Gender extends Model
         GenderEnum::Name,
         GenderEnum::Slug
     ];
-
-    protected static function newFactory(): GenderFactory
-    {
-        return GenderFactory::new();
-    }
 
     /**
      * Get Users.

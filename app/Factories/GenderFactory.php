@@ -12,14 +12,15 @@ class GenderFactory
     {
         [
             $names,
-            $slug
+            $slugs
         ] = $args;
 
         $names = !is_array($names) ? json_decode($names, true) : $names;
+        $slugs = !is_array($slugs) ? json_decode($slugs, true) : $slugs;
 
         return [
             GenderEnum::Name => LanguageUtil::transformTranslatedData($names),
-            GenderEnum::Slug => $slug,
+            GenderEnum::Slug => LanguageUtil::transformTranslatedData($slugs),
         ];
     }
 }

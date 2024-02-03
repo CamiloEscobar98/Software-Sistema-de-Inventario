@@ -12,12 +12,15 @@ class CivilStatusFactory
     {
         [
             $names,
+            $slugs
         ] = $args;
 
         $names = !is_array($names) ? json_decode($names, true) : $names;
+        $slugs = !is_array($slugs) ? json_decode($slugs, true) : $slugs;
 
         return [
             CivilStatusEnum::Name => LanguageUtil::transformTranslatedData($names),
+            CivilStatusEnum::Slug => LanguageUtil::transformTranslatedData($slugs)
         ];
     }
 }

@@ -46,37 +46,52 @@ class DocumentTypeEnum
         [
             self::Name => [
                 LanguageEnum::LANG_ES => 'Cédula de Ciudadanía',
-                LanguageEnum::LANG_EN => 'Citizen ID',
+                LanguageEnum::LANG_EN => 'Citizen Identity',
             ],
-            self::Slug => 'CC',
+            self::Slug => [
+                LanguageEnum::LANG_ES => 'cedula-de-ciudadania',
+                LanguageEnum::LANG_EN => 'citizen-identity',
+            ]
         ],
         [
             self::Name => [
                 LanguageEnum::LANG_ES => 'Tarjeta de Identidad',
-                LanguageEnum::LANG_EN => 'ID Card',
+                LanguageEnum::LANG_EN => 'Identity Card',
             ],
-            self::Slug => 'TI',
+            self::Slug => [
+                LanguageEnum::LANG_ES => 'tarjeta-de-identidad',
+                LanguageEnum::LANG_EN => 'identity-card',
+            ]
         ],
         [
             self::Name => [
                 LanguageEnum::LANG_ES => 'Registro Civil de Nacimiento',
                 LanguageEnum::LANG_EN => 'Birth Certificate',
             ],
-            self::Slug => 'RC',
+            self::Slug => [
+                LanguageEnum::LANG_ES => 'registro-civil',
+                LanguageEnum::LANG_EN => 'birth-certificate',
+            ]
         ],
         [
             self::Name => [
                 LanguageEnum::LANG_ES => 'Cédula de Extranjería',
-                LanguageEnum::LANG_EN => 'Foreigner ID',
+                LanguageEnum::LANG_EN => 'Foreigner Identity',
             ],
-            self::Slug => 'CE',
+            self::Slug => [
+                LanguageEnum::LANG_ES => 'cedula-de-extranjeria',
+                LanguageEnum::LANG_EN => 'foreigner-identity',
+            ]
         ],
         [
             self::Name => [
                 LanguageEnum::LANG_ES => 'Pasaporte',
                 LanguageEnum::LANG_EN => 'Passport',
             ],
-            self::Slug => 'PASS',
+            self::Slug => [
+                LanguageEnum::LANG_ES => 'pasaporte',
+                LanguageEnum::LANG_EN => 'passport',
+            ]
         ],
     ];
     /** ./Default Data */

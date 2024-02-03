@@ -48,14 +48,20 @@ class GenderEnum
                 LanguageEnum::LANG_ES => 'Masculino',
                 LanguageEnum::LANG_EN => 'Male',
             ],
-            self::Slug => 'M',
+            self::Slug => [
+                LanguageEnum::LANG_ES => 'masculino',
+                LanguageEnum::LANG_EN => 'male'
+            ],
         ],
         [
             self::Name => [
                 LanguageEnum::LANG_ES => 'Femenino',
                 LanguageEnum::LANG_EN => 'Female',
             ],
-            self::Slug => 'F',
+            self::Slug => [
+                LanguageEnum::LANG_ES => 'femenino',
+                LanguageEnum::LANG_EN => 'female'
+            ],
         ],
     ];
     /** ./DefaultData */

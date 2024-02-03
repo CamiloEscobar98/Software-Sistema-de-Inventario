@@ -9,6 +9,7 @@ namespace App\Enums;
  * 
  * @property const Table
  * @property const Name
+ * @property const Slug
  * @property const CreatedAt
  * @property const UpdatedAt
  */
@@ -18,6 +19,7 @@ class CivilStatusEnum
     const Table = "setting_civil_statuses";
     const Id = "id";
     const Name = "name";
+    const Slug = "slug";
     const CreatedAt = "created_at";
     const UpdatedAt = "updated_at";
     /** ./Model */
@@ -47,11 +49,19 @@ class CivilStatusEnum
                 LanguageEnum::LANG_ES => 'Soltero(a)',
                 LanguageEnum::LANG_EN => 'Single',
             ],
+            self::Slug => [
+                LanguageEnum::LANG_ES => 'soltero',
+                LanguageEnum::LANG_EN => 'single',
+            ],
         ],
         [
             self::Name => [
                 LanguageEnum::LANG_ES => 'Casado(a)',
                 LanguageEnum::LANG_EN => 'Married',
+            ],
+            self::Slug => [
+                LanguageEnum::LANG_ES => 'casado',
+                LanguageEnum::LANG_EN => 'married',
             ],
         ],
         [
@@ -59,23 +69,39 @@ class CivilStatusEnum
                 LanguageEnum::LANG_ES => 'Viudo(a)',
                 LanguageEnum::LANG_EN => 'Widowed',
             ],
+            self::Slug => [
+                LanguageEnum::LANG_ES => 'viudo',
+                LanguageEnum::LANG_EN => 'widowed',
+            ],
         ],
         [
             self::Name => [
                 LanguageEnum::LANG_ES => 'Divorciado(a)',
                 LanguageEnum::LANG_EN => 'Divorced',
             ],
+            self::Slug => [
+                LanguageEnum::LANG_ES => 'divorciado',
+                LanguageEnum::LANG_EN => 'divorced',
+            ],
         ],
         [
             self::Name => [
                 LanguageEnum::LANG_ES => 'Unión Libre',
-                LanguageEnum::LANG_EN => 'Common-Law-Marriage',
+                LanguageEnum::LANG_EN => 'Common Law Marriage',
+            ],
+            self::Slug => [
+                LanguageEnum::LANG_ES => 'union-libre',
+                LanguageEnum::LANG_EN => 'common-law',
             ],
         ],
         [
             self::Name => [
                 LanguageEnum::LANG_ES => 'Separado(a)',
                 LanguageEnum::LANG_EN => 'Separated',
+            ],
+            self::Slug => [
+                LanguageEnum::LANG_ES => 'separado',
+                LanguageEnum::LANG_EN => 'separated',
             ],
         ],
     ];

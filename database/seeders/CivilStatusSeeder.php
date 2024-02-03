@@ -46,7 +46,7 @@ class CivilStatusSeeder extends Seeder
             $this->command->getOutput()->progressStart($total);
             foreach ($civil_statuses as $index => $data) {
                 if (config('app.seeders_has_timer')) sleep(1);
-                $item = $this->civilStatusRepository->create(CivilStatusFactory::create($data[CivilStatusEnum::Name]));
+                $item = $this->civilStatusRepository->create(CivilStatusFactory::create($data[CivilStatusEnum::Name], $data[CivilStatusEnum::Slug]));
                 $this->info(__("seeders.civil_statuses.item", ['index' => $index + 1, 'name' => $item->{CivilStatusEnum::Name}]));
 
                 $this->command->getOutput()->progressAdvance();
