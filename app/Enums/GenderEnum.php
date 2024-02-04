@@ -23,11 +23,46 @@ class GenderEnum
     const Slug = 'slug';
     const CreatedAt = 'created_at';
     const UpdatedAt = 'updated_at';
+    /** ./Model */
 
     /** Relations */
+    const Users = 'users';
+    /** ./Relations */
 
-    /** Factories */
-    const SlugCount = 5;
+    /** Data */
+    const MALE_ID = 1;
+    const FEMALE_ID = 2;
+    /** ./Data */
+
 
     /** GraphQL */
+    /** ./GraphQL */
+
+    /** Seeders */
+    /** ./Seeders */
+
+    /** DefaultData */
+    const DefaultData = [
+        [
+            self::Name => [
+                LanguageEnum::LANG_ES => 'Masculino',
+                LanguageEnum::LANG_EN => 'Male',
+            ],
+            self::Slug => [
+                LanguageEnum::LANG_ES => 'masculino',
+                LanguageEnum::LANG_EN => 'male'
+            ],
+        ],
+        [
+            self::Name => [
+                LanguageEnum::LANG_ES => 'Femenino',
+                LanguageEnum::LANG_EN => 'Female',
+            ],
+            self::Slug => [
+                LanguageEnum::LANG_ES => 'femenino',
+                LanguageEnum::LANG_EN => 'female'
+            ],
+        ],
+    ];
+    /** ./DefaultData */
 }

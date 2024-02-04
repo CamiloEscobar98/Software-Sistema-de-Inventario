@@ -19,7 +19,6 @@ return [
         'finish' => ":total Cities have been registered"
     ],
     'genders' => [
-        'ask' => "How many Genders would you like to create? \nBy default, five Genders will be created.",
         'item' => "\n-Creating Gender [:index]: :name",
         'finish' => ":total Genders have been registered"
     ],
@@ -29,7 +28,6 @@ return [
         'finish' => ":total Document Types have been registered"
     ],
     'civil_statuses' => [
-        'ask' => "How many Civil Statuses would you like to create? \nBy default, five Civil Statuses will be created.",
         'item' => "\n-Creating Document Type [:index]: :name",
         'finish' => ":total Civil Statuses have been registered"
     ],

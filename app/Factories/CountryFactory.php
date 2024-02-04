@@ -3,6 +3,7 @@
 namespace App\Factories;
 
 use App\Enums\CountryEnum;
+
 use App\Utils\LanguageUtil;
 
 class CountryFactory
@@ -10,15 +11,15 @@ class CountryFactory
     public static function create(...$args): array
     {
         [
+            $id,
             $names,
-            $slug,
         ] = $args;
 
-        $names = json_decode($names, true);
+        $names = !is_array($names) ? json_decode($names, true) : $names;
 
         return [
+            CountryEnum::Id => $id,
             CountryEnum::Name => LanguageUtil::transformTranslatedData($names),
-            CountryEnum::Slug => $slug,
         ];
     }
 }

@@ -8,8 +8,6 @@ use Illuminate\Support\Carbon;
 
 use Spatie\Translatable\HasTranslations;
 
-use Database\Factories\CivilStatusFactory;
-
 use App\Enums\CivilStatusEnum;
 
 /**
@@ -23,7 +21,6 @@ use App\Enums\CivilStatusEnum;
  * 
  * @property int $id
  * @property string $name
- * @property string $slug
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */
@@ -43,7 +40,7 @@ class CivilStatus extends Model
      * 
      * @var array
      */
-    public $translatable = [CivilStatusEnum::Name];
+    public $translatable = [CivilStatusEnum::Name, CivilStatusEnum::Slug];
 
     /**
      * The attributes that are mass assignable.
@@ -52,9 +49,4 @@ class CivilStatus extends Model
         CivilStatusEnum::Name,
         CivilStatusEnum::Slug,
     ];
-
-    protected static function newFactory(): CivilStatusFactory
-    {
-        return CivilStatusFactory::new();
-    }
 }

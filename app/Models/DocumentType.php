@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 use Spatie\Translatable\HasTranslations;
 
-use Database\Factories\DocumentTypeFactory;
-
 use App\Enums\DocumentTypeEnum;
 
 /**
@@ -42,7 +40,7 @@ class DocumentType extends Model
      * 
      * @var array
      */
-    public $translatable = [DocumentTypeEnum::Name];
+    public $translatable = [DocumentTypeEnum::Name, DocumentTypeEnum::Slug];
 
     /**
      * The attributes that are mass assignable.
@@ -51,9 +49,4 @@ class DocumentType extends Model
         DocumentTypeEnum::Name,
         DocumentTypeEnum::Slug,
     ];
-
-    protected static function newFactory(): DocumentTypeFactory
-    {
-        return DocumentTypeFactory::new();
-    }
 }

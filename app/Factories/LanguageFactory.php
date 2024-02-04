@@ -15,6 +15,8 @@ class LanguageFactory
             $slug
         ] = $args;
 
+        $names = !is_array($names) ? json_decode($names, true) : $names;
+
         return [
             LanguageEnum::Name => LanguageUtil::transformTranslatedData($names),
             LanguageEnum::Slug => $slug,
