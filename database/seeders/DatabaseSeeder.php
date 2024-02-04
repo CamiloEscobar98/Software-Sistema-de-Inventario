@@ -19,9 +19,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             LanguageSeeder::class,
 
-            #CountrySeeder::class,
-            #DepartmentSeeder::class,
-            #CitySeeder::class,
+            // CountrySeeder::class,
+            // DepartmentSeeder::class,
+            // CitySeeder::class,
             GenderSeeder::class,
             DocumentTypeSeeder::class,
             CivilStatusSeeder::class,

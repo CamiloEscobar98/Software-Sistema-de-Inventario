@@ -75,17 +75,6 @@ class Country extends Model
     }
 
     /**
-     * Set the Slug.
-     *
-     * @param  string  $value
-     * @return void
-     */
-    public function setSlugAttribute($value)
-    {
-        return $this->attributes[CountryEnum::Slug] = Str::slug($value, '-', App::getLocale());
-    }
-
-    /**
      * Get the Departments of the Country.
      * 
      * @return HasMany

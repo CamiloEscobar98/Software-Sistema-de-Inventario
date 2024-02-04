@@ -13,6 +13,7 @@ class CountryFactory
         [
             $id,
             $names,
+            $slug
         ] = $args;
 
         $names = !is_array($names) ? json_decode($names, true) : $names;
@@ -20,6 +21,7 @@ class CountryFactory
         return [
             CountryEnum::Id => $id,
             CountryEnum::Name => LanguageUtil::transformTranslatedData($names),
+            CountryEnum::Slug => $slug,
         ];
     }
 

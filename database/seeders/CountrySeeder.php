@@ -52,7 +52,9 @@ class CountrySeeder extends Seeder
                 if (config('app.seeders_has_timer')) sleep(1);
                 $item = $this->countryRepository->create(CountryFactory::create(
                     $data[CountryEnum::Id],
-                    [LanguageEnum::LANG_ES => $data[CountryEnum::Name]]
+                    [LanguageEnum::LANG_ES => $data[CountryEnum::Name]],
+                    $data[CountryEnum::Slug]
+
                 ));
                 $this->info(__("seeders.countries.item", ['index' => $index + 1, 'name' => $item->{CountryEnum::Name}]));
 
