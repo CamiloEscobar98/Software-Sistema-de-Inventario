@@ -3,7 +3,7 @@
 namespace App\GraphQL\Schemas;
 
 use App\GraphQL\Mutations\CountryCreateMutation;
-
+use App\GraphQL\Mutations\CountryUpdateMutation;
 use App\GraphQL\Queries\CountryListQuery;
 
 use App\GraphQL\Types\CountryType;
@@ -23,6 +23,7 @@ class CountrySchema implements ConfigConvertible
 
             'mutation' => [
                 CountryCreateMutation::class,
+                CountryUpdateMutation::class,
             ],
 
             'types' => [

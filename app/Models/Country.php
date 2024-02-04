@@ -92,8 +92,7 @@ class Country extends Model
      */
     public function departments()
     {
-        $array = getSelectColumnsByTable(DepartmentEnum::Fields, DepartmentEnum::Table);
-        return $this->hasMany(Department::class)->select($array);
+        return $this->hasMany(Department::class);
     }
 
     /**
@@ -139,6 +138,7 @@ class Country extends Model
      */
     public function scopeBySlug($query, $value)
     {
+        $locale = App::getLocale();
         $column = sprintf("%s.%s", CountryEnum::Table, CountryEnum::Slug);
         return $query->where($column, 'like', "%$value%");
     }

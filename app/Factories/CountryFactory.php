@@ -22,4 +22,27 @@ class CountryFactory
             CountryEnum::Name => LanguageUtil::transformTranslatedData($names),
         ];
     }
+
+    public static function update(...$args): array
+    {
+        [
+            $id,
+            $name,
+            $slug
+        ] = $args;
+
+        $temp = [];
+
+        $temp[CountryEnum::Id] = $id;
+
+        if (isset($name) && $name) {
+            $temp[CountryEnum::Name] = $name;
+        }
+
+        if (isset($slug) && $slug) {
+            $temp[CountryEnum::Slug] = $slug;
+        }
+
+        return $temp;
+    }
 }

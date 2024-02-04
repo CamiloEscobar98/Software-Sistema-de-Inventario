@@ -32,6 +32,7 @@ class LanguageEnum
     /** Relations */
 
     /** GraphQL */
+    const Locale = 'locale';
 
     /** Seeders */
     const DefaultData = [
