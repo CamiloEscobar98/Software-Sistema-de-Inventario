@@ -27,7 +27,7 @@ class CountryCreateMutation extends Mutation
 {
     protected $attributes = [
         'name' => 'countryCreate',
-        'description' => 'Mutation for Create a new Country'
+        'description' => 'Mutation for create a new Country'
     ];
 
     public function type(): Type
@@ -35,6 +35,11 @@ class CountryCreateMutation extends Mutation
         return GraphQL::type(CountryEnum::TypeName);
     }
 
+    /**
+     * Args for the mutation.
+     * 
+     * @return array
+     */
     public function args(): array
     {
         return [

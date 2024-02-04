@@ -41,18 +41,36 @@ class CountryService
         $item = null;
 
         try {
-
             $this->countryRepository->update($args[CountryEnum::Id], CountryFactory::update(
                 $args[CountryEnum::Id],
                 $args[CountryEnum::Name] ?? null,
                 $args[CountryEnum::Slug] ?? null,
             ));
-
             $item = $this->countryRepository->find($args[CountryEnum::Id]);
         } catch (QueryException $qe) {
             Log::error("App/Services/CountryService/Update", print_r($qe));
         }
 
         return $item;
+    }
+
+    /**
+     * Delete a Country
+     * 
+     * @param int $id
+     * 
+     * @return bool
+     */
+    public function delete(int $id)
+    {
+        $response = null;
+        try {
+            $this->countryRepository->delete($id);
+            $response = true;
+        } catch (QueryException $qe) {
+            $response = false;
+            Log::error("App/Services/CountryService/Delete", print_r($qe));
+        }
+        return $response;
     }
 }

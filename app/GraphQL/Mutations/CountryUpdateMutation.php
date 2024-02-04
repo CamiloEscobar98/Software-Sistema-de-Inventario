@@ -4,26 +4,27 @@ declare(strict_types=1);
 
 namespace App\GraphQL\Mutations;
 
+use Illuminate\Support\Facades\App;
+
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 
 use Rebing\GraphQL\Support\Mutation;
 use Rebing\GraphQL\Support\SelectFields;
+use Rebing\GraphQL\Support\Facades\GraphQL;
+
+use App\Services\CountryService;
 
 use App\Enums\CountryEnum;
 use App\Enums\LanguageEnum;
-use App\Repositories\CountryRepository;
-use App\Services\CountryService;
+
 use Closure;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Log;
-use Rebing\GraphQL\Support\Facades\GraphQL;
 
 class CountryUpdateMutation extends Mutation
 {
     protected $attributes = [
         'name' => 'countryUpdate',
-        'description' => 'A mutation'
+        'description' => 'Mutation for update a Country'
     ];
 
     public function type(): Type
@@ -73,7 +74,7 @@ class CountryUpdateMutation extends Mutation
         $countrySlug = CountryEnum::Slug;
 
         return [
-            CountryEnum::Id => ['required', "exists:$countryTable,$countryId"],
+            CountryEnum::Id => ['required', 'integer', "exists:$countryTable,$countryId"],
             CountryEnum::Name => ['nullable', "string", "max:100"],
             CountryEnum::Slug => ['nullable', "string", "max:50"]
         ];
@@ -88,8 +89,6 @@ class CountryUpdateMutation extends Mutation
         $with = $fields->getRelations();
 
         $response = $countryService->update($args);
-
-        Log::info($response);
 
         return $response;
     }
