@@ -59,6 +59,22 @@ class Country extends Model
     ];
 
     /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            if (isset($model->{CountryEnum::Name}) && !isset($model->{CountryEnum::Slug})) {
+                $model->{CountryEnum::Slug} = Str::slug($model->{CountryEnum::Name}, '-', App::getLocale());
+            }
+        });
+    }
+
+    /**
      * Set the Slug.
      *
      * @param  string  $value

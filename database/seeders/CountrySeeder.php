@@ -10,8 +10,9 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 use App\Repositories\CountryRepository;
 
 use App\Enums\CountryEnum;
+use App\Enums\LanguageEnum;
 use App\Factories\CountryFactory;
-use App\Services\JsonFileReader;
+use App\Services\FileDataReader;
 use Illuminate\Support\Facades\Log;
 
 /**
@@ -42,14 +43,17 @@ class CountrySeeder extends Seeder
     public function run(): void
     {
         if (!isProductionEnv()) {
-            $countries = JsonFileReader::readfile('/jsondata/countries.json');
-            Log::info($countries);
+            $countries = FileDataReader::readFileFromCsv('jsondata/countries.csv');
             $total = count($countries);
 
             $this->command->getOutput()->progressStart($total);
             foreach ($countries as $index => $data) {
+                Log::info($data);
                 if (config('app.seeders_has_timer')) sleep(1);
-                $item = $this->countryRepository->create(CountryFactory::create($$data[CountryEnum::Id], $data[CountryEnum::Name]));
+                $item = $this->countryRepository->create(CountryFactory::create(
+                    $data[CountryEnum::Id],
+                    [LanguageEnum::LANG_ES => $data[CountryEnum::Name]]
+                ));
                 $this->info(__("seeders.countries.item", ['index' => $index + 1, 'name' => $item->{CountryEnum::Name}]));
 
                 $this->command->getOutput()->progressAdvance();

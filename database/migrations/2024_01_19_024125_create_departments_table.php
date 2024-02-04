@@ -17,8 +17,6 @@ return new class extends Migration
             $table->json('name');
             $table->string('slug', 50);
 
-            $table->unique(['country_id', 'slug'], 'unique_slug_departments');
-
             $table->foreign('country_id', 'fk_country_departments')->references('id')->on('setting_countries')
                 ->cascadeOnUpdate()->restrictOnDelete();
 

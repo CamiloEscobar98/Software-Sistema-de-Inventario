@@ -4,13 +4,18 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Console\Concerns\InteractsWithIO;
+
 use Symfony\Component\Console\Output\ConsoleOutput;
 
 use App\Repositories\CountryRepository;
 use App\Repositories\DepartmentRepository;
 
+use App\Services\FileDataReader;
+
 use App\Enums\DepartmentEnum;
 use App\Enums\CountryEnum;
+use App\Enums\LanguageEnum;
+use App\Factories\DepartmentFactory;
 
 /**
  * Class DepartmentSeeder
@@ -43,24 +48,25 @@ class DepartmentSeeder extends Seeder
     public function run(): void
     {
         if (!isProductionEnv()) {
-
-            $departmentTotal = (int) $this->command->ask(__("seeders.departments.ask"), 5);
-            $departmentTotal = !is_numeric($departmentTotal) || $departmentTotal <= 0 ? 5 : $departmentTotal;
-            $departments = $this->departmentRepository->makeModels($departmentTotal);
+            $departments = FileDataReader::readFileFromCsv('jsondata/states.csv');
+            $total = count($departments);
 
             $countries = $this->countryRepository->all([CountryEnum::Id]);
 
-            $this->command->getOutput()->progressStart($departmentTotal);
-            foreach ($departments as $index => $item) {
+            $this->command->getOutput()->progressStart($total);
+            foreach ($departments as $index => $data) {
                 if (config('app.seeders_has_timer')) sleep(1);
+                $item = $this->departmentRepository->create(DepartmentFactory::create(
+                    $data[DepartmentEnum::Id],
+                    $data[DepartmentEnum::CountryId],
+                    [LanguageEnum::LANG_ES => $data[DepartmentEnum::Name]]
+                ));
                 $this->info(__("seeders.departments.item", ['index' => $index + 1, 'name' => $item->{DepartmentEnum::Name}]));
-                $item->{DepartmentEnum::CountryId} = $countries->random(1)->first()->{CountryEnum::Id};
-                $item->save();
 
                 $this->command->getOutput()->progressAdvance();
             }
             $this->command->getOutput()->progressFinish();
-            $this->command->info(__("seeders.departments.finish", ['total' => $departmentTotal]));
+            $this->command->info(__("seeders.departments.finish", ['total' => $total]));
         }
     }
 }

@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,12 +14,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->runFileSQL('sql/locations.sql'); # Replace CountrySeeder, DepartmentSeeder and CitySeeder.
+
         $this->call([
             LanguageSeeder::class,
 
-            CountrySeeder::class,
-            DepartmentSeeder::class,
-            CitySeeder::class,
+            #CountrySeeder::class,
+            #DepartmentSeeder::class,
+            #CitySeeder::class,
             GenderSeeder::class,
             DocumentTypeSeeder::class,
             CivilStatusSeeder::class,
@@ -26,5 +30,12 @@ class DatabaseSeeder extends Seeder
 
             TenantSeeder::class
         ]);
+    }
+
+    private function runFileSQL($file)
+    {
+        $path = database_path($file);
+        $sql = File::get($path);
+        DB::unprepared($sql);
     }
 }

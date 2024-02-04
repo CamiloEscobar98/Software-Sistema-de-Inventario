@@ -5,6 +5,7 @@ namespace App\Factories;
 use App\Enums\CountryEnum;
 
 use App\Utils\LanguageUtil;
+use Illuminate\Support\Facades\Log;
 
 class CountryFactory
 {
@@ -17,10 +18,11 @@ class CountryFactory
 
         $names = !is_array($names) ? json_decode($names, true) : $names;
 
+        Log::info($names);
+
         return [
             CountryEnum::Id => $id,
             CountryEnum::Name => LanguageUtil::transformTranslatedData($names),
-            CountryEnum::Slug => LanguageUtil::transformTranslatedData($names)
         ];
     }
 }
