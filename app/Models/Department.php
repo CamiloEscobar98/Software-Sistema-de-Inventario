@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\App;
 
 use Spatie\Translatable\HasTranslations;
-
-use Database\Factories\DepartmentFactory;
 
 use App\Enums\DepartmentEnum;
 
@@ -30,7 +31,7 @@ use App\Enums\DepartmentEnum;
  */
 class Department extends Model
 {
-    use HasFactory, HasTranslations;
+    use HasTranslations;
 
     /**
      * The table associated with the model.
@@ -50,16 +51,44 @@ class Department extends Model
      * The attributes that are mass assignable.
      */
     protected $fillable = [
+        DepartmentEnum::Id,
         DepartmentEnum::CountryId,
         DepartmentEnum::Name,
         DepartmentEnum::Slug
     ];
 
-    protected static function newFactory(): DepartmentFactory
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
     {
-        return DepartmentFactory::new();
+        parent::boot();
+
+        static::creating(function ($model) {
+            if (isset($model->{DepartmentEnum::Name}) && !isset($model->{DepartmentEnum::Slug})) {
+                $model->{DepartmentEnum::Slug} = Str::slug($model->{DepartmentEnum::Name}, '-', App::getLocale());
+            }
+        });
     }
 
+    /**
+     * Set the Slug.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setSlugAttribute($value)
+    {
+        return $this->attributes[DepartmentEnum::Slug] = Str::slug($value, '-', App::getLocale());
+    }
+
+    /**
+     * Get Cities.
+     * 
+     * @return HasMany
+     */
     public function cities()
     {
         return $this->hasMany(City::class);

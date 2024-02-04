@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('setting_document_types', function (Blueprint $table) {
             $table->tinyIncrements('id');
             $table->json('name');
-            $table->string('slug', 50)->unique('unique_slug_document_types');
+            $table->json('slug');
 
             $table->timestamps();
         });

@@ -19,7 +19,6 @@ return [
         'finish' => "\nSe han registrado :total Ciudades"
     ],
     'genders' => [
-        'ask' => "¿Cuántos Géneros desea crear? \nPor defecto se crearán cinco Géneros.",
         'item' => "\n-Creando el Género [:index]: :name.",
         'finish' => "\nSe han registrado :total Géneros"
     ],
@@ -29,7 +28,6 @@ return [
         'finish' => "\nSe han registrado :total Tipos de Documentos"
     ],
     'civil_statuses' => [
-        'ask' => "¿Cuántos Estados Civiles desea crear? \nPor defecto se crearán cinco Estados Civiles.",
         'item' => "\n-Creando el Estado Civil [:index]: :name.",
         'finish' => "\nSe han registrado :total Estados Civiles"
     ],

@@ -15,9 +15,7 @@ return new class extends Migration
             $table->mediumIncrements('id');
             $table->unsignedSmallInteger('department_id');
             $table->json('name');
-            $table->string('slug', 50);
-
-            $table->unique(['department_id', 'slug'], 'unique_slug_cities');
+            $table->string('slug', 100);
 
             $table->foreign('department_id', 'fk_department_cities')->references('id')->on('setting_departments')
                 ->cascadeOnUpdate()->restrictOnDelete();

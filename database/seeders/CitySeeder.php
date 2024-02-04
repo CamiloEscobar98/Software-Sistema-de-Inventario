@@ -12,6 +12,9 @@ use App\Repositories\DepartmentRepository;
 
 use App\Enums\CityEnum;
 use App\Enums\DepartmentEnum;
+use App\Enums\LanguageEnum;
+use App\Factories\CityFactory;
+use App\Services\FileDataReader;
 
 /**
  * Class CitySeeder
@@ -43,22 +46,23 @@ class CitySeeder extends Seeder
     public function run(): void
     {
         if (!isProductionEnv()) {
-            $cityEnum = (int) $this->command->ask(__("seeders.cities.ask"), 5);
-            $cityEnum = !is_numeric($cityEnum) || $cityEnum <= 0 ? 5 : $cityEnum;
-            $cities = $this->cityRepository->makeModels($cityEnum);
-            $departments = $this->departmentRepository->all([DepartmentEnum::Id]);
+            $cities = FileDataReader::readFileFromCsv('jsondata/cities.csv');
+            $total = count($cities);
 
-            $this->command->getOutput()->progressStart($cityEnum);
-            foreach ($cities as $index => $item) {
+            $this->command->getOutput()->progressStart($total);
+            foreach ($cities as $index => $data) {
                 if (config('app.seeders_has_timer')) if (config('app.seeders_has_timer')) sleep(1);
+                $item = $this->cityRepository->create(CityFactory::create(
+                    $data[CityEnum::Id],
+                    $data[CityEnum::DepartmentId],
+                    [LanguageEnum::LANG_ES => $data[CityEnum::Name]]
+                ));
                 $this->info(__("seeders.cities.item", ['index' => $index + 1, 'name' => $item->{CityEnum::Name}]));
-                $item->{CityEnum::DepartmentId} = $departments->random(1)->first()->{DepartmentEnum::Id};
-                $item->save();
 
                 $this->command->getOutput()->progressAdvance();
             }
             $this->command->getOutput()->progressFinish();
-            $this->command->info(__("seeders.cities.finish", ['total' => $cityEnum]));
+            $this->command->info(__("seeders.cities.finish", ['total' => $total]));
         }
     }
 }
