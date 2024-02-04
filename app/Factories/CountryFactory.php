@@ -18,11 +18,16 @@ class CountryFactory
 
         $names = !is_array($names) ? json_decode($names, true) : $names;
 
-        return [
-            CountryEnum::Id => $id,
+        $temp = [
             CountryEnum::Name => LanguageUtil::transformTranslatedData($names),
             CountryEnum::Slug => $slug,
         ];
+
+        if (isset($id) && $id) {
+            $temp[CountryEnum::Id] = $id;
+        }
+        
+        return $temp;
     }
 
     public static function update(...$args): array

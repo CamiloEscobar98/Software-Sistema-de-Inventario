@@ -60,7 +60,7 @@ class CountryCreateMutation extends Mutation
     public function resolve($root, array $args, $context, ResolveInfo $resolveInfo, Closure $getSelectFields, CountryRepository $countryRepository)
     {
         try {
-            $country = $countryRepository->create(CountryFactory::create($args[CountryEnum::Name], $args[CountryEnum::Slug]));
+            $country = $countryRepository->create(CountryFactory::create(null, $args[CountryEnum::Name], $args[CountryEnum::Slug]));
             return $country;
         } catch (QueryException $qe) {
             Log::error(self::class . ": {$qe->getMessage()}");
