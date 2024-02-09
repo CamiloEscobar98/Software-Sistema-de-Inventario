@@ -68,8 +68,8 @@ class CountryService
             $this->countryRepository->delete($id);
             $response = true;
         } catch (QueryException $qe) {
-            $response = false;
             Log::error("App/Services/CountryService/Delete", print_r($qe));
+            $response = false;
         }
         return $response;
     }
