@@ -3,10 +3,8 @@
 namespace App\Services;
 
 use Illuminate\Database\QueryException;
-use Illuminate\Support\Facades\Log;
 
 use App\Enums\CountryEnum;
-use App\Enums\ResponseEnum;
 
 use App\Factories\CountryFactory;
 
@@ -30,27 +28,41 @@ class CountryService
     }
 
     /**
-     * Update a Country.
+     * Create a Country
      * 
      * @param array $args
-     *  
-     * @return \App\Models\Country
+     * 
+     * @return \App\Models\Country|null
      */
-    public function update(array $args): \App\Models\Country
+    public function create(array $args): \App\Models\Country|null
     {
         $item = null;
-
         try {
-            $this->countryRepository->update($args[CountryEnum::Id], CountryFactory::update(
-                $args[CountryEnum::Id],
-                $args[CountryEnum::Name] ?? null,
-                $args[CountryEnum::Slug] ?? null,
-            ));
-            $item = $this->countryRepository->find($args[CountryEnum::Id]);
+            $this->countryRepository->create(CountryFactory::create($args));
         } catch (QueryException $qe) {
-            Log::error("App/Services/CountryService/Update", print_r($qe));
+            LoggerService::INSERT_LOG_ERROR(self::class, $qe->getMessage());
         }
 
+        return $item;
+    }
+
+    /**
+     * Update a Country.
+     * 
+     * @param int $id
+     * @param array $args
+     *  
+     * @return \App\Models\Country|null
+     */
+    public function update(int $id, array $args): \App\Models\Country|null
+    {
+        $item = null;
+        try {
+            $this->countryRepository->update($id, CountryFactory::update($args));
+            $item = $this->countryRepository->find($id);
+        } catch (QueryException $qe) {
+            LoggerService::INSERT_LOG_ERROR(self::class, $qe->getMessage());
+        }
         return $item;
     }
 
@@ -59,17 +71,17 @@ class CountryService
      * 
      * @param int $id
      * 
-     * @return bool
+     * @return \App\Models\Country
      */
-    public function delete(int $id)
+    public function delete(int $id): \App\Models\Country|null
     {
         $response = null;
         try {
+            $response = $this->countryRepository->find($id);
             $this->countryRepository->delete($id);
-            $response = true;
         } catch (QueryException $qe) {
-            Log::error("App/Services/CountryService/Delete", print_r($qe));
-            $response = false;
+            $response = null;
+            LoggerService::INSERT_LOG_ERROR(self::class, $qe->getMessage());
         }
         return $response;
     }

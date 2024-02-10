@@ -10,7 +10,6 @@ use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 
 use Rebing\GraphQL\Support\Mutation;
-use Rebing\GraphQL\Support\SelectFields;
 use Rebing\GraphQL\Support\Facades\GraphQL;
 
 use App\Services\CountryService;
@@ -70,11 +69,9 @@ class CountryUpdateMutation extends Mutation
     {
         $countryTable = CountryEnum::Table;
         $countryId = CountryEnum::Id;
-        $countryName = CountryEnum::Name;
-        $countrySlug = CountryEnum::Slug;
 
         return [
-            CountryEnum::Id => ['required', 'integer', "exists:$countryTable,$countryId"],
+            CountryEnum::Id => ['required', 'integer', sprintf("exists:%s,%s", CountryEnum::Table, CountryEnum::Id)],
             CountryEnum::Name => ['nullable', "string", "max:100"],
             CountryEnum::Slug => ['nullable', "string", "max:50"]
         ];
@@ -84,12 +81,6 @@ class CountryUpdateMutation extends Mutation
     {
         App::setLocale($args[LanguageEnum::Locale] ?? App::getLocale());
 
-        $fields = $getSelectFields();
-        $select = $fields->getSelect();
-        $with = $fields->getRelations();
-
-        $response = $countryService->update($args);
-
-        return $response;
+        return $countryService->update($args[CountryEnum::Id], $args);
     }
 }

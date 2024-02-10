@@ -8,46 +8,45 @@ use App\Utils\LanguageUtil;
 
 class CountryFactory
 {
-    public static function create(...$args): array
+    /**
+     * @param array $args
+     * 
+     * @return array
+     */
+    public static function create($args): array
     {
-        [
-            $id,
-            $names,
-            $slug
-        ] = $args;
+        $temp = [];
 
-        $names = !is_array($names) ? json_decode($names, true) : $names;
+        $names = !is_array($args[CountryEnum::Name]) ? json_decode($args[CountryEnum::Name], true) : $args[CountryEnum::Name];
 
         $temp = [
             CountryEnum::Name => LanguageUtil::transformTranslatedData($names),
-            CountryEnum::Slug => $slug,
+            CountryEnum::Slug => $args[CountryEnum::Slug],
         ];
 
-        if (isset($id) && $id) {
-            $temp[CountryEnum::Id] = $id;
+        if (isset($args[CountryEnum::Id]) && $args[CountryEnum::Id]) {
+            $temp[CountryEnum::Id] = $args[CountryEnum::Id];
         }
-        
+
         return $temp;
     }
 
-    public static function update(...$args): array
+    /**
+     * @param array $args
+     * 
+     * @return array
+     */
+    public static function update(array $args): array
     {
-        [
-            $id,
-            $name,
-            $slug
-        ] = $args;
-
         $temp = [];
 
-        $temp[CountryEnum::Id] = $id;
-
-        if (isset($name) && $name) {
-            $temp[CountryEnum::Name] = $name;
+        if (isset($args[CountryEnum::Name]) && $args[CountryEnum::Name]) {
+            $names = !is_array($args[CountryEnum::Name]) ? json_decode($args[CountryEnum::Name], true) : $args[CountryEnum::Name];
+            $temp[CountryEnum::Name] = $names;
         }
 
-        if (isset($slug) && $slug) {
-            $temp[CountryEnum::Slug] = $slug;
+        if (isset($args[CountryEnum::Slug]) && $args[CountryEnum::Slug]) {
+            $temp[CountryEnum::Slug] = $args[CountryEnum::Slug];
         }
 
         return $temp;

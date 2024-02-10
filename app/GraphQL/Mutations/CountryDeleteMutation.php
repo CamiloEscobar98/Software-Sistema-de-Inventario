@@ -4,13 +4,21 @@ declare(strict_types=1);
 
 namespace App\GraphQL\Mutations;
 
-use App\Enums\CountryEnum;
-use App\Services\CountryService;
-use Closure;
-use GraphQL\Type\Definition\ResolveInfo;
-use GraphQL\Type\Definition\Type;
+use Illuminate\Support\Facades\App;
+
 use Rebing\GraphQL\Support\Mutation;
+use Rebing\GraphQL\Support\Facades\GraphQL;
 use Rebing\GraphQL\Support\SelectFields;
+
+use GraphQL\Type\Definition\Type;
+use GraphQL\Type\Definition\ResolveInfo;
+
+use App\Services\CountryService;
+
+use App\Enums\CountryEnum;
+use App\Enums\LanguageEnum;
+
+use Closure;
 
 class CountryDeleteMutation extends Mutation
 {
@@ -21,7 +29,7 @@ class CountryDeleteMutation extends Mutation
 
     public function type(): Type
     {
-        return Type::boolean();
+        return GraphQL::type(CountryEnum::TypeName);
     }
 
     /**
@@ -34,6 +42,9 @@ class CountryDeleteMutation extends Mutation
         return [
             CountryEnum::Id => [
                 'type' => Type::int(),
+            ],
+            LanguageEnum::Locale => [
+                'type' => Type::string()
             ]
         ];
     }
@@ -54,12 +65,8 @@ class CountryDeleteMutation extends Mutation
 
     public function resolve($root, array $args, $context, ResolveInfo $resolveInfo, Closure $getSelectFields, CountryService $countryService)
     {
-        $fields = $getSelectFields();
-        $select = $fields->getSelect();
-        $with = $fields->getRelations();
+        App::setLocale($args[LanguageEnum::Locale] ?? App::getLocale());
 
-        $response = $countryService->delete($args[CountryEnum::Id]);
-
-        return $response;
+        return $countryService->delete($args[CountryEnum::Id]);
     }
 }
