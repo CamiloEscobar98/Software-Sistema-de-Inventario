@@ -2,7 +2,6 @@
 
 namespace App\Enums;
 
-
 /**
  * Class CountryEnum
  * @package App\Enums
@@ -37,6 +36,9 @@ class CountryEnum
     /** GraphQL */
     const TypeName = 'Country';
     const TypeDescription = 'The GraphQL Type of the Country model';
+
+    const TypePaginatedName =  'CountryListResponse';
+    const TypePaginatedDescription = 'A structure for the Country response as data list';
 
     /** Factories */
     const SlugCount = 5;

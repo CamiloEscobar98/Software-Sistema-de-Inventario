@@ -29,7 +29,7 @@ class CountryListQuery extends Query
 
     public function type(): Type
     {
-        return Type::listOf(GraphQL::type(CountryEnum::TypeName));
+        return GraphQL::type(CountryEnum::TypePaginatedName);
     }
 
     public function args(): array
@@ -62,6 +62,6 @@ class CountryListQuery extends Query
         $select = $fields->getSelect();
         $with = $fields->getRelations();
 
-        return $countryRepository->search(select: $select, params: $args, with: $with);
+        $data = $countryRepository->search(select: $select, params: $args, with: $with);
     }
 }

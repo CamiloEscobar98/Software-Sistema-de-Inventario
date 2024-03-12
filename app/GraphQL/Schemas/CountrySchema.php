@@ -11,7 +11,7 @@ use App\GraphQL\Queries\CountryListQuery;
 use App\GraphQL\Types\CountryType;
 use App\GraphQL\Types\DepartmentType;
 use App\GraphQL\Types\CityType;
-
+use App\GraphQL\Types\Responses\CountryListResponse;
 use Rebing\GraphQL\Support\Contracts\ConfigConvertible;
 
 class CountrySchema implements ConfigConvertible
@@ -31,6 +31,8 @@ class CountrySchema implements ConfigConvertible
             ],
 
             'types' => [
+                CountryListResponse::class,
+
                 CountryType::class,
                 DepartmentType::class,
                 CityType::class,
