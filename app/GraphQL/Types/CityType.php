@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace App\GraphQL\Types;
 
-use App\Enums\CityEnum;
-use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Type as GraphQLType;
+
+use GraphQL\Type\Definition\Type;
+
+use App\Enums\CityEnum;
 
 class CityType extends GraphQLType
 {

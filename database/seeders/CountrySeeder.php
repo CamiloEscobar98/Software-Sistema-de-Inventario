@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Log;
 /**
  * Class CountrySeeder
  * @package Database\Seeders
- * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
+ * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  * 
  * @property CountryRepository $countryRepository
  * 
@@ -52,7 +52,9 @@ class CountrySeeder extends Seeder
                 if (config('app.seeders_has_timer')) sleep(1);
                 $item = $this->countryRepository->create(CountryFactory::create(
                     $data[CountryEnum::Id],
-                    [LanguageEnum::LANG_ES => $data[CountryEnum::Name]]
+                    [LanguageEnum::LANG_ES => $data[CountryEnum::Name]],
+                    $data[CountryEnum::Slug]
+
                 ));
                 $this->info(__("seeders.countries.item", ['index' => $index + 1, 'name' => $item->{CountryEnum::Name}]));
 

@@ -19,7 +19,7 @@ use App\Services\FileDataReader;
 /**
  * Class CitySeeder
  * @package Database\Seeders
- * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
+ * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  * 
  * @property CityRepository $cityRepository
  * @property DepartmentRepository $departmentRepository

@@ -16,7 +16,7 @@ use App\Enums\UserPersonalInformationEnum;
  * Class Gender
  * 
  * @package App\Models
- * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
+ * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  * 
  * @property string $table
  * @property array $fillable

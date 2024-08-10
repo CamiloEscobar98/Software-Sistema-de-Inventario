@@ -5,7 +5,7 @@ namespace App\Enums;
 /**
  * Class DepartmentEnum
  * @package App\Enums
- * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
+ * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  * 
  * @property const Table
  * @property const CountryId
@@ -31,6 +31,9 @@ class DepartmentEnum
     /** GraphQL */
     const TypeName = 'Department';
     const TypeDescription = 'The GraphQL Type of the Department model';
+
+    /** Factories */
+    const SlugCount = 5;
 
     const Fields = [self::Id, self::CountryId, self::Name, self::Slug, self::CreatedAt, self::UpdatedAt];
 }

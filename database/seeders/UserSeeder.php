@@ -26,7 +26,7 @@ use App\Enums\UserDocumentEnum;
 /**
  * Class UserSeeder
  * @package Database\Seeders
- * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
+ * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  * 
  * @property UserRepository $userRepository
  * @property UserDocumentRepository $userDocumentRepository
@@ -57,7 +57,7 @@ class UserSeeder extends Seeder
         GenderRepository $genderRepository,
         CityRepository $cityRepository,
         DocumentTypeRepository $documentTypeRepository,
-        CivilStatusRepository $civilStatusRepository,
+        CivilStatusRepository $civilStatusRepository
     ) {
         $this->output = new ConsoleOutput();
 

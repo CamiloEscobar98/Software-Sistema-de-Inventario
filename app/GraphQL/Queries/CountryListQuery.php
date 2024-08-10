@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\GraphQL\Queries;
 
-use App\Enums\CountryEnum;
-use App\Models\Country;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\App;
 
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
@@ -17,8 +15,10 @@ use Rebing\GraphQL\Support\Facades\GraphQL;
 
 use App\Repositories\CountryRepository;
 
+use App\Enums\CountryEnum;
+use App\Enums\LanguageEnum;
+use App\Services\LoggerService;
 use Closure;
-use Illuminate\Support\Facades\App;
 
 class CountryListQuery extends Query
 {
@@ -29,7 +29,7 @@ class CountryListQuery extends Query
 
     public function type(): Type
     {
-        return Type::listOf(GraphQL::type('Country'));
+        return GraphQL::type(CountryEnum::TypePaginatedName);
     }
 
     public function args(): array
@@ -41,7 +41,7 @@ class CountryListQuery extends Query
             CountryEnum::Slug => [
                 'type' => Type::string(),
             ],
-            'locale' => [
+            LanguageEnum::Locale => [
                 'type' => Type::string(),
             ]
         ];
@@ -53,16 +53,19 @@ class CountryListQuery extends Query
         $context,
         ResolveInfo $resolveInfo,
         Closure $getSelectFields,
-        CountryRepository $countryRepository,
+        CountryRepository $countryRepository
     ) {
-        $locale = $args['locale'] ?? App::getLocale();
-        App::setLocale($locale);
+        App::setLocale($args[LanguageEnum::Locale] ?? App::getLocale());
 
         /** @var SelectFields $fields */
         $fields = $getSelectFields();
         $select = $fields->getSelect();
         $with = $fields->getRelations();
 
-        return $countryRepository->search(select: $select, params: $args, with: $with);
+        LoggerService::INSERT_LOG_INFO(self::class, "Select", $select);
+
+        $data = $countryRepository->search($select, $args, $with);
+
+        LoggerService::INSERT_LOG_INFO(self::class, "Hi", $data);
     }
 }

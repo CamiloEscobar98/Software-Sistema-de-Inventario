@@ -2,11 +2,10 @@
 
 namespace App\Enums;
 
-
 /**
  * Class CountryEnum
  * @package App\Enums
- * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
+ * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  * 
  * @property const Table
  * @property const Name
@@ -37,6 +36,12 @@ class CountryEnum
     /** GraphQL */
     const TypeName = 'Country';
     const TypeDescription = 'The GraphQL Type of the Country model';
+
+    const TypePaginatedName =  'CountryListResponse';
+    const TypePaginatedDescription = 'A structure for the Country response as data list';
+
+    /** Factories */
+    const SlugCount = 5;
 
     const Fields = [self::Id, self::Name, self::Slug, self::CreatedAt, self::UpdatedAt];
 }

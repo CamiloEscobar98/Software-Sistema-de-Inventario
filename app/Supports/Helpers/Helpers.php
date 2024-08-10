@@ -1,7 +1,8 @@
 <?php
 
-use Carbon\Carbon;
 use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Log;
 
 if (!function_exists('isProductionEnv')) {
     /**

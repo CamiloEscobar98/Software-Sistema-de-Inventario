@@ -20,7 +20,7 @@ use App\Enums\CityEnum;
  * Class Country
  * 
  * @package App\Models
- * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
+ * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  * 
  * @property string $table
  * @property array $fillable
@@ -75,25 +75,13 @@ class Country extends Model
     }
 
     /**
-     * Set the Slug.
-     *
-     * @param  string  $value
-     * @return void
-     */
-    public function setSlugAttribute($value)
-    {
-        return $this->attributes[CountryEnum::Slug] = Str::slug($value, '-', App::getLocale());
-    }
-
-    /**
      * Get the Departments of the Country.
      * 
      * @return HasMany
      */
     public function departments()
     {
-        $array = getSelectColumnsByTable(DepartmentEnum::Fields, DepartmentEnum::Table);
-        return $this->hasMany(Department::class)->select($array);
+        return $this->hasMany(Department::class);
     }
 
     /**
@@ -126,9 +114,7 @@ class Country extends Model
     {
         $locale = App::getLocale();
         $column = sprintf("%s.%s", CountryEnum::Table, CountryEnum::Name);
-        // $column = CountryEnum::Name;
-        $value = "%$value%";
-        return $query->where("{$column}->{$locale}", 'like', $value);
+        return $query->where("{$column}->{$locale}", 'like', "%$value%");
     }
 
     /**
@@ -141,6 +127,7 @@ class Country extends Model
      */
     public function scopeBySlug($query, $value)
     {
+        $locale = App::getLocale();
         $column = sprintf("%s.%s", CountryEnum::Table, CountryEnum::Slug);
         return $query->where($column, 'like', "%$value%");
     }

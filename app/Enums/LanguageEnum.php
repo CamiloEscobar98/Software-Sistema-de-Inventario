@@ -5,7 +5,7 @@ namespace App\Enums;
 /**
  * Class LanguageEnum
  * @package App\Enums
- * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
+ * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  * 
  * @property const Table
  * @property const Id
@@ -32,6 +32,7 @@ class LanguageEnum
     /** Relations */
 
     /** GraphQL */
+    const Locale = 'locale';
 
     /** Seeders */
     const DefaultData = [

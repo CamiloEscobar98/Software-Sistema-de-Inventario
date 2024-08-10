@@ -18,7 +18,7 @@ use App\Enums\CityEnum;
 /**
  * Class TenantSeeder
  * @package Database\Seeders
- * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
+ * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  * 
  * @property TenantRepository $tenantRepository
  * @property TenantInformationRepository $tenantInformationRepository
