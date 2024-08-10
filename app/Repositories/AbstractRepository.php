@@ -38,11 +38,17 @@ abstract class AbstractRepository
         return $this->model->find($id);
     }
 
+    /**
+     * @return Model
+     */
     public function create(array $data)
     {
         return $this->model->create($data);
     }
 
+    /**
+     * @return Model
+     */
     public function update($id, array $data)
     {
         $model = $this->find($id);

@@ -16,7 +16,7 @@ use App\Factories\GenderFactory;
 /**
  * Class GenderSeeder
  * @package Database\Seeders
- * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
+ * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  * 
  * @property GenderRepository $genderRepository
  * 

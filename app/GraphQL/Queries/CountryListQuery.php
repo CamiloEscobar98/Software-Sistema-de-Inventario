@@ -17,7 +17,7 @@ use App\Repositories\CountryRepository;
 
 use App\Enums\CountryEnum;
 use App\Enums\LanguageEnum;
-
+use App\Services\LoggerService;
 use Closure;
 
 class CountryListQuery extends Query
@@ -53,7 +53,7 @@ class CountryListQuery extends Query
         $context,
         ResolveInfo $resolveInfo,
         Closure $getSelectFields,
-        CountryRepository $countryRepository,
+        CountryRepository $countryRepository
     ) {
         App::setLocale($args[LanguageEnum::Locale] ?? App::getLocale());
 
@@ -62,6 +62,10 @@ class CountryListQuery extends Query
         $select = $fields->getSelect();
         $with = $fields->getRelations();
 
-        $data = $countryRepository->search(select: $select, params: $args, with: $with);
+        LoggerService::INSERT_LOG_INFO(self::class, "Select", $select);
+
+        $data = $countryRepository->search($select, $args, $with);
+
+        LoggerService::INSERT_LOG_INFO(self::class, "Hi", $data);
     }
 }

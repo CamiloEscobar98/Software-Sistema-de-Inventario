@@ -10,7 +10,7 @@ use App\Models\User;
  * Class UserRepository
  * 
  * @package App\Repositories
- * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
+ * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  * 
  * @property User $model
  */

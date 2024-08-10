@@ -40,16 +40,18 @@ class ResponseEnum
     const TotalItems_Text = 'The total of the items in the pagination';
     const CountItems_Text = 'The count of the items in the pagination';
 
-    public static function paginationResponse(): array
+    public static function paginationStructureResponse(): array
     {
         return [
             self::Message => [
                 GraphQLTypeEnum::Type => Type::string(),
                 GraphQLTypeEnum::Description => self::Message_Text,
+                GraphQLTypeEnum::Resolve => fn($root, $args) => "Hi"
             ],
             self::HttpCode => [
                 GraphQLTypeEnum::Type => Type::int(),
                 GraphQLTypeEnum::Description => self::HttpCode_Text,
+                GraphQLTypeEnum::Resolve => fn($root, $args) => "Hi"
             ],
             self::HttpStatus => [
                 GraphQLTypeEnum::Type => Type::string(),
@@ -87,6 +89,15 @@ class ResponseEnum
                 GraphQLTypeEnum::Type => Type::int(),
                 GraphQLTypeEnum::Description => self::CountItems_Text,
             ],
+        ];
+    }
+
+    public static function buildPaginationResponse(...$tmp)
+    {
+        [$message, $httpCode, $httpStatus, $isPaginated] = $tmp;
+
+        return [
+            self::Message => $message,
         ];
     }
 }

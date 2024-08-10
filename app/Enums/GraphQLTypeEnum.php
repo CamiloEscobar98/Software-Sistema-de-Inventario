@@ -4,7 +4,8 @@ namespace App\Enums;
 
 class GraphQLTypeEnum
 {
-    const Name = 'name';
-    const Type = 'type';
-    const Description = 'description';
+    public const Name = 'name';
+    public const Type = 'type';
+    public const Description = 'description';
+    public const Resolve = 'resolve';
 }

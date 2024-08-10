@@ -22,7 +22,7 @@ class CountryListResponse extends GraphQLType
 
     public function fields(): array
     {
-        return array_merge(ResponseEnum::paginationResponse(), [
+        return array_merge(ResponseEnum::paginationStructureResponse(), [
             ResponseEnum::Data => [
                 GraphQLTypeEnum::Type => Type::listOf(GraphQL::type(CountryEnum::TypeName)),
                 GraphQLTypeEnum::Description => 'The data of the response, the list of Countries',

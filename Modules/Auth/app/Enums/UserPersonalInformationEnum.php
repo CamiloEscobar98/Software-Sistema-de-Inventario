@@ -6,7 +6,7 @@ namespace Modules\Auth\app\Enums;
 /**
  * Class UserPersonalInformationEnum
  * @package Modules\Auth\app\Enums
- * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
+ * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  * 
  * @property const Table
  * @property const Name

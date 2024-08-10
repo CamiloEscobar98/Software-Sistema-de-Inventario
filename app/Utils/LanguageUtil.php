@@ -7,7 +7,7 @@ use App\Enums\LanguageEnum;
 /**
  * Class LanguageUtil
  * @package App\Utils
- * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
+ * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  * 
  * @method array transformTranslatedData
  */

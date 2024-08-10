@@ -10,7 +10,7 @@ use Modules\Inventory\app\Models\ProductMovementType;
  * Class ProductMovementTypeRepository
  * 
  * @package Modules\Inventory\app\Repositories
- * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
+ * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  * 
  * @property ProductMovementType $model
  */

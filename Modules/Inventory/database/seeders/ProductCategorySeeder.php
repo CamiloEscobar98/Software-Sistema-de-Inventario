@@ -14,7 +14,7 @@ use Modules\Inventory\app\Enums\ProductCategoryEnum;
 /**
  * Class ProductCategorySeeder
  * @package Modules\Inventory\database\seeders
- * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
+ * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  * 
  * @property ProductCategoryRepository $productCategoryRepository
  * 

@@ -4,7 +4,7 @@ namespace App\Services;
 
 use Illuminate\Support\Facades\Log;
 
-class LoggerService
+abstract class LoggerService
 {
     /**
      * @param string $class

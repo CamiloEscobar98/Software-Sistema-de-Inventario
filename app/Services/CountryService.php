@@ -7,13 +7,13 @@ use Illuminate\Database\QueryException;
 use App\Enums\CountryEnum;
 
 use App\Factories\CountryFactory;
-
+use App\Models\Country;
 use App\Repositories\CountryRepository;
 
 /**
  * Class CountryService
  * @package App\Services
- * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
+ * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  * 
  * @property CountryRepository $countryRepository
  * 
@@ -32,13 +32,13 @@ class CountryService
      * 
      * @param array $args
      * 
-     * @return \App\Models\Country|null
+     * @return null|Country
      */
-    public function create(array $args): \App\Models\Country|null
+    public function create(array $args): ?Country
     {
         $item = null;
         try {
-            $this->countryRepository->create(CountryFactory::create($args));
+            $Item = $this->countryRepository->create(CountryFactory::create($args));
         } catch (QueryException $qe) {
             LoggerService::INSERT_LOG_ERROR(self::class, $qe->getMessage());
         }
@@ -52,9 +52,9 @@ class CountryService
      * @param int $id
      * @param array $args
      *  
-     * @return \App\Models\Country|null
+     * @return null|Country
      */
-    public function update(int $id, array $args): \App\Models\Country|null
+    public function update(int $id, array $args): ?Country
     {
         $item = null;
         try {
@@ -71,9 +71,9 @@ class CountryService
      * 
      * @param int $id
      * 
-     * @return \App\Models\Country
+     * @return null|Country
      */
-    public function delete(int $id): \App\Models\Country|null
+    public function delete(int $id): ?Country
     {
         $response = null;
         try {

@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Log;
 /**
  * Class CountrySeeder
  * @package Database\Seeders
- * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
+ * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  * 
  * @property CountryRepository $countryRepository
  * 

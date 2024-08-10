@@ -15,7 +15,7 @@ use App\Factories\CivilStatusFactory;
 /**
  * Class CivilStatusSeeder
  * @package Database\Seeders
- * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
+ * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  * 
  * @property CivilStatusRepository $civilStatusRepository
  * 

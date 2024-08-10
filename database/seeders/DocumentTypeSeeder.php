@@ -17,7 +17,7 @@ use App\Factories\DocumentTypeFactory;
 /**
  * Class DocumentTypeSeeder
  * @package Database\Seeders
- * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
+ * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  * 
  * @property DocumentTypeRepository $documentTypeRepository
  * 

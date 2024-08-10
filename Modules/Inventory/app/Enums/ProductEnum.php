@@ -5,7 +5,7 @@ namespace Modules\Inventory\app\Enums;
 /**
  * Class ProductEnum
  * @package Modules\Inventory\app\Enums
- * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
+ * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  * 
  * @property const Table
  * @property const ProductCategoryId

@@ -20,7 +20,7 @@ use App\Factories\DepartmentFactory;
 /**
  * Class DepartmentSeeder
  * @package Database\Seeders
- * @author Andrés Yáñez <andres.escobar.aplicasoftware@gmail.com>
+ * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  * 
  * @property DepartmentRepository $departmentRepository
  * @property CountryRepository $departmentRepository
