@@ -43,21 +43,18 @@ class Product extends Model
      * 
      * @var array
      */
-    public $translatable = [ProductEnum::Name, ProductEnum::Info];
+    public $translatable = ProductEnum::TranslatableFields;
 
     /**
      * The attributes that are mass assignable.
      */
-    protected $fillable = [
-        ProductEnum::ProductCategoryId,
-        ProductEnum::Name,
-        ProductEnum::Info,
-        ProductEnum::Price,
-        ProductEnum::SkuCode,
-        ProductEnum::CurrentStock,
-        ProductEnum::MinimumStock,
-    ];
+    protected $fillable = ProductEnum::FillableFields;
 
+    /**
+     * New Factory
+     * 
+     * @return ProductFactory
+     */
     protected static function newFactory(): ProductFactory
     {
         return ProductFactory::new();

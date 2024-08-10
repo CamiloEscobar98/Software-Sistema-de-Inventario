@@ -38,21 +38,22 @@ class ProductCategory extends Model
     protected $table = ProductCategoryEnum::Table;
 
     /**
+     * The attributes that are mass assignable.
+     */
+    protected $fillable = ProductCategoryEnum::FillableFields;
+
+    /**
      * The columns can be translated.
      * 
      * @var array
      */
-    public $translatable = [ProductCategoryEnum::Name, ProductCategoryEnum::Info];
+    public $translatable = ProductCategoryEnum::TranslatableFields;
 
     /**
-     * The attributes that are mass assignable.
+     * New Factory
+     * 
+     * @return ProductCategoryFactory
      */
-    protected $fillable = [
-        ProductCategoryEnum::ProductCategoryId,
-        ProductCategoryEnum::Name,
-        ProductCategoryEnum::Info,
-    ];
-
     protected static function newFactory(): ProductCategoryFactory
     {
         return ProductCategoryFactory::new();
