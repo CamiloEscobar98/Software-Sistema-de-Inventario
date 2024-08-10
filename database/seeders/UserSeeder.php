@@ -57,7 +57,7 @@ class UserSeeder extends Seeder
         GenderRepository $genderRepository,
         CityRepository $cityRepository,
         DocumentTypeRepository $documentTypeRepository,
-        CivilStatusRepository $civilStatusRepository,
+        CivilStatusRepository $civilStatusRepository
     ) {
         $this->output = new ConsoleOutput();
 

@@ -2,6 +2,7 @@
 
 namespace Modules\Inventory\database\seeders;
 
+use App\Enums\LanguageEnum;
 use Illuminate\Database\Seeder;
 use Illuminate\Console\Concerns\InteractsWithIO;
 
@@ -17,6 +18,12 @@ class ProductMovementTypeSeeder extends Seeder
 
     protected $productMovementTypeRepository;
 
+    private const ProductInputTextEN = 'Product Input';
+    private const ProductInputTextES = 'Entrada de Productos';
+
+    private const ProductOutputTextEN = 'Product Output';
+    private const ProductOutputTextES = 'Salida de Productos';
+
     public function __construct(ProductMovementTypeRepository $productMovementTypeRepository)
     {
         $this->output = new ConsoleOutput();
@@ -30,13 +37,14 @@ class ProductMovementTypeSeeder extends Seeder
     public function run(): void
     {
         if (!isProductionEnv()) {
-            $productMovementTypeTotal = (int) $this->command->ask(__("inventory::seeders.product_movement_types.ask"), 5);
-            $productMovementTypeTotal = !is_numeric($productMovementTypeTotal) || $productMovementTypeTotal <= 0 ? 5 : $productMovementTypeTotal;
-            $product_movement_types = $this->productMovementTypeRepository->makeModels($productMovementTypeTotal);
+            $product_movement_types = self::getDefaultData();
+            $productMovementTypeTotal = (int) count($product_movement_types);
 
             $this->command->getOutput()->progressStart($productMovementTypeTotal);
-            foreach ($product_movement_types as $index => $item) {
+            foreach ($product_movement_types as $index => $itemData) {
                 if (seedersHasTimer()) if (config('app.seeders_has_timer')) sleep(1);
+
+                $item = $this->productMovementTypeRepository->create($itemData);
 
                 $this->info(__("inventory::seeders.product_movement_types.item", ['index' => $index + 1, 'name' => $item->{ProductMovementTypeEnum::Name}]));
                 $item->save();
@@ -46,5 +54,26 @@ class ProductMovementTypeSeeder extends Seeder
             $this->command->getOutput()->progressFinish();
             $this->command->info(__("inventory::seeders.product_movement_types.finish", ['total' => $productMovementTypeTotal]));
         }
+    }
+
+    /**
+     * Get the Default Data
+     * 
+     * @return array
+     */
+    private static function getDefaultData(): array
+    {
+        return [
+            [
+                ProductMovementTypeEnum::Id => ProductMovementTypeEnum::ProductInputId,
+                ProductMovementTypeEnum::Name => [LanguageEnum::LANG_EN => self::ProductInputTextEN, LanguageEnum::LANG_ES => self::ProductInputTextES],
+                ProductMovementTypeEnum::IsEntry => true,
+            ],
+            [
+                ProductMovementTypeEnum::Id => ProductMovementTypeEnum::ProductOutputId,
+                ProductMovementTypeEnum::Name => [LanguageEnum::LANG_EN => self::ProductOutputTextEN, LanguageEnum::LANG_ES => self::ProductOutputTextES],
+                ProductMovementTypeEnum::IsEntry => true,
+            ]
+        ];
     }
 }

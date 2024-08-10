@@ -15,10 +15,24 @@ namespace Modules\Inventory\app\Enums;
  */
 class ProductMovementTypeEnum
 {
-    const Table = "inventory_product_movement_types";
-    const Id = "id";
-    const Name = "name";
-    const IsEntry = "is_entry";
-    const CreatedAt = "created_at";
-    const UpdatedAt = "updated_at";
+
+    /* 
+    * --------------------------------------------------
+    * Model
+    * --------------------------------------------------
+    */
+    public const Table = "inventory_product_movement_types";
+    public const Id = "id";
+    public const Name = "name";
+    public const IsEntry = "is_entry";
+    public const CreatedAt = "created_at";
+    public const UpdatedAt = "updated_at";
+
+    /* 
+    * --------------------------------------------------
+    * Default
+    * --------------------------------------------------
+    */
+    public const ProductInputId = 1;
+    public const ProductOutputId = 2;
 }
