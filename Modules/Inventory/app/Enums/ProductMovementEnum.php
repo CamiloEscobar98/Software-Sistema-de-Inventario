@@ -4,23 +4,28 @@ namespace Modules\Inventory\app\Enums;
 
 /**
  * Class ProductMovementEnum
- * @package Modules\Inventory\app\Enums
- * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  * 
- * @property const Table
- * @property const ProductMovementTypeId
- * @property const ProductId
- * @property const Quantity
- * @property const CreatedAt
- * @property const UpdatedAt
+ * @package Modules\Inventory\app\Enums
+ * 
+ * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  */
 class ProductMovementEnum
 {
-    const Table = "inventory_product_movements";
-    const Id = "id";
-    const ProductMovementTypeId = "product_movement_type_id";
-    const ProductId = "product_id";
-    const Quantity = "quantity";
-    const CreatedAt = "created_at";
-    const UpdatedAt = "updated_at";
+    /** Model */
+    public const Table = "inventory_product_movements";
+    public const Id = "id";
+    public const ProductMovementTypeId = "product_movement_type_id";
+    public const ProductId = "product_id";
+    public const Quantity = "quantity";
+    public const CreatedAt = "created_at";
+    public const UpdatedAt = "updated_at";
+
+    public const FillableFields = [
+        self::ProductMovementTypeId,
+        self::ProductMovementTypeId,
+        self::ProductMovementTypeId,
+        self::ProductMovementTypeId,
+        self::ProductMovementTypeId,
+    ];
+    /** ./Model */
 }

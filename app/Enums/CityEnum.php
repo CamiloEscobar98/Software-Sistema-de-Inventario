@@ -5,15 +5,8 @@ namespace App\Enums;
 /**
  * Class CityEnum
  * @package App\Enums
- * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  * 
- * @property const Table
- * @property const Id
- * @property const DepartmentId
- * @property const Name
- * @property const Slug
- * @property const CreatedAt
- * @property const UpdatedAt
+ * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  */
 class CityEnum
 {
@@ -32,7 +25,7 @@ class CityEnum
     /** GraphQL */
     const TypeName = 'City';
     const TypeDescription = 'The GraphQL Type of the City model';
-    
+
     /** Factories */
     const SlugCount = 5;
 

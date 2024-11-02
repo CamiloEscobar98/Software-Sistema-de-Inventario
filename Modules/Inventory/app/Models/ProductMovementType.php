@@ -25,17 +25,14 @@ class ProductMovementType extends Model
     /**
      * The attributes that are mass assignable.
      */
-    protected $fillable = [
-        ProductMovementTypeEnum::Name,
-        ProductMovementTypeEnum::IsEntry,
-    ];
+    protected $fillable = ProductMovementTypeEnum::FillableFields;
 
     /**
      * The columns can be translated.
      * 
      * @var array
      */
-    public $translatable = [ProductMovementTypeEnum::Name];
+    public $translatable = ProductMovementTypeEnum::TranslatableFields;
 
     protected static function newFactory(): ProductMovementTypeFactory
     {
