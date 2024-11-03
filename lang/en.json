@@ -138,6 +138,7 @@
     "Register": "Register",
     "Request Header Fields Too Large": "Request Header Fields Too Large",
     "Request Timeout": "Request Timeout",
+    "Update Password Text" : "Ensure your account is using a long, random password to stay secure.",
     "Reset Content": "Reset Content",
     "Reset Password": "Reset Password",
     "Reset Password Notification": "Reset Password Notification",
@@ -213,5 +214,8 @@
     "Password": "Password",
     "Confirm Password": "Confirm Password",
     "Name": "Name",
-    "Already registered?": "Already registered?"
+    "Already registered?": "Already registered?",
+    "Delete Account": "Delete Account",
+    "Delete Account Ask": "Are you sure you want to delete your account?",
+    "Delete Account Text": "Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain"
 }

@@ -138,6 +138,10 @@
     "Register": "Registrarse",
     "Request Header Fields Too Large": "Campos de encabezado de solicitud demasiado grandes",
     "Request Timeout": "Solicitud de tiempo de espera",
+    "Current Password" : "Contraseña Actual",
+    "New Password" : "Nueva Contraseña",
+    "Update Password" : "Actualizar Contraseña",
+    "Update Password Text" : "Asegúrate de que tu cuenta utiliza una contraseña larga y aleatoria para mantener la seguridad.",
     "Reset Content": "Restablecer contenido",
     "Reset Password": "Restablecer contraseña",
     "Reset Password Notification": "Notificación de restablecimiento de contraseña",
@@ -207,6 +211,8 @@
     "You are receiving this email because we received a password reset request for your account.": "Ha recibido este mensaje porque se solicitó un restablecimiento de contraseña para su cuenta.",
     "Dashboard": "Tablero",
     "Profile": "Perfil",
+    "Profile Information" : "Información Personal",
+    "Profile Information Text" : " Actualice la información de perfil y la dirección de correo electrónico de su cuenta.",
     "You are logged in!": "¡Has iniciado sesión!",
     "Remember me": "Recuérdame",
     "Forgot your password?": "¿Olvidaste tu contraseña?",
@@ -214,5 +220,9 @@
     "Password": "Contraseña",
     "Confirm Password": "Confirmar contraseña",
     "Name": "Nombre",
-    "Already registered?": "¿Ya estás registrado?"
+    "Username" : "Nombre de Usuario",
+    "Already registered?": "¿Ya estás registrado?",
+    "Delete Account": "Eliminar Cuenta",
+    "Delete Account Ask": "¿Seguro que quieres eliminar tu cuenta?",
+    "Delete Account Text": "Una vez eliminada su cuenta, todos sus recursos y datos se borrarán permanentemente. Antes de eliminar su cuenta, descargue los datos o la información que desee conservar."
 }
