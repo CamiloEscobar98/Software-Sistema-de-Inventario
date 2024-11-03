@@ -32,7 +32,8 @@ return [
         'finish' => "\nSe han registrado :total Estados Civiles"
     ],
     'tenants' => [
-        'ask' => "¿Cuántos Clientes desea crear? \nPor defecto se crearán cinco Clientes.",
+        'ask' => "¿Cuántos Clientes desea crear? \nPor defecto se crearán cinco Clientes (Si colocas 0 no se crearán tenants).",
+        'skip' => 'No se crearon tenants.',
         'item' => "\n-Creando el Cliente [:index]: :name.",
         'finish' => "\nSe han registrado :total Clientes"
     ],
