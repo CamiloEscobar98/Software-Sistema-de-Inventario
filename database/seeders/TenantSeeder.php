@@ -52,10 +52,16 @@ class TenantSeeder extends Seeder
     public function run(): void
     {
         if (!isProductionEnv()) {
+            // Pregunta cuántos tenants crear
             $tenantEnum = (int) $this->command->ask(__("seeders.tenants.ask"), 5);
-            $tenantEnum = !is_numeric($tenantEnum) || $tenantEnum <= 0 ? 5 : $tenantEnum;
-            $tenants = $this->tenantRepository->makeModels($tenantEnum);
 
+            // Si el valor es 0, finaliza sin crear ningún tenant
+            if ($tenantEnum <= 0) {
+                $this->command->info(__('seeders.tenants.skip'));
+                return;
+            }
+
+            $tenants = $this->tenantRepository->makeModels($tenantEnum);
             $cities = $this->cityRepository->all([CityEnum::Id]);
 
             $this->command->getOutput()->progressStart($tenantEnum);
@@ -65,7 +71,11 @@ class TenantSeeder extends Seeder
 
                 $item->save();
                 $tenantInfo->save();
-                if (seedersHasTimer()) if (config('app.seeders_has_timer')) sleep(1);
+
+                if (seedersHasTimer() && config('app.seeders_has_timer')) {
+                    sleep(1);
+                }
+
                 $this->info(__("seeders.tenants.item", ['index' => $index + 1, 'name' => $tenantInfo->{TenantInformationEnum::Name}]));
 
                 $this->command->getOutput()->progressAdvance();
