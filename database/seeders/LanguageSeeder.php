@@ -30,7 +30,7 @@ class LanguageSeeder extends Seeder
     public function run(): void
     {
         if (!isProductionEnv()) {
-            $languages = LanguageEnum::DefaultData;
+            $languages = LanguageEnum::DEFAULT_DATA;
             $total = count($languages);
 
             $this->command->getOutput()->progressStart($total);

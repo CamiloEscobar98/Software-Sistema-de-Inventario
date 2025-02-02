@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use App\Enums\LanguageEnum;
 
 use App\Enums\UserEnum;
+use App\Factories\UserAttrsFactory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -33,9 +34,7 @@ class UserFactory extends Factory
             UserEnum::PASSWORD => Hash::make('password'),
             UserEnum::REMEMBER_TOKEN => Str::random(10),
             UserEnum::EMAIL_VERIFIED_AT => now(),
-            UserEnum::ATTRS => [
-                'language' => LanguageEnum::LANG_ES
-            ]
+            UserEnum::ATTRS => UserAttrsFactory::buildAttrs(),
         ];
     }
 

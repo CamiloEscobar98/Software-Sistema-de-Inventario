@@ -31,7 +31,7 @@ class LanguageEnum
 
     /** Relations */
 
-    const LOCALE = 'locale';
+    const LANG = 'language';
 
     /** Seeders */
     const DEFAULT_DATA = [

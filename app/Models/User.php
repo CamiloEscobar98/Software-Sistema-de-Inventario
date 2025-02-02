@@ -11,6 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Database\Factories\UserFactory;
 
 use App\Enums\UserEnum;
+use App\Factories\UserAttrsFactory;
 
 class User extends Authenticatable
 {
@@ -65,5 +66,17 @@ class User extends Authenticatable
     protected static function newFactory(): UserFactory
     {
         return UserFactory::new();
+    }
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(fn($model) => $model->{UserEnum::ATTRS} = UserAttrsFactory::buildAttrs()); 
     }
 }
