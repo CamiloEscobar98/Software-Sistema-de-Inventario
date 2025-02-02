@@ -18,7 +18,7 @@ class ProductMovementTypeFactory extends Factory
     public function definition(): array
     {
         return [
-            ProductMovementTypeEnum::Name => [
+            ProductMovementTypeEnum::NAME => [
                 'es' => $this->faker->sentence(3),
                 'en' => $this->faker->sentence(3),
             ],

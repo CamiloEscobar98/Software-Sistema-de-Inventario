@@ -27,7 +27,7 @@ class DepartmentListQuery extends Query
 
     public function type(): Type
     {
-        return Type::listOf(GraphQL::type(DepartmentEnum::TypeName));
+        return Type::listOf(GraphQL::type(DepartmentEnum::GRAPHQL_TYPE_NAME));
     }
 
     public function args(): array
@@ -36,7 +36,7 @@ class DepartmentListQuery extends Query
             DepartmentEnum::CountryId => [
                 'type' => Type::int(),
             ],
-            DepartmentEnum::Name => [
+            DepartmentEnum::NAME => [
                 'type' => Type::string(),
             ],
             LanguageEnum::Locale => [

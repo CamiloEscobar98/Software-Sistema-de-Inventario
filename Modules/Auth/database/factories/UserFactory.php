@@ -21,10 +21,10 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            UserEnum::Email => $this->faker->unique(true)->safeEmail(),
-            UserEnum::Password => Hash::make('password'),
-            UserEnum::RememberToken => Str::random(10),
-            UserEnum::EmailVerifiedAt => now(),
+            UserEnum::EMAIL => $this->faker->unique(true)->safeEmail(),
+            UserEnum::PASSWORD => Hash::make('password'),
+            UserEnum::REMEMBER_TOKEN => Str::random(10),
+            UserEnum::EMAIL_VERIFIED_AT => now(),
         ];
     }
 }

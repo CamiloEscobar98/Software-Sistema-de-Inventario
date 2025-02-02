@@ -7,22 +7,22 @@ namespace App\Enums;
  * @package App\Enums
  * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  * 
- * @property const Table
- * @property const Id
- * @property const Name
- * @property const Slug
- * @property const CreatedAt
- * @property const UpdatedAt
+ * @property const TABLE
+ * @property const ID
+ * @property const NAME
+ * @property const SLUG
+ * @property const CREATED_AT
+ * @property const UPDATED_AT
  */
 class GenderEnum
 {
     /** Model */
-    const Table = 'setting_genders';
-    const Id = 'id';
-    const Name = 'name';
-    const Slug = 'slug';
-    const CreatedAt = 'created_at';
-    const UpdatedAt = 'updated_at';
+    const TABLE = 'setting_genders';
+    const ID = 'id';
+    const NAME = 'name';
+    const SLUG = 'slug';
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at';
     /** ./Model */
 
     /** Relations */
@@ -44,21 +44,21 @@ class GenderEnum
     /** DefaultData */
     const DefaultData = [
         [
-            self::Name => [
+            self::NAME => [
                 LanguageEnum::LANG_ES => 'Masculino',
                 LanguageEnum::LANG_EN => 'Male',
             ],
-            self::Slug => [
+            self::SLUG => [
                 LanguageEnum::LANG_ES => 'masculino',
                 LanguageEnum::LANG_EN => 'male'
             ],
         ],
         [
-            self::Name => [
+            self::NAME => [
                 LanguageEnum::LANG_ES => 'Femenino',
                 LanguageEnum::LANG_EN => 'Female',
             ],
-            self::Slug => [
+            self::SLUG => [
                 LanguageEnum::LANG_ES => 'femenino',
                 LanguageEnum::LANG_EN => 'female'
             ],

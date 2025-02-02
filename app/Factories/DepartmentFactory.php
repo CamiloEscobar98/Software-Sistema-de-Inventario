@@ -23,9 +23,9 @@ class DepartmentFactory
         Log::info($names);
 
         return [
-            DepartmentEnum::Id => $id,
+            DepartmentEnum::ID => $id,
             DepartmentEnum::CountryId => $countryId,
-            DepartmentEnum::Name => LanguageUtil::transformTranslatedData($names),
+            DepartmentEnum::NAME => LanguageUtil::transformTranslatedData($names),
         ];
     }
 }

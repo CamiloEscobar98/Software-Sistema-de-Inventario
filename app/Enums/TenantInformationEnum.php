@@ -7,26 +7,26 @@ namespace App\Enums;
  * @package App\Enums
  * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  * 
- * @property const Table
+ * @property const TABLE
  * @property const CityId
- * @property const Name
+ * @property const NAME
  * @property const Slogan
  * @property const Address
  * @property const Telephone
  * @property const Phone
- * @property const CreatedAt
- * @property const UpdatedAt
+ * @property const CREATED_AT
+ * @property const UPDATED_AT
  */
 class TenantInformationEnum
 {
-    const Table = "tenant_informations";
-    const Id = "id";
+    const TABLE = "tenant_informations";
+    const ID = "id";
     const CityId = "city_id";
-    const Name = "name";
+    const NAME = "name";
     const Slogan = "slogan";
     const Address = "address";
     const Telephone = "telephone";
     const Phone = "phone";
-    const CreatedAt = "created_at";
-    const UpdatedAt = "updated_at";
+    const CREATED_AT = "created_at";
+    const UPDATED_AT = "updated_at";
 }

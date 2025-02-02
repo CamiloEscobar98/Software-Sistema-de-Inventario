@@ -18,13 +18,13 @@ class UserPersonalInformation extends Model
      *
      * @var string
      */
-    protected $table = UserPersonalInformationEnum::Table;
+    protected $table = UserPersonalInformationEnum::TABLE;
 
     /**
      * The attributes that are mass assignable.
      */
     protected $fillable = [
-        UserPersonalInformationEnum::Name,
+        UserPersonalInformationEnum::NAME,
         UserPersonalInformationEnum::Email,
         UserPersonalInformationEnum::Birthdate,
         UserPersonalInformationEnum::GenderId,

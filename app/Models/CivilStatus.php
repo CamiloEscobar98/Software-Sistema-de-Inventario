@@ -33,20 +33,20 @@ class CivilStatus extends Model
      *
      * @var string
      */
-    protected $table = CivilStatusEnum::Table;
+    protected $table = CivilStatusEnum::TABLE;
 
     /**
      * The columns can be translated.
      * 
      * @var array
      */
-    public $translatable = [CivilStatusEnum::Name, CivilStatusEnum::Slug];
+    public $translatable = [CivilStatusEnum::NAME, CivilStatusEnum::SLUG];
 
     /**
      * The attributes that are mass assignable.
      */
     protected $fillable = [
-        CivilStatusEnum::Name,
-        CivilStatusEnum::Slug,
+        CivilStatusEnum::NAME,
+        CivilStatusEnum::SLUG,
     ];
 }

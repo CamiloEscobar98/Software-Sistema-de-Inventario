@@ -18,23 +18,23 @@ use App\Models\Country;
 class CountryType extends GraphQLType
 {
     protected $attributes = [
-        'name' => CountryEnum::TypeName,
-        'description' => CountryEnum::TypeDescription,
+        'name' => CountryEnum::GRAPHQL_TYPE_NAME,
+        'description' => CountryEnum::GRAPHQL_TYPE_DESCRIPTION,
         'model' => Country::class
     ];
 
     public function fields(): array
     {
         return [
-            CountryEnum::Id => [
+            CountryEnum::ID => [
                 'type' => Type::int(),
                 'description' => 'The ID of the Country',
             ],
-            CountryEnum::Name => [
+            CountryEnum::NAME => [
                 'type' => Type::string(),
                 'description' => 'The name of the Country',
             ],
-            CountryEnum::Slug => [
+            CountryEnum::SLUG => [
                 'type' => Type::string(),
                 'description' => 'The slug of the Country',
             ],
@@ -47,7 +47,7 @@ class CountryType extends GraphQLType
                 'description' => 'The Update Date of the Country',
             ],
             CountryEnum::Departments => [
-                'type' => Type::listOf(GraphQL::type(DepartmentEnum::TypeName)),
+                'type' => Type::listOf(GraphQL::type(DepartmentEnum::GRAPHQL_TYPE_NAME)),
             ],
         ];
     }

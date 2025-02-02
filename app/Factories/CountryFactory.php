@@ -17,15 +17,15 @@ class CountryFactory
     {
         $temp = [];
 
-        $names = !is_array($args[CountryEnum::Name]) ? json_decode($args[CountryEnum::Name], true) : $args[CountryEnum::Name];
+        $names = !is_array($args[CountryEnum::NAME]) ? json_decode($args[CountryEnum::NAME], true) : $args[CountryEnum::NAME];
 
         $temp = [
-            CountryEnum::Name => LanguageUtil::transformTranslatedData($names),
-            CountryEnum::Slug => $args[CountryEnum::Slug],
+            CountryEnum::NAME => LanguageUtil::transformTranslatedData($names),
+            CountryEnum::SLUG => $args[CountryEnum::SLUG],
         ];
 
-        if (isset($args[CountryEnum::Id]) && $args[CountryEnum::Id]) {
-            $temp[CountryEnum::Id] = $args[CountryEnum::Id];
+        if (isset($args[CountryEnum::ID]) && $args[CountryEnum::ID]) {
+            $temp[CountryEnum::ID] = $args[CountryEnum::ID];
         }
 
         return $temp;
@@ -40,13 +40,13 @@ class CountryFactory
     {
         $temp = [];
 
-        if (isset($args[CountryEnum::Name]) && $args[CountryEnum::Name]) {
-            $names = !is_array($args[CountryEnum::Name]) ? json_decode($args[CountryEnum::Name], true) : $args[CountryEnum::Name];
-            $temp[CountryEnum::Name] = $names;
+        if (isset($args[CountryEnum::NAME]) && $args[CountryEnum::NAME]) {
+            $names = !is_array($args[CountryEnum::NAME]) ? json_decode($args[CountryEnum::NAME], true) : $args[CountryEnum::NAME];
+            $temp[CountryEnum::NAME] = $names;
         }
 
-        if (isset($args[CountryEnum::Slug]) && $args[CountryEnum::Slug]) {
-            $temp[CountryEnum::Slug] = $args[CountryEnum::Slug];
+        if (isset($args[CountryEnum::SLUG]) && $args[CountryEnum::SLUG]) {
+            $temp[CountryEnum::SLUG] = $args[CountryEnum::SLUG];
         }
 
         return $temp;

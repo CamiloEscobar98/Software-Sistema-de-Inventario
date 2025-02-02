@@ -35,10 +35,10 @@ class CountryListQuery extends Query
     public function args(): array
     {
         return [
-            CountryEnum::Name => [
+            CountryEnum::NAME => [
                 'type' => Type::string(),
             ],
-            CountryEnum::Slug => [
+            CountryEnum::SLUG => [
                 'type' => Type::string(),
             ],
             LanguageEnum::Locale => [

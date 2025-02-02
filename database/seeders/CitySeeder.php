@@ -53,11 +53,11 @@ class CitySeeder extends Seeder
             foreach ($cities as $index => $data) {
                 if (config('app.seeders_has_timer')) if (config('app.seeders_has_timer')) sleep(1);
                 $item = $this->cityRepository->create(CityFactory::create(
-                    $data[CityEnum::Id],
-                    $data[CityEnum::DepartmentId],
-                    [LanguageEnum::LANG_ES => $data[CityEnum::Name]]
+                    $data[CityEnum::ID],
+                    $data[CityEnum::DEPARTMENT_ID],
+                    [LanguageEnum::LANG_ES => $data[CityEnum::NAME]]
                 ));
-                $this->info(__("seeders.cities.item", ['index' => $index + 1, 'name' => $item->{CityEnum::Name}]));
+                $this->info(__("seeders.cities.item", ['index' => $index + 1, 'name' => $item->{CityEnum::NAME}]));
 
                 $this->command->getOutput()->progressAdvance();
             }

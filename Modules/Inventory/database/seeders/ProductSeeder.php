@@ -50,13 +50,13 @@ class ProductSeeder extends Seeder
             $productTotal = !is_numeric($productTotal) || $productTotal <= 0 ? 5 : $productTotal;
             $products = $this->productRepository->makeModels($productTotal);
 
-            $productCategories = $this->productCategoryRepository->all([ProductCategoryEnum::Id]);
+            $productCategories = $this->productCategoryRepository->all([ProductCategoryEnum::ID]);
 
             $this->command->getOutput()->progressStart($productTotal);
             foreach ($products as $index => $item) {
                 if (seedersHasTimer()) if (config('app.seeders_has_timer')) sleep(1);
-                $item->{ProductEnum::ProductCategoryId} = $productCategories->random(1)->first()->{ProductCategoryEnum::Id};
-                $this->info(__("inventory::seeders.products.item", ['index' => $index + 1, 'name' => $item->{ProductCategoryEnum::Name}]));
+                $item->{ProductEnum::ProductCategoryId} = $productCategories->random(1)->first()->{ProductCategoryEnum::ID};
+                $this->info(__("inventory::seeders.products.item", ['index' => $index + 1, 'name' => $item->{ProductCategoryEnum::NAME}]));
                 $item->save();
 
                 $this->command->getOutput()->progressAdvance();

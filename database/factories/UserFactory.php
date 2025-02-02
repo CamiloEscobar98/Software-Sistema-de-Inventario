@@ -28,12 +28,12 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            UserEnum::Username => $this->faker->userName(),
-            UserEnum::Email => $this->faker->unique(true)->safeEmail(),
-            UserEnum::Password => Hash::make('password'),
-            UserEnum::RememberToken => Str::random(10),
-            UserEnum::EmailVerifiedAt => now(),
-            UserEnum::Attrs => [
+            UserEnum::USERNAME => $this->faker->userName(),
+            UserEnum::EMAIL => $this->faker->unique(true)->safeEmail(),
+            UserEnum::PASSWORD => Hash::make('password'),
+            UserEnum::REMEMBER_TOKEN => Str::random(10),
+            UserEnum::EMAIL_VERIFIED_AT => now(),
+            UserEnum::ATTRS => [
                 'language' => LanguageEnum::LANG_ES
             ]
         ];
@@ -45,7 +45,7 @@ class UserFactory extends Factory
     public function unverified(): static
     {
         return $this->state(fn (array $attributes) => [
-            UserEnum::EmailVerifiedAt => null,
+            UserEnum::EMAIL_VERIFIED_AT => null,
         ]);
     }
 }

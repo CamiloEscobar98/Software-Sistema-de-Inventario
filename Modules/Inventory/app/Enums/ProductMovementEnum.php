@@ -12,13 +12,13 @@ namespace Modules\Inventory\app\Enums;
 class ProductMovementEnum
 {
     /** Model */
-    public const Table = "inventory_product_movements";
-    public const Id = "id";
+    public const TABLE = "inventory_product_movements";
+    public const ID = "id";
     public const ProductMovementTypeId = "product_movement_type_id";
     public const ProductId = "product_id";
     public const Quantity = "quantity";
-    public const CreatedAt = "created_at";
-    public const UpdatedAt = "updated_at";
+    public const CREATED_AT = "created_at";
+    public const UPDATED_AT = "updated_at";
 
     public const FillableFields = [
         self::ProductMovementTypeId,

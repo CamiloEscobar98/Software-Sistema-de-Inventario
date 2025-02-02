@@ -20,7 +20,7 @@ class User extends Authenticatable
      *
      * @var string
      */
-    protected $table = UserEnum::Table;
+    protected $table = UserEnum::TABLE;
 
     /**
      * The attributes that are mass assignable.
@@ -28,10 +28,10 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        UserEnum::Email,
-        UserEnum::Password,
-        UserEnum::RememberToken,
-        UserEnum::EmailVerifiedAt,
+        UserEnum::EMAIL,
+        UserEnum::PASSWORD,
+        UserEnum::REMEMBER_TOKEN,
+        UserEnum::EMAIL_VERIFIED_AT,
     ];
 
     /**
@@ -40,8 +40,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        UserEnum::Password,
-        UserEnum::RememberToken,
+        UserEnum::PASSWORD,
+        UserEnum::REMEMBER_TOKEN,
     ];
 
     /**
@@ -50,7 +50,7 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        UserEnum::EmailVerifiedAt => 'datetime',
-        UserEnum::Password => 'hashed',
+        UserEnum::EMAIL_VERIFIED_AT => 'datetime',
+        UserEnum::PASSWORD => 'hashed',
     ];
 }

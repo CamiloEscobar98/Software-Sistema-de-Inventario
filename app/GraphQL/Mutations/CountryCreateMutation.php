@@ -27,7 +27,7 @@ class CountryCreateMutation extends Mutation
 
     public function type(): Type
     {
-        return GraphQL::type(CountryEnum::TypeName);
+        return GraphQL::type(CountryEnum::GRAPHQL_TYPE_NAME);
     }
 
     /**
@@ -38,11 +38,11 @@ class CountryCreateMutation extends Mutation
     public function args(): array
     {
         return [
-            CountryEnum::Name => [
+            CountryEnum::NAME => [
                 'type' => Type::string(),
                 'description' => 'Please, type the Country`s name, stringly format.'
             ],
-            CountryEnum::Slug => [
+            CountryEnum::SLUG => [
                 'type' => Type::string(),
                 'description' => 'Please, type the Country`s slug.'
             ],
@@ -56,8 +56,8 @@ class CountryCreateMutation extends Mutation
     protected function rules(array $args = []): array
     {
         return [
-            CountryEnum::Name => ['required', "string", "max:100"],
-            CountryEnum::Slug => ['required', "string", "max:50"]
+            CountryEnum::NAME => ['required', "string", "max:100"],
+            CountryEnum::SLUG => ['required', "string", "max:50"]
         ];
     }
 

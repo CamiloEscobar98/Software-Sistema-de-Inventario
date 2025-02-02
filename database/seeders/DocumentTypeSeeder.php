@@ -48,8 +48,8 @@ class DocumentTypeSeeder extends Seeder
             $this->command->getOutput()->progressStart($total);
             foreach ($document_types as $index => $data) {
                 if (config('app.seeders_has_timer')) sleep(1);
-                $item = $this->documentTypeRepository->create(DocumentTypeFactory::create($data[DocumentTypeEnum::Name], $data[DocumentTypeEnum::Slug]));
-                $this->info(__("seeders.document_types.item", ['index' => $index + 1, 'name' => $item->{DocumentTypeEnum::Name}]));
+                $item = $this->documentTypeRepository->create(DocumentTypeFactory::create($data[DocumentTypeEnum::NAME], $data[DocumentTypeEnum::SLUG]));
+                $this->info(__("seeders.document_types.item", ['index' => $index + 1, 'name' => $item->{DocumentTypeEnum::NAME}]));
 
                 $this->command->getOutput()->progressAdvance();
             }

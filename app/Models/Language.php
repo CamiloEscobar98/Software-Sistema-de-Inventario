@@ -33,14 +33,14 @@ class Language extends Model
      *
      * @var string
      */
-    protected $table = LanguageEnum::Table;
+    protected $table = LanguageEnum::TABLE;
 
     /**
      * The columns can be translated.
      * 
      * @var array
      */
-    public $translatable = [LanguageEnum::Name];
+    public $translatable = [LanguageEnum::NAME];
 
     /**
      * The attributes that are mass assignable.
@@ -48,7 +48,7 @@ class Language extends Model
      * @var array
      */
     protected $fillable = [
-        LanguageEnum::Name,
-        LanguageEnum::Slug,
+        LanguageEnum::NAME,
+        LanguageEnum::SLUG,
     ];
 }

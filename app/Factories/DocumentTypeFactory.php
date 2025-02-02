@@ -19,8 +19,8 @@ class DocumentTypeFactory
         $slugs = !is_array($slugs) ? json_decode($slugs, true) : $slugs;
 
         return [
-            DocumentTypeEnum::Name => LanguageUtil::transformTranslatedData($names),
-            DocumentTypeEnum::Slug => LanguageUtil::transformTranslatedData($slugs),
+            DocumentTypeEnum::NAME => LanguageUtil::transformTranslatedData($names),
+            DocumentTypeEnum::SLUG => LanguageUtil::transformTranslatedData($slugs),
         ];
     }
 }

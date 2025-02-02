@@ -23,7 +23,7 @@ class ProductFactory extends Factory
         $currentStock = rand($minimumStock, 200);
 
         return [
-            ProductEnum::Name => [
+            ProductEnum::NAME => [
                 'en' => $this->faker->sentence(3),
                 'es' => $this->faker->sentence(3),
             ],

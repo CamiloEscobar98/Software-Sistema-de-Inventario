@@ -18,6 +18,10 @@ class TenancyServiceProvider extends ServiceProvider
     // By default, no namespace is used to support the callable array syntax.
     public static string $controllerNamespace = '';
 
+    /**
+     * Returns the list of tenancy-related events and their corresponding listeners.
+     * @return array
+     */
     public function events()
     {
         return [
@@ -92,11 +96,10 @@ class TenancyServiceProvider extends ServiceProvider
         ];
     }
 
-    public function register()
-    {
-        //
-    }
-
+    /**
+     * Bootstraps events and maps routes.
+     * This method is required for the tenancy system initialization.
+     */
     public function boot()
     {
         $this->bootEvents();

@@ -14,13 +14,10 @@ use App\Enums\CityEnum;
 
 /**
  * Class City
- * 
  * @package App\Models
  * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
- * 
  * @property string $table
  * @property array $fillable
- * 
  * @property int $id
  * @property int $department_id
  * @property string $name
@@ -37,28 +34,26 @@ class City extends Model
      *
      * @var string
      */
-    protected $table = CityEnum::Table;
+    protected $table = CityEnum::TABLE;
 
     /**
      * The columns can be translated.
-     * 
      * @var array
      */
-    public $translatable = [CityEnum::Name];
+    public $translatable = [CityEnum::NAME];
 
     /**
      * The attributes that are mass assignable.
      */
     protected $fillable = [
-        CityEnum::Id,
-        CityEnum::DepartmentId,
-        CityEnum::Name,
-        CityEnum::Slug
+        CityEnum::ID,
+        CityEnum::DEPARTMENT_ID,
+        CityEnum::NAME,
+        CityEnum::SLUG
     ];
 
     /**
      * The "booting" method of the model.
-     *
      * @return void
      */
     protected static function boot()
@@ -66,20 +61,9 @@ class City extends Model
         parent::boot();
 
         static::creating(function ($model) {
-            if (isset($model->{CityEnum::Name}) && !isset($model->{CityEnum::Slug})) {
-                $model->{CityEnum::Slug} = Str::slug($model->{CityEnum::Name}, '-', App::getLocale());
+            if (isset($model->{CityEnum::NAME}) && !isset($model->{CityEnum::SLUG})) {
+                $model->{CityEnum::SLUG} = Str::SLUG($model->{CityEnum::NAME}, '-', App::getLocale());
             }
         });
-    }
-
-    /**
-     * Set the Slug.
-     *
-     * @param  string  $value
-     * @return void
-     */
-    public function setSlugAttribute($value)
-    {
-        return $this->attributes[CityEnum::Slug] = Str::slug($value, '-', App::getLocale());
     }
 }

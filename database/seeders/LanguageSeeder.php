@@ -36,8 +36,8 @@ class LanguageSeeder extends Seeder
             $this->command->getOutput()->progressStart($total);
             foreach ($languages as $index => $data) {
                 if (config('app.seeders_has_timer')) sleep(1);
-                $item = $this->languageRepository->create(LanguageFactory::create($data[LanguageEnum::Name], $data[LanguageEnum::Slug]));
-                $this->info(__("seeders.languages.item", ['index' => $index + 1, 'name' => $item->{LanguageEnum::Name}, 'slug' => $item->{LanguageEnum::Slug}]));
+                $item = $this->languageRepository->create(LanguageFactory::create($data[LanguageEnum::NAME], $data[LanguageEnum::SLUG]));
+                $this->info(__("seeders.languages.item", ['index' => $index + 1, 'name' => $item->{LanguageEnum::NAME}, 'slug' => $item->{LanguageEnum::SLUG}]));
 
                 $this->command->getOutput()->progressAdvance();
             }

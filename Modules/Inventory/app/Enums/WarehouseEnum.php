@@ -12,20 +12,20 @@ namespace Modules\Inventory\app\Enums;
 class WarehouseEnum
 {
     /** Model */
-    public const Table = "inventory_products";
-    public const Id = "id";
+    public const TABLE = "inventory_products";
+    public const ID = "id";
     public const CityId = "city_id";
-    public const Name = "name";
+    public const NAME = "name";
     public const Info = "info";
     public const Address = "address";
     public const Phone = "phone";
     public const Telephone = "telephone";
-    public const CreatedAt = "created_at";
-    public const UpdatedAt = "updated_at";
+    public const CREATED_AT = "created_at";
+    public const UPDATED_AT = "updated_at";
 
     public const FillableFields = [
         self::CityId,
-        self::Name,
+        self::NAME,
         self::Info,
         self::Address,
         self::Phone,
@@ -33,7 +33,7 @@ class WarehouseEnum
     ];
 
     public const TranslatableFields = [
-        self::Name,
+        self::NAME,
         self::Info
     ];
     /** ./Model */

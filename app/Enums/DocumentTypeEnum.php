@@ -7,21 +7,21 @@ namespace App\Enums;
  * @package App\Enums
  * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  * 
- * @property const Table
- * @property const Name
- * @property const Slug
- * @property const CreatedAt
- * @property const UpdatedAt
+ * @property const TABLE
+ * @property const NAME
+ * @property const SLUG
+ * @property const CREATED_AT
+ * @property const UPDATED_AT
  */
 class DocumentTypeEnum
 {
     /** Model */
-    const Table = "setting_document_types";
-    const Id = "id";
-    const Name = "name";
-    const Slug = "slug";
-    const CreatedAt = "created_at";
-    const UpdatedAt = "updated_at";
+    const TABLE = "setting_document_types";
+    const ID = "id";
+    const NAME = "name";
+    const SLUG = "slug";
+    const CREATED_AT = "created_at";
+    const UPDATED_AT = "updated_at";
     /** ./Model */
 
     /** Relations */
@@ -44,51 +44,51 @@ class DocumentTypeEnum
     /** Default Data */
     const DefaultData = [
         [
-            self::Name => [
+            self::NAME => [
                 LanguageEnum::LANG_ES => 'Cédula de Ciudadanía',
                 LanguageEnum::LANG_EN => 'Citizen Identity',
             ],
-            self::Slug => [
+            self::SLUG => [
                 LanguageEnum::LANG_ES => 'cedula-de-ciudadania',
                 LanguageEnum::LANG_EN => 'citizen-identity',
             ]
         ],
         [
-            self::Name => [
+            self::NAME => [
                 LanguageEnum::LANG_ES => 'Tarjeta de Identidad',
                 LanguageEnum::LANG_EN => 'Identity Card',
             ],
-            self::Slug => [
+            self::SLUG => [
                 LanguageEnum::LANG_ES => 'tarjeta-de-identidad',
                 LanguageEnum::LANG_EN => 'identity-card',
             ]
         ],
         [
-            self::Name => [
+            self::NAME => [
                 LanguageEnum::LANG_ES => 'Registro Civil de Nacimiento',
                 LanguageEnum::LANG_EN => 'Birth Certificate',
             ],
-            self::Slug => [
+            self::SLUG => [
                 LanguageEnum::LANG_ES => 'registro-civil',
                 LanguageEnum::LANG_EN => 'birth-certificate',
             ]
         ],
         [
-            self::Name => [
+            self::NAME => [
                 LanguageEnum::LANG_ES => 'Cédula de Extranjería',
                 LanguageEnum::LANG_EN => 'Foreigner Identity',
             ],
-            self::Slug => [
+            self::SLUG => [
                 LanguageEnum::LANG_ES => 'cedula-de-extranjeria',
                 LanguageEnum::LANG_EN => 'foreigner-identity',
             ]
         ],
         [
-            self::Name => [
+            self::NAME => [
                 LanguageEnum::LANG_ES => 'Pasaporte',
                 LanguageEnum::LANG_EN => 'Passport',
             ],
-            self::Slug => [
+            self::SLUG => [
                 LanguageEnum::LANG_ES => 'pasaporte',
                 LanguageEnum::LANG_EN => 'passport',
             ]

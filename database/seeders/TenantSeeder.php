@@ -62,12 +62,12 @@ class TenantSeeder extends Seeder
             }
 
             $tenants = $this->tenantRepository->makeModels($tenantEnum);
-            $cities = $this->cityRepository->all([CityEnum::Id]);
+            $cities = $this->cityRepository->all([CityEnum::ID]);
 
             $this->command->getOutput()->progressStart($tenantEnum);
             foreach ($tenants as $index => $item) {
-                $tenantInfo = $this->tenantInformationRepository->makeOneModel([TenantInformationEnum::Id => $item->{TenantEnum::Id}]);
-                $tenantInfo->{TenantInformationEnum::CityId} = $cities->random(1)->first()->{CityEnum::Id};
+                $tenantInfo = $this->tenantInformationRepository->makeOneModel([TenantInformationEnum::ID => $item->{TenantEnum::ID}]);
+                $tenantInfo->{TenantInformationEnum::CityId} = $cities->random(1)->first()->{CityEnum::ID};
 
                 $item->save();
                 $tenantInfo->save();
@@ -76,7 +76,7 @@ class TenantSeeder extends Seeder
                     sleep(1);
                 }
 
-                $this->info(__("seeders.tenants.item", ['index' => $index + 1, 'name' => $tenantInfo->{TenantInformationEnum::Name}]));
+                $this->info(__("seeders.tenants.item", ['index' => $index + 1, 'name' => $tenantInfo->{TenantInformationEnum::NAME}]));
 
                 $this->command->getOutput()->progressAdvance();
             }

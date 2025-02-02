@@ -8,86 +8,85 @@ use App\Enums\GraphQLTypeEnum;
 
 class ResponseEnum
 {
-    const Message = 'message';
-    const HttpCode = 'http_code';
-    const HttpStatus = 'http_status';
-    const Data = 'data';
+    const MESSAGE = 'message';
+    const HTTP_CODE = 'http_code';
+    const HTTP_STATUS = 'http_status';
+    const DATA = 'data';
 
-    const Message_Text = 'The message for the response';
-    const HttpCode_Text = 'The Http Code for the response';
-    const HttpStatus_Text = 'The Http Status for the response';
+    const MESSAGE_TEXT = 'The message for the response';
+    const HTTP_CODE_TEXT = 'The Http Code for the response';
+    const HTTP_STATUS_TEXT = 'The Http Status for the response';
 
     /**
      * Pagination
-     * 
      * The consts for the pagination of the response GraphQL Type Structure.
      */
-    const IsPaginated = 'is_paginated';
-    const CurrentPage = 'current_page';
-    const LastPage = 'last_page';
-    const PerPage = 'per_page';
-    const FromPage = 'from';
-    const ToPage = 'to';
-    const TotalItems = 'total';
-    const CountItems = 'count';
+    const IS_PAGINATED = 'is_paginated';
+    const CURRENT_PAGE = 'current_page';
+    const LAST_PAGE = 'last_page';
+    const PER_PAGE = 'per_page';
+    const FROM_PAGE = 'from';
+    const TO_PAGE = 'to';
+    const TOTAL_ITEMS = 'total';
+    const COUNT_ITEMS = 'count';
 
-    const IsPaginated_Text = 'If the response has data paginated';
-    const CurrentPage_Text = 'The current page in the pagination';
-    const LastPage_Text = 'The last page in the pagination';
-    const PerPage_Text = 'The number of the items per page';
-    const FromPage_Text = 'The page before in the pagination';
-    const ToPage_Text = 'The next page in the pagination';
-    const TotalItems_Text = 'The total of the items in the pagination';
-    const CountItems_Text = 'The count of the items in the pagination';
+    const IS_PAGINATED_TEXT = 'If the response has data paginated';
+    const CURRENT_PAGE_TEXT = 'The current page in the pagination';
+    const LAST_PAGE_TEXT = 'The last page in the pagination';
+    const PER_PAGE_TEXT = 'The number of the items per page';
+    const FROM_PAGE_TEXT = 'The page before in the pagination';
+    const TO_PAGE_TEXT = 'The next page in the pagination';
+    const TOTAL_ITEMS_TEXT = 'The total of the items in the pagination';
+    const COUNT_ITEMS_TEXT = 'The count of the items in the pagination';
 
     public static function paginationStructureResponse(): array
     {
         return [
-            self::Message => [
-                GraphQLTypeEnum::Type => Type::string(),
-                GraphQLTypeEnum::Description => self::Message_Text,
-                GraphQLTypeEnum::Resolve => fn($root, $args) => "Hi"
+            self::MESSAGE => [
+                GraphQLTypeEnum::TYPE => Type::string(),
+                GraphQLTypeEnum::DESCRIPTION => self::MESSAGE_TEXT,
+                GraphQLTypeEnum::RESOLVE => fn($root, $args) => "Hi"
             ],
-            self::HttpCode => [
-                GraphQLTypeEnum::Type => Type::int(),
-                GraphQLTypeEnum::Description => self::HttpCode_Text,
-                GraphQLTypeEnum::Resolve => fn($root, $args) => "Hi"
+            self::HTTP_CODE => [
+                GraphQLTypeEnum::TYPE => Type::int(),
+                GraphQLTypeEnum::DESCRIPTION => self::HTTP_CODE_TEXT,
+                GraphQLTypeEnum::RESOLVE => fn($root, $args) => "Hi"
             ],
-            self::HttpStatus => [
-                GraphQLTypeEnum::Type => Type::string(),
-                GraphQLTypeEnum::Description => self::HttpStatus_Text,
+            self::HTTP_STATUS => [
+                GraphQLTypeEnum::TYPE => Type::string(),
+                GraphQLTypeEnum::DESCRIPTION => self::HTTP_STATUS_TEXT,
             ],
-            self::IsPaginated => [
-                GraphQLTypeEnum::Type => Type::int(),
-                GraphQLTypeEnum::Description => self::IsPaginated_Text,
+            self::IS_PAGINATED => [
+                GraphQLTypeEnum::TYPE => Type::int(),
+                GraphQLTypeEnum::DESCRIPTION => self::IS_PAGINATED_TEXT,
             ],
-            self::CurrentPage => [
-                GraphQLTypeEnum::Type => Type::int(),
-                GraphQLTypeEnum::Description => self::CurrentPage_Text,
+            self::CURRENT_PAGE => [
+                GraphQLTypeEnum::TYPE => Type::int(),
+                GraphQLTypeEnum::DESCRIPTION => self::CURRENT_PAGE_TEXT,
             ],
-            self::LastPage => [
-                GraphQLTypeEnum::Type => Type::int(),
-                GraphQLTypeEnum::Description => self::LastPage_Text,
+            self::LAST_PAGE => [
+                GraphQLTypeEnum::TYPE => Type::int(),
+                GraphQLTypeEnum::DESCRIPTION => self::LAST_PAGE_TEXT,
             ],
-            self::PerPage => [
-                GraphQLTypeEnum::Type => Type::int(),
-                GraphQLTypeEnum::Description => self::PerPage_Text,
+            self::PER_PAGE => [
+                GraphQLTypeEnum::TYPE => Type::int(),
+                GraphQLTypeEnum::DESCRIPTION => self::PER_PAGE_TEXT,
             ],
-            self::FromPage => [
-                GraphQLTypeEnum::Type => Type::int(),
-                GraphQLTypeEnum::Description => self::FromPage_Text,
+            self::FROM_PAGE => [
+                GraphQLTypeEnum::TYPE => Type::int(),
+                GraphQLTypeEnum::DESCRIPTION => self::FROM_PAGE_TEXT,
             ],
-            self::ToPage => [
-                GraphQLTypeEnum::Type => Type::int(),
-                GraphQLTypeEnum::Description => self::ToPage_Text,
+            self::TO_PAGE => [
+                GraphQLTypeEnum::TYPE => Type::int(),
+                GraphQLTypeEnum::DESCRIPTION => self::TO_PAGE_TEXT,
             ],
-            self::TotalItems => [
-                GraphQLTypeEnum::Type => Type::int(),
-                GraphQLTypeEnum::Description => self::TotalItems_Text,
+            self::TOTAL_ITEMS => [
+                GraphQLTypeEnum::TYPE => Type::int(),
+                GraphQLTypeEnum::DESCRIPTION => self::TOTAL_ITEMS_TEXT,
             ],
-            self::CountItems => [
-                GraphQLTypeEnum::Type => Type::int(),
-                GraphQLTypeEnum::Description => self::CountItems_Text,
+            self::COUNT_ITEMS => [
+                GraphQLTypeEnum::TYPE => Type::int(),
+                GraphQLTypeEnum::DESCRIPTION => self::COUNT_ITEMS_TEXT,
             ],
         ];
     }
@@ -97,7 +96,10 @@ class ResponseEnum
         [$message, $httpCode, $httpStatus, $isPaginated] = $tmp;
 
         return [
-            self::Message => $message,
+            self::MESSAGE => $message,
+            self::HTTP_CODE => $httpCode,
+            self::HTTP_STATUS => $httpStatus,
+            self::IS_PAGINATED => $isPaginated,
         ];
     }
 }

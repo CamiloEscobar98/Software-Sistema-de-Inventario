@@ -29,7 +29,7 @@ class CountryDeleteMutation extends Mutation
 
     public function type(): Type
     {
-        return GraphQL::type(CountryEnum::TypeName);
+        return GraphQL::type(CountryEnum::GRAPHQL_TYPE_NAME);
     }
 
     /**
@@ -40,7 +40,7 @@ class CountryDeleteMutation extends Mutation
     public function args(): array
     {
         return [
-            CountryEnum::Id => [
+            CountryEnum::ID => [
                 'type' => Type::int(),
             ],
             LanguageEnum::Locale => [
@@ -59,7 +59,7 @@ class CountryDeleteMutation extends Mutation
     public function rules(array $args = []): array
     {
         return [
-            CountryEnum::Id => ['required', 'integer', sprintf("exists:%s,%s", CountryEnum::Table, CountryEnum::Id)]
+            CountryEnum::ID => ['required', 'integer', sprintf("exists:%s,%s", CountryEnum::TABLE, CountryEnum::ID)]
         ];
     }
 
@@ -67,6 +67,6 @@ class CountryDeleteMutation extends Mutation
     {
         App::setLocale($args[LanguageEnum::Locale] ?? App::getLocale());
 
-        return $countryService->delete($args[CountryEnum::Id]);
+        return $countryService->delete($args[CountryEnum::ID]);
     }
 }

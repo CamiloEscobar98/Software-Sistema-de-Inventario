@@ -12,5 +12,5 @@ class Domain extends BaseDomain
      *
      * @var string
      */
-    protected $table = DomainEnum::Table;
+    protected $table = DomainEnum::TABLE;
 }

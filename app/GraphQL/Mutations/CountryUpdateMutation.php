@@ -28,7 +28,7 @@ class CountryUpdateMutation extends Mutation
 
     public function type(): Type
     {
-        return GraphQL::type(CountryEnum::TypeName);
+        return GraphQL::type(CountryEnum::GRAPHQL_TYPE_NAME);
     }
 
     /**
@@ -39,15 +39,15 @@ class CountryUpdateMutation extends Mutation
     public function args(): array
     {
         return [
-            CountryEnum::Id => [
+            CountryEnum::ID => [
                 'type' => Type::int(),
                 'description' => "The id of the Country"
             ],
-            CountryEnum::Name => [
+            CountryEnum::NAME => [
                 'type' => Type::string(),
                 'description' => 'Please, type the Country`s name, stringly format.'
             ],
-            CountryEnum::Slug => [
+            CountryEnum::SLUG => [
                 'type' => Type::string(),
                 'description' => 'Please, type the Country`s slug.'
             ],
@@ -67,13 +67,13 @@ class CountryUpdateMutation extends Mutation
      */
     public function rules(array $args = []): array
     {
-        $countryTable = CountryEnum::Table;
-        $countryId = CountryEnum::Id;
+        $countryTable = CountryEnum::TABLE;
+        $countryId = CountryEnum::ID;
 
         return [
-            CountryEnum::Id => ['required', 'integer', sprintf("exists:%s,%s", CountryEnum::Table, CountryEnum::Id)],
-            CountryEnum::Name => ['nullable', "string", "max:100"],
-            CountryEnum::Slug => ['nullable', "string", "max:50"]
+            CountryEnum::ID => ['required', 'integer', sprintf("exists:%s,%s", CountryEnum::TABLE, CountryEnum::ID)],
+            CountryEnum::NAME => ['nullable', "string", "max:100"],
+            CountryEnum::SLUG => ['nullable', "string", "max:50"]
         ];
     }
 
@@ -81,6 +81,6 @@ class CountryUpdateMutation extends Mutation
     {
         App::setLocale($args[LanguageEnum::Locale] ?? App::getLocale());
 
-        return $countryService->update($args[CountryEnum::Id], $args);
+        return $countryService->update($args[CountryEnum::ID], $args);
     }
 }

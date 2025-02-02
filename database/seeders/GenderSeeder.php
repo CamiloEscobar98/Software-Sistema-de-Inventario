@@ -47,8 +47,8 @@ class GenderSeeder extends Seeder
             $this->command->getOutput()->progressStart($total);
             foreach ($genders as $index => $data) {
                 if (config('app.seeders_has_timer')) sleep(1);
-                $item = $this->genderRepository->create(GenderFactory::create($data[GenderEnum::Name], $data[GenderEnum::Slug]));
-                $this->info(__("seeders.genders.item", ['index' => $index + 1, 'name' => $item->{GenderEnum::Name}]));
+                $item = $this->genderRepository->create(GenderFactory::create($data[GenderEnum::NAME], $data[GenderEnum::SLUG]));
+                $this->info(__("seeders.genders.item", ['index' => $index + 1, 'name' => $item->{GenderEnum::NAME}]));
 
                 $this->command->getOutput()->progressAdvance();
             }

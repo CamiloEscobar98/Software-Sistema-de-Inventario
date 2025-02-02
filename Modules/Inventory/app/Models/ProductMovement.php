@@ -32,7 +32,7 @@ class ProductMovement extends Model
      *
      * @var string
      */
-    protected $table = ProductMovementEnum::Table;
+    protected $table = ProductMovementEnum::TABLE;
 
     /**
      * The attributes that are mass assignable.

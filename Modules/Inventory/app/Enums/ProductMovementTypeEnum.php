@@ -13,16 +13,16 @@ class ProductMovementTypeEnum
 {
 
     /** Model */
-    public const Table = "inventory_product_movement_types";
-    public const Id = "id";
-    public const Name = "name";
+    public const TABLE = "inventory_product_movement_types";
+    public const ID = "id";
+    public const NAME = "name";
     public const IsEntry = "is_entry";
-    public const CreatedAt = "created_at";
-    public const UpdatedAt = "updated_at";
+    public const CREATED_AT = "created_at";
+    public const UPDATED_AT = "updated_at";
 
-    public const FillableFields = [self::Name, self::IsEntry];
+    public const FillableFields = [self::NAME, self::IsEntry];
 
-    public const TranslatableFields = [self::Name];
+    public const TranslatableFields = [self::NAME];
     /** ./Model */
 
     /* 

@@ -16,16 +16,16 @@ use App\Enums\CountryEnum;
 class CountryListResponse extends GraphQLType
 {
     protected $attributes = [
-        GraphQLTypeEnum::Name => CountryEnum::TypePaginatedName,
-        GraphQLTypeEnum::Description => CountryEnum::TypePaginatedDescription,
+        GraphQLTypeEnum::NAME => CountryEnum::TypePaginatedName,
+        GraphQLTypeEnum::DESCRIPTION => CountryEnum::TypePaginatedDescription,
     ];
 
     public function fields(): array
     {
         return array_merge(ResponseEnum::paginationStructureResponse(), [
-            ResponseEnum::Data => [
-                GraphQLTypeEnum::Type => Type::listOf(GraphQL::type(CountryEnum::TypeName)),
-                GraphQLTypeEnum::Description => 'The data of the response, the list of Countries',
+            ResponseEnum::DATA => [
+                GraphQLTypeEnum::TYPE => Type::listOf(GraphQL::type(CountryEnum::GRAPHQL_TYPE_NAME)),
+                GraphQLTypeEnum::DESCRIPTION => 'The data of the response, the list of Countries',
             ],
         ]);
     }

@@ -27,7 +27,7 @@ class CountryRepository extends AbstractRepository
     {
         $this->model = $model;
 
-        $this->selectDefault = array_merge(getSelectColumnsByTable(CountryEnum::Fields, CountryEnum::Table), $this->selectDefault);
+        $this->selectDefault = array_merge(getSelectColumnsByTable(CountryEnum::FIELDS, CountryEnum::TABLE), $this->selectDefault);
     }
 
     /**
@@ -72,12 +72,12 @@ class CountryRepository extends AbstractRepository
 
         $query->select($select);
 
-        if (isset($params[CountryEnum::Name]) && $params[CountryEnum::Name]) {
-            $query->byName($params[CountryEnum::Name]);
+        if (isset($params[CountryEnum::NAME]) && $params[CountryEnum::NAME]) {
+            $query->byName($params[CountryEnum::NAME]);
         }
 
-        if (isset($params[CountryEnum::Slug]) && $params[CountryEnum::Slug]) {
-            $query->bySlug($params[CountryEnum::Slug]);
+        if (isset($params[CountryEnum::SLUG]) && $params[CountryEnum::SLUG]) {
+            $query->bySlug($params[CountryEnum::SLUG]);
         }
 
         if (isset($with) && $with) {

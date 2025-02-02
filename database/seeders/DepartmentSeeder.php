@@ -51,17 +51,17 @@ class DepartmentSeeder extends Seeder
             $departments = FileDataReader::readFileFromCsv('jsondata/states.csv');
             $total = count($departments);
 
-            $countries = $this->countryRepository->all([CountryEnum::Id]);
+            $countries = $this->countryRepository->all([CountryEnum::ID]);
 
             $this->command->getOutput()->progressStart($total);
             foreach ($departments as $index => $data) {
                 if (config('app.seeders_has_timer')) sleep(1);
                 $item = $this->departmentRepository->create(DepartmentFactory::create(
-                    $data[DepartmentEnum::Id],
+                    $data[DepartmentEnum::ID],
                     $data[DepartmentEnum::CountryId],
-                    [LanguageEnum::LANG_ES => $data[DepartmentEnum::Name]]
+                    [LanguageEnum::LANG_ES => $data[DepartmentEnum::NAME]]
                 ));
-                $this->info(__("seeders.departments.item", ['index' => $index + 1, 'name' => $item->{DepartmentEnum::Name}]));
+                $this->info(__("seeders.departments.item", ['index' => $index + 1, 'name' => $item->{DepartmentEnum::NAME}]));
 
                 $this->command->getOutput()->progressAdvance();
             }

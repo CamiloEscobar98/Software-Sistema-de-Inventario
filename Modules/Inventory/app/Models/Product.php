@@ -36,7 +36,7 @@ class Product extends Model
      *
      * @var string
      */
-    protected $table = ProductEnum::Table;
+    protected $table = ProductEnum::TABLE;
 
     /**
      * The columns can be translated.

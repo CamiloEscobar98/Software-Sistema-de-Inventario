@@ -51,12 +51,12 @@ class CountrySeeder extends Seeder
                 Log::info($data);
                 if (config('app.seeders_has_timer')) sleep(1);
                 $item = $this->countryRepository->create(CountryFactory::create(
-                    $data[CountryEnum::Id],
-                    [LanguageEnum::LANG_ES => $data[CountryEnum::Name]],
-                    $data[CountryEnum::Slug]
+                    $data[CountryEnum::ID],
+                    [LanguageEnum::LANG_ES => $data[CountryEnum::NAME]],
+                    $data[CountryEnum::SLUG]
 
                 ));
-                $this->info(__("seeders.countries.item", ['index' => $index + 1, 'name' => $item->{CountryEnum::Name}]));
+                $this->info(__("seeders.countries.item", ['index' => $index + 1, 'name' => $item->{CountryEnum::NAME}]));
 
                 $this->command->getOutput()->progressAdvance();
             }

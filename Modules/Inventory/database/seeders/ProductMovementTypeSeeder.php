@@ -46,7 +46,7 @@ class ProductMovementTypeSeeder extends Seeder
 
                 $item = $this->productMovementTypeRepository->create($itemData);
 
-                $this->info(__("inventory::seeders.product_movement_types.item", ['index' => $index + 1, 'name' => $item->{ProductMovementTypeEnum::Name}]));
+                $this->info(__("inventory::seeders.product_movement_types.item", ['index' => $index + 1, 'name' => $item->{ProductMovementTypeEnum::NAME}]));
                 $item->save();
 
                 $this->command->getOutput()->progressAdvance();
@@ -65,13 +65,13 @@ class ProductMovementTypeSeeder extends Seeder
     {
         return [
             [
-                ProductMovementTypeEnum::Id => ProductMovementTypeEnum::ProductInputId,
-                ProductMovementTypeEnum::Name => [LanguageEnum::LANG_EN => self::ProductInputTextEN, LanguageEnum::LANG_ES => self::ProductInputTextES],
+                ProductMovementTypeEnum::ID => ProductMovementTypeEnum::ProductInputId,
+                ProductMovementTypeEnum::NAME => [LanguageEnum::LANG_EN => self::ProductInputTextEN, LanguageEnum::LANG_ES => self::ProductInputTextES],
                 ProductMovementTypeEnum::IsEntry => true,
             ],
             [
-                ProductMovementTypeEnum::Id => ProductMovementTypeEnum::ProductOutputId,
-                ProductMovementTypeEnum::Name => [LanguageEnum::LANG_EN => self::ProductOutputTextEN, LanguageEnum::LANG_ES => self::ProductOutputTextES],
+                ProductMovementTypeEnum::ID => ProductMovementTypeEnum::ProductOutputId,
+                ProductMovementTypeEnum::NAME => [LanguageEnum::LANG_EN => self::ProductOutputTextEN, LanguageEnum::LANG_ES => self::ProductOutputTextES],
                 ProductMovementTypeEnum::IsEntry => true,
             ]
         ];

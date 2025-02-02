@@ -38,7 +38,7 @@ class TenantInformation extends Model
      *
      * @var string
      */
-    protected $table = TenantInformationEnum::Table;
+    protected $table = TenantInformationEnum::TABLE;
 
     /**
      * Indicates if the IDs are auto-incrementing.
@@ -58,7 +58,7 @@ class TenantInformation extends Model
      * The attributes that are mass assignable.
      */
     protected $fillable = [
-        TenantInformationEnum::Name,
+        TenantInformationEnum::NAME,
         TenantInformationEnum::CityId,
         TenantInformationEnum::Slogan,
         TenantInformationEnum::Address,

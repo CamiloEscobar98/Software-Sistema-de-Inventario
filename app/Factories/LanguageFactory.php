@@ -18,8 +18,8 @@ class LanguageFactory
         $names = !is_array($names) ? json_decode($names, true) : $names;
 
         return [
-            LanguageEnum::Name => LanguageUtil::transformTranslatedData($names),
-            LanguageEnum::Slug => $slug,
+            LanguageEnum::NAME => LanguageUtil::transformTranslatedData($names),
+            LanguageEnum::SLUG => $slug,
         ];
     }
 }

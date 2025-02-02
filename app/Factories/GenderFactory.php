@@ -19,8 +19,8 @@ class GenderFactory
         $slugs = !is_array($slugs) ? json_decode($slugs, true) : $slugs;
 
         return [
-            GenderEnum::Name => LanguageUtil::transformTranslatedData($names),
-            GenderEnum::Slug => LanguageUtil::transformTranslatedData($slugs),
+            GenderEnum::NAME => LanguageUtil::transformTranslatedData($names),
+            GenderEnum::SLUG => LanguageUtil::transformTranslatedData($slugs),
         ];
     }
 }

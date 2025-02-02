@@ -21,7 +21,7 @@ class UserPersonalInformationFactory extends Factory
     public function definition(): array
     {
         return [
-            UserPersonalInformationEnum::Name => $this->faker->name(),
+            UserPersonalInformationEnum::NAME => $this->faker->name(),
             UserPersonalInformationEnum::Email => $this->faker->freeEmail(),
             UserPersonalInformationEnum::Birthdate => $this->faker->dateTimeBetween('-50 years', '-32 years'),
         ];

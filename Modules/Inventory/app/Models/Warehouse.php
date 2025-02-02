@@ -20,7 +20,7 @@ class Warehouse extends Model
      *
      * @var string
      */
-    protected $table = WarehouseEnum::Table;
+    protected $table = WarehouseEnum::TABLE;
 
     /**
      * The attributes that are mass assignable.

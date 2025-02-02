@@ -18,7 +18,7 @@ class UserDocument extends Model
      *
      * @var string
      */
-    protected $table = UserDocumentEnum::Table;
+    protected $table = UserDocumentEnum::TABLE;
 
     /**
      * The attributes that are mass assignable.

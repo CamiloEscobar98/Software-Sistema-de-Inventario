@@ -40,22 +40,22 @@ class Country extends Model
      *
      * @var string
      */
-    protected $table = CountryEnum::Table;
+    protected $table = CountryEnum::TABLE;
 
     /**
      * The columns can be translated.
      * 
      * @var array
      */
-    public $translatable = [CountryEnum::Name];
+    public $translatable = [CountryEnum::NAME];
 
     /**
      * The attributes that are mass assignable.
      */
     protected $fillable = [
-        CountryEnum::Id,
-        CountryEnum::Name,
-        CountryEnum::Slug
+        CountryEnum::ID,
+        CountryEnum::NAME,
+        CountryEnum::SLUG
     ];
 
     /**
@@ -68,8 +68,8 @@ class Country extends Model
         parent::boot();
 
         static::creating(function ($model) {
-            if (isset($model->{CountryEnum::Name}) && !isset($model->{CountryEnum::Slug})) {
-                $model->{CountryEnum::Slug} = Str::slug($model->{CountryEnum::Name}, '-', App::getLocale());
+            if (isset($model->{CountryEnum::NAME}) && !isset($model->{CountryEnum::SLUG})) {
+                $model->{CountryEnum::SLUG} = Str::SLUG($model->{CountryEnum::NAME}, '-', App::getLocale());
             }
         });
     }
@@ -94,7 +94,7 @@ class Country extends Model
      */
     public function scopeById($query, $value)
     {
-        $column = sprintf("%s.%s", CountryEnum::Table, CountryEnum::Id);
+        $column = sprintf("%s.%s", CountryEnum::TABLE, CountryEnum::ID);
         if (is_array($value)) {
             return $query->whereIn($column, $value);
         } else {
@@ -113,7 +113,7 @@ class Country extends Model
     public function scopeByName($query, $value)
     {
         $locale = App::getLocale();
-        $column = sprintf("%s.%s", CountryEnum::Table, CountryEnum::Name);
+        $column = sprintf("%s.%s", CountryEnum::TABLE, CountryEnum::NAME);
         return $query->where("{$column}->{$locale}", 'like', "%$value%");
     }
 
@@ -128,7 +128,7 @@ class Country extends Model
     public function scopeBySlug($query, $value)
     {
         $locale = App::getLocale();
-        $column = sprintf("%s.%s", CountryEnum::Table, CountryEnum::Slug);
+        $column = sprintf("%s.%s", CountryEnum::TABLE, CountryEnum::SLUG);
         return $query->where($column, 'like', "%$value%");
     }
 }

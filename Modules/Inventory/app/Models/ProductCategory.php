@@ -35,7 +35,7 @@ class ProductCategory extends Model
      *
      * @var string
      */
-    protected $table = ProductCategoryEnum::Table;
+    protected $table = ProductCategoryEnum::TABLE;
 
     /**
      * The attributes that are mass assignable.

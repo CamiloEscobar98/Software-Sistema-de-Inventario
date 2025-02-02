@@ -96,7 +96,7 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
-            'table' => UserEnum::PasswordResetTokenTable,
+            'table' => UserEnum::PASSWORD_RESET_TOKEN,
             'expire' => 60,
             'throttle' => 60,
         ],

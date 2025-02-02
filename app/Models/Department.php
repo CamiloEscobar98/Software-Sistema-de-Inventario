@@ -15,13 +15,10 @@ use App\Enums\DepartmentEnum;
 
 /**
  * Class Department
- * 
  * @package App\Models
  * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
- * 
  * @property string $table
  * @property array $fillable
- * 
  * @property int $id
  * @property int $country_id
  * @property string $name
@@ -38,23 +35,23 @@ class Department extends Model
      *
      * @var string
      */
-    protected $table = DepartmentEnum::Table;
+    protected $table = DepartmentEnum::TABLE;
 
     /**
      * The columns can be translated.
      * 
      * @var array
      */
-    public $translatable = [DepartmentEnum::Name];
+    public $translatable = [DepartmentEnum::NAME];
 
     /**
      * The attributes that are mass assignable.
      */
     protected $fillable = [
-        DepartmentEnum::Id,
-        DepartmentEnum::CountryId,
-        DepartmentEnum::Name,
-        DepartmentEnum::Slug
+        DepartmentEnum::ID,
+        DepartmentEnum::COUNTRY_ID,
+        DepartmentEnum::NAME,
+        DepartmentEnum::SLUG
     ];
 
     /**
@@ -67,8 +64,8 @@ class Department extends Model
         parent::boot();
 
         static::creating(function ($model) {
-            if (isset($model->{DepartmentEnum::Name}) && !isset($model->{DepartmentEnum::Slug})) {
-                $model->{DepartmentEnum::Slug} = Str::slug($model->{DepartmentEnum::Name}, '-', App::getLocale());
+            if (isset($model->{DepartmentEnum::NAME}) && !isset($model->{DepartmentEnum::SLUG})) {
+                $model->{DepartmentEnum::SLUG} = Str::SLUG($model->{DepartmentEnum::NAME}, '-', App::getLocale());
             }
         });
     }
@@ -81,7 +78,7 @@ class Department extends Model
      */
     public function setSlugAttribute($value)
     {
-        return $this->attributes[DepartmentEnum::Slug] = Str::slug($value, '-', App::getLocale());
+        return $this->attributes[DepartmentEnum::SLUG] = Str::SLUG($value, '-', App::getLocale());
     }
 
     /**

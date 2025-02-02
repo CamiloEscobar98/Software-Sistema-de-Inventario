@@ -79,10 +79,10 @@ class UserSeeder extends Seeder
             $total = !is_numeric($total) || $total <= 0 ? 5 : $total;
             $users = $this->userRepository->makeModels($total);
 
-            $genders = $this->genderRepository->all([GenderEnum::Id]);
-            $civilStatuses = $this->civilStatusRepository->all([CivilStatusEnum::Id]);
-            $cities = $this->cityRepository->all([CityEnum::Id]);
-            $documentTypes = $this->documentTypeRepository->all([DocumentTypeEnum::Id, DocumentTypeEnum::Name]);
+            $genders = $this->genderRepository->all([GenderEnum::ID]);
+            $civilStatuses = $this->civilStatusRepository->all([CivilStatusEnum::ID]);
+            $cities = $this->cityRepository->all([CityEnum::ID]);
+            $documentTypes = $this->documentTypeRepository->all([DocumentTypeEnum::ID, DocumentTypeEnum::NAME]);
 
             $this->command->getOutput()->progressStart($total);
 
@@ -90,7 +90,7 @@ class UserSeeder extends Seeder
                 if (config('app.seeders_has_timer')) sleep(1);
                 $this->info(__("seeders.users.item", [
                     'index' => $index + 1,
-                    'username' => $user->{UserEnum::Username}
+                    'username' => $user->{UserEnum::USERNAME}
                 ]));
                 $user->save();
 
@@ -100,31 +100,31 @@ class UserSeeder extends Seeder
                 $randomCity = $cities->random(1)->first();
 
                 $userPersonalInfo = $this->userPersonalInformationRepository->makeOneModel([
-                    UserPersonalInformationEnum::GenderId => $randomGender->{GenderEnum::Id},
-                    UserPersonalInformationEnum::CivilStatusId => $randomCivilStatus->{CivilStatusEnum::Id},
-                    UserPersonalInformationEnum::CityId => $randomCity->{CityEnum::Id}
+                    UserPersonalInformationEnum::GenderId => $randomGender->{GenderEnum::ID},
+                    UserPersonalInformationEnum::CivilStatusId => $randomCivilStatus->{CivilStatusEnum::ID},
+                    UserPersonalInformationEnum::CityId => $randomCity->{CityEnum::ID}
                 ]);
                 $this->info(__("seeders.user_personal_information.item", [
-                    'username' => $user->{UserEnum::Username},
-                    'name' => $userPersonalInfo->{UserPersonalInformationEnum::Name},
+                    'username' => $user->{UserEnum::USERNAME},
+                    'name' => $userPersonalInfo->{UserPersonalInformationEnum::NAME},
                     'email' => $userPersonalInfo->{UserPersonalInformationEnum::Email}
                 ]));
                 $userPersonalInfo->save();
 
-                $user->{UserEnum::PersonalInformationId} = $userPersonalInfo->{UserPersonalInformationEnum::Id};
+                $user->{UserEnum::PersonalInformationId} = $userPersonalInfo->{UserPersonalInformationEnum::ID};
                 $user->save();
 
                 /** Creando Document for User */
                 $randomDocumentType = $documentTypes->random(1)->first();
                 $userDocument = $this->userDocumentRepository->makeOneModel([
-                    UserDocumentEnum::UserId => $user->{UserEnum::Id},
-                    UserDocumentEnum::DocumentTypeId => $randomDocumentType->{DocumentTypeEnum::Id},
+                    UserDocumentEnum::UserId => $user->{UserEnum::ID},
+                    UserDocumentEnum::DocumentTypeId => $randomDocumentType->{DocumentTypeEnum::ID},
                     UserDocumentEnum::IsCurrent => true
                 ]);
                 $this->info(__("seeders.user_document.item", [
-                    'name' => $userPersonalInfo->{UserPersonalInformationEnum::Name},
+                    'name' => $userPersonalInfo->{UserPersonalInformationEnum::NAME},
                     'document' => $userDocument->{UserDocumentEnum::Document},
-                    'document_type' => $randomDocumentType->{DocumentTypeEnum::Name}
+                    'document_type' => $randomDocumentType->{DocumentTypeEnum::NAME}
                 ]));
                 $userDocument->save();
 

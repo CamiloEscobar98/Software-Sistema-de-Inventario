@@ -7,20 +7,20 @@ namespace App\Enums;
  * @package App\Enums
  * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
  * 
- * @property const Table
+ * @property const TABLE
  * @property const Url
  * @property const Host
  * @property const Port
- * @property const CreatedAt
- * @property const UpdatedAt
+ * @property const CREATED_AT
+ * @property const UPDATED_AT
  */
 class TenantEnum
 {
-    const Table = "tenants";
-    const Id = "id";
+    const TABLE = "tenants";
+    const ID = "id";
     const Url = "Url";
     const Host = "Host";
     const Port = "Port";
-    const CreatedAt = "created_at";
-    const UpdatedAt = "updated_at";
+    const CREATED_AT = "created_at";
+    const UPDATED_AT = "updated_at";
 }

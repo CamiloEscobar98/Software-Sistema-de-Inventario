@@ -13,34 +13,34 @@ use App\Enums\CityEnum;
 class CityType extends GraphQLType
 {
     protected $attributes = [
-        'name' => CityEnum::TypeName,
-        'description' => CityEnum::TypeDescription,
+        'name' => CityEnum::GRAPHQL_TYPE_NAME,
+        'description' => CityEnum::GRAPHQL_TYPE_DESCRIPTION,
     ];
 
     public function fields(): array
     {
         return [
-            CityEnum::Id => [
+            CityEnum::ID => [
                 'type' => Type::int(),
                 'description' => 'The Id of the City',
             ],
-            CityEnum::DepartmentId => [
+            CityEnum::DEPARTMENT_ID => [
                 'type' => Type::int(),
                 'description' => 'The Id of the Department into the City',
             ],
-            CityEnum::Name => [
+            CityEnum::NAME => [
                 'type' => Type::string(),
                 'description' => 'The Name of the City',
             ],
-            CityEnum::Slug => [
+            CityEnum::SLUG => [
                 'type' => Type::string(),
                 'description' => 'The Slug of the City',
             ],
-            CityEnum::CreatedAt => [
+            CityEnum::CREATED_AT => [
                 'type' => Type::string(),
                 'description' => 'The Create Date of the City',
             ],
-            CityEnum::UpdatedAt => [
+            CityEnum::UPDATED_AT => [
                 'type' => Type::string(),
                 'description' => 'The Update Date of the City',
             ],

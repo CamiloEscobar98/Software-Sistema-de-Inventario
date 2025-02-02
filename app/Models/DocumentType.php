@@ -33,20 +33,20 @@ class DocumentType extends Model
      *
      * @var string
      */
-    protected $table = DocumentTypeEnum::Table;
+    protected $table = DocumentTypeEnum::TABLE;
 
     /**
      * The columns can be translated.
      * 
      * @var array
      */
-    public $translatable = [DocumentTypeEnum::Name, DocumentTypeEnum::Slug];
+    public $translatable = [DocumentTypeEnum::NAME, DocumentTypeEnum::SLUG];
 
     /**
      * The attributes that are mass assignable.
      */
     protected $fillable = [
-        DocumentTypeEnum::Name,
-        DocumentTypeEnum::Slug,
+        DocumentTypeEnum::NAME,
+        DocumentTypeEnum::SLUG,
     ];
 }

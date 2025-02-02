@@ -45,16 +45,16 @@ class ProductCategorySeeder extends Seeder
 
             $this->command->getOutput()->progressStart($productCategoriesTotal);
             foreach ($product_categories as $index => $item) {
-                $productCategories = $this->productCategoryRepository->all([ProductCategoryEnum::Id]);
+                $productCategories = $this->productCategoryRepository->all([ProductCategoryEnum::ID]);
                 $productCategoryRandom = null;
                 if (seedersHasTimer()) if (config('app.seeders_has_timer')) sleep(1);
 
                 if ($productCategories->count() > 0) {
                     $productCategoryRandom = $productCategories->random(1)->first();
-                    $item->{ProductCategoryEnum::ProductCategoryId} = $productCategoryRandom->{ProductCategoryEnum::Id};
+                    $item->{ProductCategoryEnum::ProductCategoryId} = $productCategoryRandom->{ProductCategoryEnum::ID};
                 }
 
-                $this->info(__("inventory::seeders.product_categories.item", ['index' => $index + 1, 'name' => $item->{ProductCategoryEnum::Name}]));
+                $this->info(__("inventory::seeders.product_categories.item", ['index' => $index + 1, 'name' => $item->{ProductCategoryEnum::NAME}]));
                 $item->save();
 
                 $this->command->getOutput()->progressAdvance();

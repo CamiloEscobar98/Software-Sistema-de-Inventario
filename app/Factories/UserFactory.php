@@ -19,11 +19,11 @@ class UserFactory
         ] = $args;
 
         return [
-            UserEnum::Username => $username,
-            UserEnum::Email => $email,
-            UserEnum::Password => Hash::make($password),
-            UserEnum::RememberToken => $rememberToken,
-            UserEnum::EmailVerifiedAt => $emailVerifiedAt,
+            UserEnum::USERNAME => $username,
+            UserEnum::EMAIL => $email,
+            UserEnum::PASSWORD => Hash::make($password),
+            UserEnum::REMEMBER_TOKEN => $rememberToken,
+            UserEnum::EMAIL_VERIFIED_AT => $emailVerifiedAt,
         ];
     }
 }

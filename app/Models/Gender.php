@@ -36,21 +36,21 @@ class Gender extends Model
      *
      * @var string
      */
-    protected $table = GenderEnum::Table;
+    protected $table = GenderEnum::TABLE;
 
     /**
      * The columns can be translated.
      * 
      * @var array
      */
-    public $translatable = [GenderEnum::Name, GenderEnum::Slug];
+    public $translatable = [GenderEnum::NAME, GenderEnum::SLUG];
 
     /**
      * The attributes that are mass assignable.
      */
     protected $fillable = [
-        GenderEnum::Name,
-        GenderEnum::Slug
+        GenderEnum::NAME,
+        GenderEnum::SLUG
     ];
 
     /**
@@ -65,8 +65,8 @@ class Gender extends Model
             UserPersonalInformation::class,
             UserPersonalInformationEnum::GenderId,
             UserEnum::PersonalInformationId,
-            GenderEnum::Id,
-            UserPersonalInformationEnum::Id,
+            GenderEnum::ID,
+            UserPersonalInformationEnum::ID,
         );
     }
 }

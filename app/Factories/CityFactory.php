@@ -23,9 +23,9 @@ class CityFactory
         Log::info($names);
 
         return [
-            CityEnum::Id => $id,
-            CityEnum::DepartmentId => $departmentId,
-            CityEnum::Name => LanguageUtil::transformTranslatedData($names),
+            CityEnum::ID => $id,
+            CityEnum::DEPARTMENT_ID => $departmentId,
+            CityEnum::NAME => LanguageUtil::transformTranslatedData($names),
         ];
     }
 }

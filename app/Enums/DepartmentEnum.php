@@ -6,34 +6,39 @@ namespace App\Enums;
  * Class DepartmentEnum
  * @package App\Enums
  * @author Andrés Yáñez <camilo_escobar2398@outlook.com>
- * 
- * @property const Table
- * @property const CountryId
- * @property const Name
- * @property const Slug
- * @property const CreatedAt
- * @property const UpdatedAt
+ * @property const TABLE
+ * @property const ID
+ * @property const COUNTRY_ID
+ * @property const NAME
+ * @property const SLUG
+ * @property const CREATED_AT
+ * @property const UPDATED_AT
+ * @property const CITIES
+ * @property const GRAPHQL_TYPE_NAME
+ * @property const GRAPHQL_TYPE_DESCRIPTION
+ * @property const SLUG_COUNT
+ * @property const FIELDS
  */
 class DepartmentEnum
 {
     /** Model */
-    const Table = "setting_departments";
-    const Id = "id";
-    const CountryId = "country_id";
-    const Name = "name";
-    const Slug = "slug";
-    const CreatedAt = "created_at";
-    const UpdatedAt = "updated_at";
+    const TABLE = "setting_departments";
+    const ID = "id";
+    const COUNTRY_ID = "country_id";
+    const NAME = "name";
+    const SLUG = "slug";
+    const CREATED_AT = "created_at";
+    const UPDATED_AT = "updated_at";
 
     /** Relations */
-    const Cities = 'cities';
+    const CITIES = 'cities';
 
     /** GraphQL */
-    const TypeName = 'Department';
-    const TypeDescription = 'The GraphQL Type of the Department model';
+    const GRAPHQL_TYPE_NAME = 'Department';
+    const GRAPHQL_TYPE_DESCRIPTION = 'The GraphQL Type of the Department model';
 
     /** Factories */
-    const SlugCount = 5;
+    const SLUG_COUNT = 5;
 
-    const Fields = [self::Id, self::CountryId, self::Name, self::Slug, self::CreatedAt, self::UpdatedAt];
+    const FIELDS = [self::ID, self::COUNTRY_ID, self::NAME, self::SLUG, self::CREATED_AT, self::UPDATED_AT];
 }

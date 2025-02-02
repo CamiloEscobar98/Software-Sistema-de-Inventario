@@ -27,7 +27,7 @@ class CountryFindQuery extends Query
 
     public function type(): Type
     {
-        return GraphQL::type(CountryEnum::TypeName);
+        return GraphQL::type(CountryEnum::GRAPHQL_TYPE_NAME);
     }
 
     /**
@@ -38,7 +38,7 @@ class CountryFindQuery extends Query
     public function args(): array
     {
         return [
-            CountryEnum::Id => [
+            CountryEnum::ID => [
                 'type' => Type::int(),
             ],
             LanguageEnum::Locale => [
@@ -57,8 +57,8 @@ class CountryFindQuery extends Query
     public function rules(array $args = []): array
     {
         return [
-            CountryEnum::Id => ['required', 'integer', sprintf("exists:%s,%s", CountryEnum::Table, CountryEnum::Id)],
-            LanguageEnum::Locale => ['nullable', 'string', sprintf("exists:%s,%s", LanguageEnum::Table, LanguageEnum::Slug)]
+            CountryEnum::ID => ['required', 'integer', sprintf("exists:%s,%s", CountryEnum::TABLE, CountryEnum::ID)],
+            LanguageEnum::Locale => ['nullable', 'string', sprintf("exists:%s,%s", LanguageEnum::TABLE, LanguageEnum::SLUG)]
         ];
     }
 
@@ -71,7 +71,7 @@ class CountryFindQuery extends Query
         $select = $fields->getSelect();
         $with = $fields->getRelations();
 
-        $response = $countryRepository->find($args[CountryEnum::Id]);
+        $response = $countryRepository->find($args[CountryEnum::ID]);
 
         return $response;
     }
