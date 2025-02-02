@@ -31,11 +31,10 @@ class LanguageEnum
 
     /** Relations */
 
-    /** GraphQL */
-    const Locale = 'locale';
+    const LOCALE = 'locale';
 
     /** Seeders */
-    const DefaultData = [
+    const DEFAULT_DATA = [
         [
             self::NAME => [
                 self::LANG_ES => 'Español',
