@@ -22,8 +22,8 @@ class UserPersonalInformationFactory extends Factory
     {
         return [
             UserPersonalInformationEnum::NAME => $this->faker->name(),
-            UserPersonalInformationEnum::Email => $this->faker->freeEmail(),
-            UserPersonalInformationEnum::Birthdate => $this->faker->dateTimeBetween('-50 years', '-32 years'),
+            UserPersonalInformationEnum::EMAIL => $this->faker->freeEmail(),
+            UserPersonalInformationEnum::BIRTHDATE => $this->faker->dateTimeBetween('-50 years', '-32 years'),
         ];
     }
 }

@@ -2,9 +2,11 @@
 
 namespace App\Repositories;
 
+use App\Enums\CivilStatusEnum;
 use App\Repositories\AbstractRepository;
 
 use App\Models\CivilStatus;
+use Illuminate\Support\Collection;
 
 /**
  * Class CivilStatusRepository
@@ -19,5 +21,14 @@ class CivilStatusRepository extends AbstractRepository
     public function __construct(CivilStatus $model)
     {
         $this->model = $model;
+    }
+
+    /**
+     * Get simple data
+     * @return Collection
+     */
+    public function getSimpleData(): Collection
+    {
+        return $this->model->all()->pluck(CivilStatusEnum::NAME, CivilStatusEnum::ID);
     }
 }

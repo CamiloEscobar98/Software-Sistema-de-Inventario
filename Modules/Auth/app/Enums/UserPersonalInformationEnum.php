@@ -11,7 +11,7 @@ namespace Modules\Auth\app\Enums;
  * @property const TABLE
  * @property const NAME
  * @property const Email
- * @property const Birthdate
+ * @property const BIRTHDATE
  * @property const GenderId
  * @property const CivilStatusId
  * @property const CityId
@@ -24,7 +24,7 @@ class UserPersonalInformationEnum
     const ID = 'id';
     const NAME = 'name';
     const Email = 'email';
-    const Birthdate = 'birthdate';
+    const BIRTHDATE = 'birthdate';
     const GenderId = 'gender_id';
     const CivilStatusId = 'gender_id';
     const CityId = 'city_id';

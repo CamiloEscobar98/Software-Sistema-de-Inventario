@@ -63,7 +63,7 @@ class Gender extends Model
         return $this->hasManyThrough(
             User::class,
             UserPersonalInformation::class,
-            UserPersonalInformationEnum::GenderId,
+            UserPersonalInformationEnum::GENDER_ID,
             UserEnum::PersonalInformationId,
             GenderEnum::ID,
             UserPersonalInformationEnum::ID,

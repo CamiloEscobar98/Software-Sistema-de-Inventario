@@ -155,6 +155,7 @@ return [
         'area'                     => 'área',
         'available'                => 'disponible',
         'birthday'                 => 'cumpleaños',
+        'birthdate'                => 'fecha de nacimiento',
         'body'                     => 'contenido',
         'city'                     => 'ciudad',
         'content'                  => 'contenido',

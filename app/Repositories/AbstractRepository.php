@@ -39,6 +39,7 @@ abstract class AbstractRepository
     }
 
     /**
+     * @param array $data
      * @return Model
      */
     public function create(array $data)

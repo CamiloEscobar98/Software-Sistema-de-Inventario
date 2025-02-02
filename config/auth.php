@@ -1,7 +1,7 @@
 <?php
 
-use Modules\Auth\app\Models\User;
-use Modules\Auth\app\Enums\UserEnum;
+use App\Models\User;
+use App\Enums\UserEnum;
 
 return [
 

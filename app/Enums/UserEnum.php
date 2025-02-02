@@ -33,6 +33,7 @@ class UserEnum
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
-
     const PASSWORD_RESET_TOKEN = 'auth_password_reset_tokens';
+
+    const RELATION_PERSONAL_INFORMATION = 'personal_information';
 }

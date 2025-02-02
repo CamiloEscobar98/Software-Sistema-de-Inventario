@@ -100,14 +100,14 @@ class UserSeeder extends Seeder
                 $randomCity = $cities->random(1)->first();
 
                 $userPersonalInfo = $this->userPersonalInformationRepository->makeOneModel([
-                    UserPersonalInformationEnum::GenderId => $randomGender->{GenderEnum::ID},
-                    UserPersonalInformationEnum::CivilStatusId => $randomCivilStatus->{CivilStatusEnum::ID},
-                    UserPersonalInformationEnum::CityId => $randomCity->{CityEnum::ID}
+                    UserPersonalInformationEnum::GENDER_ID => $randomGender->{GenderEnum::ID},
+                    UserPersonalInformationEnum::CIVIL_STATUS_ID => $randomCivilStatus->{CivilStatusEnum::ID},
+                    UserPersonalInformationEnum::CITY_ID => $randomCity->{CityEnum::ID}
                 ]);
                 $this->info(__("seeders.user_personal_information.item", [
                     'username' => $user->{UserEnum::USERNAME},
                     'name' => $userPersonalInfo->{UserPersonalInformationEnum::NAME},
-                    'email' => $userPersonalInfo->{UserPersonalInformationEnum::Email}
+                    'email' => $userPersonalInfo->{UserPersonalInformationEnum::EMAIL}
                 ]));
                 $userPersonalInfo->save();
 

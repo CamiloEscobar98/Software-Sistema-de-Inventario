@@ -11,7 +11,9 @@ use Laravel\Sanctum\HasApiTokens;
 use Database\Factories\UserFactory;
 
 use App\Enums\UserEnum;
+use App\Enums\UserPersonalInformationEnum;
 use App\Factories\UserAttrsFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class User extends Authenticatable
 {
@@ -60,6 +62,13 @@ class User extends Authenticatable
     ];
 
     /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    protected $with = [UserEnum::RELATION_PERSONAL_INFORMATION];
+
+    /**
      * Model Factory
      * @return UserFactory
      */
@@ -77,6 +86,15 @@ class User extends Authenticatable
     {
         parent::boot();
 
-        static::creating(fn($model) => $model->{UserEnum::ATTRS} = UserAttrsFactory::buildAttrs()); 
+        static::creating(fn($model) => $model->{UserEnum::ATTRS} = UserAttrsFactory::buildAttrs());
+    }
+
+    /**
+     * The personal information
+     * @return BelongsTo
+     */
+    public function personal_information(): BelongsTo
+    {
+        return $this->belongsTo(UserPersonalInformation::class, UserEnum::PERSONAL_INFORMATION_ID, UserPersonalInformationEnum::ID);
     }
 }

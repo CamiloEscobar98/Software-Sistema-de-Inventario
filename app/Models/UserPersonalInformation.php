@@ -25,11 +25,11 @@ class UserPersonalInformation extends Model
      */
     protected $fillable = [
         UserPersonalInformationEnum::NAME,
-        UserPersonalInformationEnum::Email,
-        UserPersonalInformationEnum::Birthdate,
-        UserPersonalInformationEnum::GenderId,
-        UserPersonalInformationEnum::CivilStatusId,
-        UserPersonalInformationEnum::CityId,
+        UserPersonalInformationEnum::EMAIL,
+        UserPersonalInformationEnum::BIRTHDATE,
+        UserPersonalInformationEnum::GENDER_ID,
+        UserPersonalInformationEnum::CIVIL_STATUS_ID,
+        UserPersonalInformationEnum::CITY_ID,
     ];
 
     protected static function newFactory(): UserPersonalInformationFactory

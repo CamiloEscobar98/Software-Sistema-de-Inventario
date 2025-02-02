@@ -13,10 +13,7 @@ namespace App\Enums;
  * @property const SLUG
  * @property const CREATED_AT
  * @property const UPDATED_AT
- * @property const GRAPHQL_TYPE_NAME
- * @property const GRAPHQL_TYPE_DESCRIPTION
- * @property const SLUG_COUNT
- * @property const FIELDS
+ * @property const RELATION_DEPARMENT
  */
 class CityEnum
 {
@@ -30,14 +27,6 @@ class CityEnum
     const UPDATED_AT = "updated_at";
 
     /** Relations */
-
-
-    /** GraphQL */
-    const GRAPHQL_TYPE_NAME = 'City';
-    const GRAPHQL_TYPE_DESCRIPTION = 'The GraphQL Type of the City model';
-
-    /** Factories */
-    const SLUG_COUNT = 5;
-
-    const FIELDS = [self::ID, self::DEPARTMENT_ID, self::NAME, self::SLUG, self::CREATED_AT, self::UPDATED_AT];
+    const RELATION_DEPARMENT = 'department';
+    const RELATION_COUNTRY = 'country';
 }
