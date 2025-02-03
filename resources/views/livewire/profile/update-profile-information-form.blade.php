@@ -8,11 +8,15 @@ use Illuminate\Support\Carbon;
 use Livewire\Volt\Component;
 
 use App\Enums\UserEnum;
+use App\Enums\DepartmentEnum;
 use App\Enums\UserPersonalInformationEnum;
 
 use App\Repositories\UserPersonalInformationRepository;
 use App\Repositories\GenderRepository;
 use App\Repositories\CivilStatusRepository;
+use App\Repositories\CountryRepository;
+use App\Repositories\DepartmentRepository;
+use App\Repositories\CityRepository;
 
 use App\Models\User;
 
@@ -23,9 +27,17 @@ new class extends Component
     public string $birthdate = '';
     public int $gender_id = -1;
     public int $civil_status_id = -1;
+    public int $city_id = -1;
+    
+    public int $department_id = -1;
+    public int $country_id = -1;
 
     public $genders = [];
     public $civilStatuses = [];
+
+    public $countries = [];
+    public $departments = [];
+    public $cities = [];
 
     /**
      * Mount the component.
@@ -39,23 +51,84 @@ new class extends Component
         $this->{UserPersonalInformationEnum::BIRTHDATE} = $personalInformation->{UserPersonalInformationEnum::BIRTHDATE} ?? '';
         $this->{UserPersonalInformationEnum::GENDER_ID} = $personalInformation->{UserPersonalInformationEnum::GENDER_ID} ?? -1;
         $this->{UserPersonalInformationEnum::CIVIL_STATUS_ID} = $personalInformation->{UserPersonalInformationEnum::CIVIL_STATUS_ID} ?? -1;
-
+        
         $this->getGenders();
         $this->getCivilStatuses();
+        $this->getLocations($personalInformation);
     }
 
-    public function getGenders() {
+    /**
+     * Get Genders
+     */
+    public function getGenders(): void {
         /** @var GenderRepository $genderRepository */
         $genderRepository = resolve(GenderRepository::class);
-
         $this->genders = $genderRepository->getSimpleData();
     }
 
-    public function getCivilStatuses() {
+    /**
+     * Get Civil Statuses
+     */    
+    public function getCivilStatuses(): void {
         /** @var CivilStatusRepository $civilStatusRepository */
         $civilStatusRepository = resolve(CivilStatusRepository::class);
-
         $this->civilStatuses = $civilStatusRepository->getSimpleData();
+    }
+
+    /**
+     * Get Countries
+     */
+    public function getCountries(): void {
+        /** @var CountryRepository $countryRepository */
+        $countryRepository = resolve(CountryRepository::class);
+        $this->countries = $countryRepository->getSimpleData();
+    }
+
+    /**
+     * Get Departments
+     */
+    public function getDepartments(): void {
+        
+        if ($this->country_id > 0) {
+            /** @var DepartmentRepository $departmentRepository */
+            $departmentRepository = resolve(DepartmentRepository::class);
+            $this->departments = $departmentRepository->getSimpleDataByCountryId($this->country_id);
+        }
+    }
+
+    /**
+     * Get Cities
+     */
+    public function getCities(): void {
+        
+        if ($this->country_id > 0) {
+            /** @var CityRepository $cityRepository */
+            $cityRepository = resolve(CityRepository::class);
+            $this->cities = $cityRepository->getSimpleDataByDepartmentId($this->department_id);
+        }
+    }
+
+    /**
+     * Get Locations
+     */
+    public function getLocations($personalInformation): void {
+        $this->getCountries();
+        $cityId = $personalInformation->{UserPersonalInformationEnum::CITY_ID} ?? null;
+        if ($cityId) {
+            /** @var DepartmentRepository $departmentRepository */
+            $departmentRepository = resolve(DepartmentRepository::class);
+            $department = $departmentRepository->getByCityId($cityId);
+            
+            $department_id = $department->{DepartmentEnum::ID};
+            $country_id = $department->{DepartmentEnum::COUNTRY_ID};
+            
+            $this->country_id = $country_id;
+            $this->getDepartments();
+            $this->department_id = $department_id;
+            $this->getCities();
+            $this->city_id = $cityId;
+            
+        }
     }
 
     /**
@@ -69,12 +142,18 @@ new class extends Component
             UserPersonalInformationEnum::NAME => ['required', 'string', 'max:255'],
             UserPersonalInformationEnum::EMAIL => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($user->id)],
             UserPersonalInformationEnum::BIRTHDATE => ['required', 'date', 'before_or_equal:' . Carbon::now()->subYears(18)->format('Y-m-d')],
+            UserPersonalInformationEnum::GENDER_ID => ['required', 'integer'],
+            UserPersonalInformationEnum::CIVIL_STATUS_ID => ['required', 'integer'],
+            UserPersonalInformationEnum::CITY_ID => ['required', 'integer'],
         ]);
 
         $personalInformation = $user->{UserEnum::RELATION_PERSONAL_INFORMATION};
 
         if ($personalInformation) {
             $personalInformation->fill($validated);
+            if ($personalInformation->isDirty()) {
+                $personalInformation->save();
+            }
         } else {
             /** @var UserPersonalInformationRepository $userPersonalInformationRepository */
             $userPersonalInformationRepository = resolve(UserPersonalInformationRepository::class);
@@ -172,11 +251,12 @@ new class extends Component
             </x-select>
             <x-input-error class="mt-2" :messages="$errors->get('gender_id')" />
         </div>
-        
+
         <!-- Civil Status -->
         <div>
             <x-input-label for="civil_status_id" :value="__('Civil Status')" />
-            <x-select wire:model="civil_status_id" id="civil_status_id" name="civil_status_id" class="mt-1 block w-full">
+            <x-select wire:model="civil_status_id" id="civil_status_id" name="civil_status_id"
+                class="mt-1 block w-full">
                 <option value="-1">{!! __('Select') !!}</option>
                 @foreach ($this->civilStatuses as $key => $value)
                 <option value="{{ $key }}">{{ $value }}</option>
@@ -185,11 +265,48 @@ new class extends Component
             <x-input-error class="mt-2" :messages="$errors->get('civil_status_id')" />
         </div>
 
+        <!-- Country -->
+        <div>
+            <x-input-label for="country_id" :value="__('Country')" />
+            <x-select wire:model="country_id" wire:change='getDepartments' id="country_id" name="country_id"
+                class="mt-1 block w-full">
+                <option value="-1">{!! __('Select') !!}</option>
+                @foreach ($this->countries as $key => $value)
+                <option value="{{ $key }}">{{ $value }}</option>
+                @endforeach
+            </x-select>
+            <x-input-error class="mt-2" :messages="$errors->get('country_id')" />
+        </div>
+
+        <!-- Department -->
+        <div>
+            <x-input-label for="department_id" :value="__('Department')" />
+            <x-select wire:model="department_id" wire:change='getCities' id="department_id" name="department_id" class="mt-1 block w-full">
+                <option value="-1">{!! __('Select') !!}</option>
+                @foreach ($this->departments as $key => $value)
+                <option value="{{ $key }}">{{ $value }}</option>
+                @endforeach
+            </x-select>
+            <x-input-error class="mt-2" :messages="$errors->get('department_id')" />
+        </div>
+
+        <!-- City -->
+        <div>
+            <x-input-label for="city_id" :value="__('City')" />
+            <x-select wire:model="city_id" id="city_id" name="city_id" class="mt-1 block w-full">
+                <option value="-1">{!! __('Select') !!}</option>
+                @foreach ($this->cities as $key => $value)
+                <option value="{{ $key }}">{{ $value }}</option>
+                @endforeach
+            </x-select>
+            <x-input-error class="mt-2" :messages="$errors->get('city_id')" />
+        </div>
+
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
             <x-action-message class="me-3" on="profile-updated">
-                {{ __('Saved.') }}
+                {{ __('Saved') }}
             </x-action-message>
         </div>
     </form>

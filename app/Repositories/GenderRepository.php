@@ -4,9 +4,9 @@ namespace App\Repositories;
 
 use App\Enums\GenderEnum;
 use App\Repositories\AbstractRepository;
+use Illuminate\Support\Collection;
 
 use App\Models\Gender;
-use Illuminate\Support\Collection;
 
 /**
  * Class GenderRepository

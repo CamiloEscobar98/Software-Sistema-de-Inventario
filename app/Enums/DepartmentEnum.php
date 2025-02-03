@@ -31,14 +31,5 @@ class DepartmentEnum
     const UPDATED_AT = "updated_at";
 
     /** Relations */
-    const CITIES = 'cities';
-
-    /** GraphQL */
-    const GRAPHQL_TYPE_NAME = 'Department';
-    const GRAPHQL_TYPE_DESCRIPTION = 'The GraphQL Type of the Department model';
-
-    /** Factories */
-    const SLUG_COUNT = 5;
-
-    const FIELDS = [self::ID, self::COUNTRY_ID, self::NAME, self::SLUG, self::CREATED_AT, self::UPDATED_AT];
+    const RELATION_CITY = 'cities';
 }

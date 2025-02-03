@@ -150,6 +150,7 @@
     "results": "resultados",
     "Retry With": "Reintentar con",
     "Save": "Guardar",
+    "Saved": "Guardado",
     "Save & Close": "Guardar cerrar",
     "Save & Return": "Guardar y volver",
     "Save :name": "Guardar :name",
@@ -230,5 +231,8 @@
     "Already registered?": "¿Ya estás registrado?",
     "Delete Account": "Eliminar Cuenta",
     "Delete Account Ask": "¿Seguro que quieres eliminar tu cuenta?",
-    "Delete Account Text": "Una vez eliminada su cuenta, todos sus recursos y datos se borrarán permanentemente. Antes de eliminar su cuenta, descargue los datos o la información que desee conservar."
+    "Delete Account Text": "Una vez eliminada su cuenta, todos sus recursos y datos se borrarán permanentemente. Antes de eliminar su cuenta, descargue los datos o la información que desee conservar.",
+    "Country": "Pais",
+    "Department": "Departamento",
+    "Ciudad": "Ciudad"
 }

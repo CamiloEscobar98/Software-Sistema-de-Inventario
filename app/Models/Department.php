@@ -71,17 +71,6 @@ class Department extends Model
     }
 
     /**
-     * Set the Slug.
-     *
-     * @param  string  $value
-     * @return void
-     */
-    public function setSlugAttribute($value)
-    {
-        return $this->attributes[DepartmentEnum::SLUG] = Str::SLUG($value, '-', App::getLocale());
-    }
-
-    /**
      * Get Cities.
      * 
      * @return HasMany
@@ -89,5 +78,68 @@ class Department extends Model
     public function cities()
     {
         return $this->hasMany(City::class);
+    }
+
+    /**
+     * Scope a query to only include Id.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @param array|int $value
+     * 
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeById($query, $value)
+    {
+        $column = sprintf("%s.%s", DepartmentEnum::TABLE, DepartmentEnum::ID);
+        if (is_array($value)) {
+            return $query->whereIn($column, $value);
+        } else {
+            return $query->where($column, $value);
+        }
+    }
+
+    /**
+     * Scope a query to only include Name.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @param string $value
+     * 
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeByName($query, $value)
+    {
+        $locale = App::getLocale();
+        $column = sprintf("%s.%s", DepartmentEnum::TABLE, DepartmentEnum::NAME);
+        return $query->where("{$column}->{$locale}", 'like', "%$value%");
+    }
+
+    /**
+     * Scope a query to only include Slug.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @param string $value
+     * 
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeBySlug($query, $value)
+    {
+        $locale = App::getLocale();
+        $column = sprintf("%s.%s", DepartmentEnum::TABLE, DepartmentEnum::SLUG);
+        return $query->where($column, 'like', "%$value%");
+    }
+
+    /**
+     * Scope a query to only include CountryId
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @param int|array $value
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeByCountryId($query, $value)
+    {
+        if (is_array($value)) {
+            return $query->whereIn(DepartmentEnum::COUNTRY_ID, $value);
+        }
+        return $query->where(DepartmentEnum::COUNTRY_ID, $value);
     }
 }

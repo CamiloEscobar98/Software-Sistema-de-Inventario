@@ -2,14 +2,13 @@
 
 namespace App\Repositories;
 
-use App\Enums\CityEnum;
+use Illuminate\Support\Collection;
+
 use App\Repositories\AbstractRepository;
 
 use App\Models\Country;
 
 use App\Enums\CountryEnum;
-use App\Enums\DepartmentEnum;
-use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Class CountryRepository
@@ -53,6 +52,15 @@ class CountryRepository extends AbstractRepository
     public function update($id, array $data): Country
     {
         return parent::update($id, $data);
+    }
+
+    /**
+     * Get simple data
+     * @return Collection
+     */
+    public function getSimpleData(): Collection
+    {
+        return $this->model->all()->pluck(CountryEnum::NAME, CountryEnum::ID)->sortBy(fn($name) => strtolower($name));;
     }
 
     /**

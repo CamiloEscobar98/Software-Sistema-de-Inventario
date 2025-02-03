@@ -105,4 +105,67 @@ class City extends Model
             DepartmentEnum::COUNTRY_ID
         );
     }
+
+    /**
+     * Scope a query to only include Id.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @param array|int $value
+     * 
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeById($query, $value)
+    {
+        $column = sprintf("%s.%s", CityEnum::TABLE, CityEnum::ID);
+        if (is_array($value)) {
+            return $query->whereIn($column, $value);
+        } else {
+            return $query->where($column, $value);
+        }
+    }
+
+    /**
+     * Scope a query to only include Name.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @param string $value
+     * 
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeByName($query, $value)
+    {
+        $locale = App::getLocale();
+        $column = sprintf("%s.%s", CityEnum::TABLE, CityEnum::NAME);
+        return $query->where("{$column}->{$locale}", 'like', "%$value%");
+    }
+
+    /**
+     * Scope a query to only include Slug.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @param string $value
+     * 
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeBySlug($query, $value)
+    {
+        $locale = App::getLocale();
+        $column = sprintf("%s.%s", CityEnum::TABLE, CityEnum::SLUG);
+        return $query->where($column, 'like', "%$value%");
+    }
+
+    /**
+     * Scope a query to only include DepartmentId
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @param int|array $value
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeByDepartmentId($query, $value)
+    {
+        if (is_array($value)) {
+            return $query->whereIn(CityEnum::DEPARTMENT_ID, $value);
+        }
+        return $query->where(CityEnum::DEPARTMENT_ID, $value);
+    }
 }

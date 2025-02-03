@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Enums\CityEnum;
 use App\Repositories\AbstractRepository;
 
 use App\Models\City;
@@ -19,5 +20,15 @@ class CityRepository extends AbstractRepository
     public function __construct(City $model)
     {
         $this->model = $model;
+    }
+
+    /**
+     * Get simple data
+     * @param int $departmentId
+     * @return Collection
+     */
+    public function getSimpleDataByDepartmentId(int $departmentId)
+    {
+        return $this->model->byDepartmentId($departmentId)->pluck(CityEnum::NAME, CityEnum::ID)->sortBy(fn($name) => strtolower($name));;
     }
 }

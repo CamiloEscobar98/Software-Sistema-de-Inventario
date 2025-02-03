@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 use Database\Factories\UserPersonalInformationFactory;
 
 use App\Enums\UserPersonalInformationEnum;
+use App\Enums\CityEnum;
 
 class UserPersonalInformation extends Model
 {
@@ -35,5 +37,14 @@ class UserPersonalInformation extends Model
     protected static function newFactory(): UserPersonalInformationFactory
     {
         return UserPersonalInformationFactory::new();
+    }
+
+    /**
+     * Get City
+     * @return BelongsTo
+     */
+    public function city(): BelongsTo
+    {
+        return $this->belongsTo(City::class, UserPersonalInformationEnum::CITY_ID, CityEnum::ID);
     }
 }
